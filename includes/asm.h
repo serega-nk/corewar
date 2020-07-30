@@ -1,0 +1,126 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
+/*   Updated: 2020/07/30 22:51:08 by bconchit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ASM_H
+# define ASM_H
+
+typedef enum e_type		t_type;
+
+enum	e_type
+{
+	COMMAND_NAME,
+	COMMAND_COMMENT,
+	STRING,
+	LABEL,
+	INSTRUCTION,
+	REGISTER,
+	DIRECT,
+	DIRECT_LABEL,
+	INDIRECT,
+	INDIRECT_LABEL,
+	ENDLINE,
+	SEPARATOR,
+	END,
+	COMMENT,
+	WHITESPACE,
+};
+
+/*
+{
+  const char *v2; // [rsp+10h] [rbp-10h]
+
+  switch ( (unsigned __int64)*a1 )
+  {
+    case 0uLL:
+      v2 = "COMMAND_NAME";
+      break;
+    case 1uLL:
+      v2 = "COMMAND_COMMENT";
+      break;
+    case 2uLL:
+      v2 = "STRING";
+      break;
+    case 3uLL:
+      v2 = "LABEL";
+      break;
+    case 4uLL:
+      v2 = "INSTRUCTION";
+      break;
+    case 5uLL:
+      v2 = "REGISTER";
+      break;
+    case 6uLL:
+      v2 = "DIRECT";
+      break;
+    case 7uLL:
+      v2 = "DIRECT_LABEL";
+      break;
+    case 8uLL:
+      v2 = "INDIRECT";
+      break;
+    case 9uLL:
+      v2 = "INDIRECT_LABEL";
+      break;
+    case 0xAuLL:
+      v2 = "ENDLINE";
+      break;
+    case 0xBuLL:
+      v2 = "SEPARATOR";
+      break;
+    case 0xCuLL:
+      v2 = "END";
+      break;
+    case 0xDuLL:
+      v2 = "COMMENT";
+      break;
+    case 0xEuLL:
+      v2 = "WHITESPACE";
+      break;
+    case 0xFuLL:
+      v2 = "program";
+      break;
+    case 0x10uLL:
+      v2 = "header";
+      break;
+    case 0x11uLL:
+      v2 = "command_name_line";
+      break;
+    case 0x12uLL:
+      v2 = "command_comment_line";
+      break;
+    case 0x13uLL:
+      v2 = "code";
+      break;
+    case 0x14uLL:
+      v2 = "line";
+      break;
+    case 0x15uLL:
+      v2 = "rest";
+      break;
+    case 0x16uLL:
+      v2 = "instruction";
+      break;
+    case 0x17uLL:
+      v2 = "parameters";
+      break;
+    case 0x18uLL:
+      v2 = "parameter";
+      break;
+    default:
+      v2 = (const char *)&unk_100012957;
+      break;
+  }
+  return v2;
+}
+*/
+
+#endif
