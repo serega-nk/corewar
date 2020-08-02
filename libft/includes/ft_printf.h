@@ -6,12 +6,14 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 01:26:08 by bconchit          #+#    #+#             */
-/*   Updated: 2020/07/24 17:56:10 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/02 16:59:47 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+# include <stdlib.h>
 
 int		ft_printf(const char *format, ...);
 int		ft_printf_fd(int fd, const char *format, ...);
