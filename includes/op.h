@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/07/30 22:49:39 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/02 16:17:19 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@
 # define MAX_CHECKS				10
 
 /*
+** ADD CONST
+*/
+
+# define ALT_COMMENT_CHAR		';'
+# define STRING_CHAR			'"'
+
+/*
 ** TODO: comment
 */
 
@@ -68,12 +75,12 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct	s_header
-{
-	unsigned int	magic;
-	char			prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH + 1];
-}				t_header;
+// typedef struct	s_header
+// {
+// 	unsigned int	magic;
+// 	char			prog_name[PROG_NAME_LENGTH + 1];
+// 	unsigned int	prog_size;
+// 	char			comment[COMMENT_LENGTH + 1];
+// }				t_header;
 
 #endif

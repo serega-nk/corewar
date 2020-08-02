@@ -1,0 +1,39 @@
+[PROG] size 0, name , comment 
+| [NODE] header
+| | [NODE] command_name_line
+| | | [TOKEN][001:001] COMMAND_NAME ".name"
+| | | [TOKEN][001:007] STRING ""zork""
+| | [NODE] command_comment_line
+| | | [TOKEN][002:001] COMMAND_COMMENT ".comment"
+| | | [TOKEN][002:010] STRING ""just a basic living prog""
+| [NODE] code
+| | [LINE] Size 0, Pos 0
+| | | [TOKEN][004:001] LABEL "l2:"
+| | | [INSTRUCTION] Opcode 0, Pcode 0b00000000. (Expects 0 params, pcode 0, idx 0)
+| | | | [TOKEN][004:005] INSTRUCTION "sti"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][004:009] REGISTER "r1"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][004:012] DIRECT_LABEL "%:live"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][004:019] DIRECT "%0"
+| | [LINE] Size 0, Pos 0
+| | | [INSTRUCTION] Opcode 0, Pcode 0b00000000. (Expects 0 params, pcode 0, idx 0)
+| | | | [TOKEN][005:002] INSTRUCTION "and"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][005:006] REGISTER "r1"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][005:009] DIRECT "%0"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][005:012] REGISTER "r1"
+| | [LINE] Size 0, Pos 0
+| | | [TOKEN][006:001] LABEL "live:"
+| | | [INSTRUCTION] Opcode 0, Pcode 0b00000000. (Expects 0 params, pcode 0, idx 0)
+| | | | [TOKEN][006:007] INSTRUCTION "live"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][006:012] DIRECT "%1"
+| | [LINE] Size 0, Pos 0
+| | | [INSTRUCTION] Opcode 0, Pcode 0b00000000. (Expects 0 params, pcode 0, idx 0)
+| | | | [TOKEN][007:002] INSTRUCTION "zjmp"
+| | | | [PARAMETER] Type unknown, Label ref NULL, Value 0
+| | | | | [TOKEN][007:007] DIRECT_LABEL "%:live"
