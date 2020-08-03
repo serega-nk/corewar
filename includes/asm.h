@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/02 20:15:42 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:15:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "libft.h"
 # include "list.h"
 # include "gnl.h"
+
+# include "op.h"
 
 typedef enum e_type		t_type;
 typedef struct s_token	t_token;
@@ -53,8 +55,12 @@ struct		s_token
 
 struct		s_lexer
 {
-	t_type	type;
-	t_list	*tokens;
+	char	*data;
+	size_t	size;
+	
+	size_t	index;
+	// t_type	type;
+	// t_list	*tokens;
 };
 
 t_token		*token_create(void);

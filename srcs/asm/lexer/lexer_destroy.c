@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 20:10:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/02 20:19:07 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:01:36 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void		lexer_destroy(t_lexer **aself)
 {
 	if (aself && *aself)
 	{
-		list_clean((*aself)->tokens, &token_destroy);
-		list_destroy(&(*aself)->tokens);
 		ft_memdel((void **)aself);
 	}
 }
