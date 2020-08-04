@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/02 19:58:06 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/04 22:26:27 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,6 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
-		$(addprefix token/, \
-			token_create.c \
-			token_destroy.c \
-			token_type_str.c \
-		) \
 		main.c \
 	) \
 

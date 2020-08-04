@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/03 22:15:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/04 23:00:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,54 +21,76 @@
 
 # include "op.h"
 
-typedef enum e_type		t_type;
-typedef struct s_token	t_token;
-typedef struct s_lexer	t_lexer;
+typedef struct s_token		t_token;
+typedef struct s_scanner	t_scanner;
+typedef struct s_lexer		t_lexer;
+typedef struct s_parser		t_parser;
+typedef struct s_compiler	t_compiler;
 
-enum		e_type
+typedef struct s_app		t_app;
+
+struct	s_app
 {
-	UNKNOWN,
-	COMMAND_NAME,
-	COMMAND_COMMENT,
-	STRING,
-	LABEL,
- 	INSTRUCTION,
- 	REGISTER,
- 	DIRECT,
- 	DIRECT_LABEL,
- 	INDIRECT,
- 	INDIRECT_LABEL,
-	ENDLINE,
-	SEPARATOR,
-	END,
-	COMMENT,
-	WHITESPACE,
+	int			ret;
+	t_lexer		*lexer;
 };
 
-struct		s_token
+struct	s_lexer
 {
-	t_type	type;
+	char	*text;
+	size_t	size;
 	int		lineno;
 	int		column;
-	char	*value;
 };
 
-struct		s_lexer
-{
-	char	*data;
-	size_t	size;
+// typedef enum e_type		t_type;
+// typedef struct s_token	t_token;
+// typedef struct s_lexer	t_lexer;
+
+// enum		e_type
+// {
+// 	UNKNOWN,
+// 	COMMAND_NAME,
+// 	COMMAND_COMMENT,
+// 	STRING,
+// 	LABEL,
+//  	INSTRUCTION,
+//  	REGISTER,
+//  	DIRECT,
+//  	DIRECT_LABEL,
+//  	INDIRECT,
+//  	INDIRECT_LABEL,
+// 	ENDLINE,
+// 	SEPARATOR,
+// 	END,
+// 	COMMENT,
+// 	WHITESPACE,
+// };
+
+// struct		s_token
+// {
+// 	t_type	type;
+// 	int		lineno;
+// 	int		column;
+// 	char	*value;
+// };
+
+// struct		s_lexer
+// {
+// 	char	*data;
+// 	size_t	size;
 	
-	size_t	index;
-	// t_type	type;
-	// t_list	*tokens;
-};
+// 	size_t	index;
+// 	// t_type	type;
+// 	// t_list	*tokens;
+// };
 
-t_token		*token_create(void);
-void		token_destroy(t_token **aself);
-const char	*token_type_str(t_token *self);
+// t_token		*token_create(void);
+// void		token_destroy(t_token **aself);
+// const char	*token_type_str(t_token *self);
 
-t_lexer		*lexer_create(void);
-void		lexer_destroy(t_lexer **aself);
+// t_lexer		*lexer_create(void);
+// void		lexer_destroy(t_lexer **aself);
 
 
 // typedef enum e_type		t_type;
