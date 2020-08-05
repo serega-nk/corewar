@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/04 23:00:09 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/05 23:09:44 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct s_compiler	t_compiler;
 
 typedef struct s_app		t_app;
 
-struct	s_app
+struct	s_compiler
 {
-	int			ret;
+	char		*text;
 	t_lexer		*lexer;
+	t_list		*tokens;
+	t_parser	*parser;	
 };
 
 struct	s_lexer
@@ -42,6 +44,14 @@ struct	s_lexer
 	int		lineno;
 	int		column;
 };
+
+t_token		*token_create(void);
+void		token_destroy(t_token **aself);
+
+t_compiler	*compiler_create(void);
+void		compiler_destroy(t_compiler **aself);
+
+t_bool		compiler_make_bytecode(t_compiler *self, char *fn);
 
 // typedef enum e_type		t_type;
 // typedef struct s_token	t_token;

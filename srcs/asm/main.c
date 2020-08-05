@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/04 23:05:40 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:44:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,38 @@ void	print_usage(char *name)
 // 	return (TRUE);
 // }
 
-t_bool	test(t_app *self)
-{
-	if (!lexer_readfile(self->lexer, "42.s"))
-		return (FALSE);
+// t_bool	test(t_app *self)
+// {
+// 	if (!lexer_readfile(self->lexer, "42.s"))
+// 		return (FALSE);
 	
-	return (TRUE);
-}
+// 	return (TRUE);
+// }
 
+// t_bool	make_bytecode(char *fn)
+// {
+// 	t_asm	*asm;
+
+// 	asm = asm_create();
+// 	asm_compiler(asm, fn);
+// 	asm_destroy(&asm);
+
+// 	compiler = compiler_create();
+// 	compiler_make_bytecode(fn, )
+	
+// 	if (!(text = get_file_contents(fn)))
+// 		return (FALSE);
+// 	lexer = lexer_create();	
+// 	lexer_input();
+// 	tokens = lexer_tokens();
+
+// }
 
 int		main(int argc, char *argv[])
 {
-	int		ret;
-	int		i;
+	int			ret;
+	int			i;
+	t_compiler	*compiler;
 
 	ret = EXIT_SUCCESS;
 	if (argc > 1)
@@ -105,8 +124,10 @@ int		main(int argc, char *argv[])
 		i = 1;
 		while (i < argc)
 		{
-			if (make_bytecode(argv[i]))
-		 		ret = EXIT_FAILURE;
+			compiler = compiler_create();
+			if (!compiler_make_bytecode(compiler, argv[i]))
+				ret = EXIT_FAILURE;
+			compiler_destroy(&compiler);
 		 	i++;
 		}
 	}
