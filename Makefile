@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/05 23:11:06 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/06 20:31:54 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,13 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
-		$(addprefix compiler/, \
-			compiler_create.c \
-			compiler_destroy.c \
+		$(addprefix lexer/, \
+			lexer_create.c \
+			lexer_destroy.c \
+		) \
+		$(addprefix parser/, \
+			parser_create.c \
+			parser_destroy.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \

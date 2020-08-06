@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/05 21:44:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/06 23:18:38 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		main(int argc, char *argv[])
 {
 	int			ret;
 	int			i;
-	t_compiler	*compiler;
+	// t_compiler	*compiler;
 
 	ret = EXIT_SUCCESS;
 	if (argc > 1)
@@ -124,14 +124,16 @@ int		main(int argc, char *argv[])
 		i = 1;
 		while (i < argc)
 		{
-			compiler = compiler_create();
-			if (!compiler_make_bytecode(compiler, argv[i]))
-				ret = EXIT_FAILURE;
-			compiler_destroy(&compiler);
+			// compiler = compiler_create();
+			// if (!compiler_make_bytecode(compiler, argv[i]))
+			// 	ret = EXIT_FAILURE;
+			// compiler_destroy(&compiler);
 		 	i++;
 		}
 	}
 	else
 		print_usage(argv[0]);
+
+	ft_printf("|%s|\n", ft_strndup("1234567890", 4));
 	return (ret);
 }

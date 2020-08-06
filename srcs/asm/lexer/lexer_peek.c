@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   lexer_peek.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 20:32:41 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/06 20:37:26 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/06 22:11:58 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+char	lexer_peek(t_lexer *self, int relative_position)
 {
-	if (aself && *aself)
-	{
-		ft_memdel((void **)aself);
-	}
+	int	position;
+
+	position = self->pos + relative_position;
+	if (position >= 0 && position < self->length)
+		return (self->input[position]);
+	return (END_CHAR);
 }

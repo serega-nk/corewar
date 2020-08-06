@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/05 23:09:44 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/06 22:59:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,77 @@
 
 # include "op.h"
 
+typedef enum e_token_type	t_token_type;
+
 typedef struct s_token		t_token;
-typedef struct s_scanner	t_scanner;
 typedef struct s_lexer		t_lexer;
 typedef struct s_parser		t_parser;
-typedef struct s_compiler	t_compiler;
 
-typedef struct s_app		t_app;
-
-struct	s_compiler
+enum	e_token_type
 {
-	char		*text;
-	t_lexer		*lexer;
-	t_list		*tokens;
-	t_parser	*parser;	
+	TOKEN_TYPE_WORD,
+	TOKEN_TYPE_STRING,
+	TOKEN_TYPE_COMMENT,	
+	TOKEN_TYPE_WHITESPACE,
+	TOKEN_TYPE_LABEL,
+	TOKEN_TYPE_SEPARATOR,
+	TOKEN_TYPE_DIRECT,	
+	TOKEN_TYPE_ENDLINE,
+	TOKEN_TYPE_END,
+};
+
+struct	s_token
+{
+	t_token_type	type;
+	int				ln;
+	int				col;
+	char			*value;
 };
 
 struct	s_lexer
 {
-	char	*text;
-	size_t	size;
-	int		lineno;
-	int		column;
+	char			*input;
+	size_t			length;
+	size_t			pos;
+	int				ln;
+	int				col;
 };
 
-t_token		*token_create(void);
+struct	s_parser
+{
+	int		i;
+};
+
+t_token		*token_create(t_token_type type, int ln, int col);
 void		token_destroy(t_token **aself);
 
-t_compiler	*compiler_create(void);
-void		compiler_destroy(t_compiler **aself);
+t_lexer		*lexer_create(char *input, size_t length);
+void		lexer_destroy(t_lexer **aself);
+char		lexer_peek(t_lexer *self, int relative_position);
+char		lexer_next(t_lexer *self);
+t_bool		lexer_eof(t_lexer *self);
+t_token		*lexer_tokenize(t_lexer *self);
+t_list		*lexer_tokens(t_lexer *self);
 
-t_bool		compiler_make_bytecode(t_compiler *self, char *fn);
+t_parser	*parser_create(void);
+void		parser_destroy(t_parser **aself);
+
+
+
+
+
+// typedef struct s_compiler	t_compiler;
+// typedef struct s_app		t_app;
+
+// struct	s_lexer
+// {
+// 	char	*text;
+// 	size_t	size;
+// 	int		lineno;
+// 	int		column;
+// };
+
+//t_bool		compiler_make_bytecode(t_compiler *self, char *fn);
 
 // typedef enum e_type		t_type;
 // typedef struct s_token	t_token;

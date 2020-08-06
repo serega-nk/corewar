@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   lexer_tokenize_string.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 20:32:41 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/06 23:04:00 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/06 23:12:37 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+t_token		*lexer_tokenize_string(t_lexer *self)
 {
-	if (aself && *aself)
+	t_token	*token;
+	size_t	save;
+	char	current;
+
+	token = token_create(TOKEN_TYPE_STRING, self->ln, self->col);
+	lexer_next(self);
+	save = self->pos;
+	while (TRUE)
 	{
-		ft_memdel((void **)aself);
+		if ()
+		current = lexer_next(self);
+		if (ft_index(WHITESPACE_CHARS, current) == -1)
+			break ;
 	}
+	token->value = (char *)ft_xcheck(
+		(void *)ft_strndup(self->input + save, self->pos - save));
+	return (token);
 }

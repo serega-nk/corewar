@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   lexer_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 20:32:41 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/06 20:52:50 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/06 22:12:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+t_list		*lexer_tokens(t_lexer *self)
 {
-	if (aself && *aself)
-	{
-		ft_memdel((void **)aself);
-	}
-}
+	t_list	*tokens;
+
+	tokens = list_create();
+	while (lexer_eof(self) == FALSE)
+		list_push_back(tokens, lexer_tokenize(self));
+	return (tokens);

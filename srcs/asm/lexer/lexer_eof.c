@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   lexer_eof.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 20:32:41 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/06 21:47:07 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/06 21:50:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+t_bool	lexer_eof(t_lexer *self)
 {
-	if (aself && *aself)
-	{
-		ft_memdel((void **)aself);
-	}
+	return (self->pos >= self->length);
 }

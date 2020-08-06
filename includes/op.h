@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/08/02 16:17:19 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/06 22:17:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@
 ** ADD CONST
 */
 
-# define ALT_COMMENT_CHAR		';'
+# define END_CHAR				'\0'
+# define ENDLINE_CHAR			'\n'
 # define STRING_CHAR			'"'
+# define WHITESPACE_CHARS		" \t"
 
 /*
 ** TODO: comment
