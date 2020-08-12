@@ -134,6 +134,6 @@ int		main(int argc, char *argv[])
 	else
 		print_usage(argv[0]);
 
-	ft_printf("|%s|\n", ft_strndup("1234567890", 4));
+	//ft_printf("|%s|\n", ft_strndup("1234567890", 4));
 	return (ret);
 }

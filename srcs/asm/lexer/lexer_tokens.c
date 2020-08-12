@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 20:52:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 22:12:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/12 23:38:39 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,4 @@ t_list		*lexer_tokens(t_lexer *self)
 	while (lexer_eof(self) == FALSE)
 		list_push_back(tokens, lexer_tokenize(self));
 	return (tokens);
+}

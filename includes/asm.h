@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 22:59:03 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/12 22:52:40 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ struct	s_lexer
 	char			*input;
 	size_t			length;
 	size_t			pos;
+	size_t			start;
 	int				ln;
 	int				col;
 };
@@ -62,19 +63,27 @@ struct	s_parser
 	int		i;
 };
 
-t_token		*token_create(t_token_type type, int ln, int col);
-void		token_destroy(t_token **aself);
+t_token			*token_create(t_token_type type);
+void			token_destroy(t_token **aself);
 
-t_lexer		*lexer_create(char *input, size_t length);
-void		lexer_destroy(t_lexer **aself);
-char		lexer_peek(t_lexer *self, int relative_position);
-char		lexer_next(t_lexer *self);
-t_bool		lexer_eof(t_lexer *self);
-t_token		*lexer_tokenize(t_lexer *self);
-t_list		*lexer_tokens(t_lexer *self);
+t_lexer			*lexer_create(char *input, size_t length);
+void			lexer_destroy(t_lexer **aself);
+char			lexer_peek(t_lexer *self, int relative_position);
+char			lexer_next(t_lexer *self);
+t_bool			lexer_eof(t_lexer *self);
+t_token_type	lexer_type(t_lexer *self);
 
-t_parser	*parser_create(void);
-void		parser_destroy(t_parser **aself);
+t_token			*lexer_tokenize_token(t_lexer *self, t_token_type type);
+t_token			*lexer_tokenize_comment(t_lexer *self);
+t_token			*lexer_tokenize_string(t_lexer *self);
+t_token			*lexer_tokenize_whilespace(t_lexer *self);
+t_token			*lexer_tokenize_word(t_lexer *self);
+
+t_token			*lexer_tokenize(t_lexer *self);
+t_list			*lexer_tokens(t_lexer *self);
+
+t_parser		*parser_create(void);
+void			parser_destroy(t_parser **aself);
 
 
 
