@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/06 20:31:54 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/13 20:37:27 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,22 @@ HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
 		$(addprefix lexer/, \
+			$(addprefix tokenize/, \
+				lexer_tokenize_comment.c \
+				lexer_tokenize_spec.c \
+				lexer_tokenize_string.c \
+				lexer_tokenize_whitespace.c \
+				lexer_tokenize_word.c \
+			) \
 			lexer_create.c \
 			lexer_destroy.c \
+			lexer_eof.c \
+			lexer_next.c \
+			lexer_peek.c \
+			lexer_start.c \
+			lexer_tokenize.c \
+			lexer_type.c \
+			lexer_value.c \
 		) \
 		$(addprefix parser/, \
 			parser_create.c \
@@ -30,6 +44,7 @@ SOURCES		= \
 		$(addprefix token/, \
 			token_create.c \
 			token_destroy.c \
+			token_print.c \
 		) \
 		main.c \
 	) \

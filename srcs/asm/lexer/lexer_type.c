@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 19:29:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/12 22:53:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/13 20:26:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_token_type	lexer_type(t_lexer *self)
 {
 	char		ch;
 
-	ch = lexer_peek(self);
+	ch = lexer_peek(self, 0);
 	if (ft_index(WHITESPACE_CHARS, ch) != -1)
 		return (TOKEN_TYPE_WHITESPACE);
 	if (ch == COMMENT_CHAR)
