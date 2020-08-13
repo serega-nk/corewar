@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:47:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 20:23:36 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/13 23:25:05 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_bool			lexer_tokenize(t_lexer *self, t_list **atokens)
 			list_clean(tokens, &token_destroy);
 			list_destroy(&tokens);
 			return (FALSE);
-		}		
+		}
 		list_push_back(tokens, token);
 	}
 	*atokens = tokens;
