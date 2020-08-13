@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 02:50:47 by bconchit          #+#    #+#             */
-/*   Updated: 2020/07/21 04:21:39 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/13 18:27:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ char	*ft_xstrdup(const char *s1);
 char	*ft_xstrdup2(const char *s1, const char *s2);
 char	*ft_xstrdup3(const char *s1, const char *s2, const char *s3);
 void	*ft_xmemdup(const void *src, size_t size);
+char	*ft_xstrndup(const char *src, size_t maxsize);
 
 #endif
