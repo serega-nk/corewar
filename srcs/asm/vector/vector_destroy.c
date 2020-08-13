@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   vector_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 23:34:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:43:26 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/13 23:47:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "vector.h"
 
-void	parser_destroy(t_parser **aself)
+void	vector_destroy(t_vector **aself)
 {
 	if (aself && *aself)
 	{
-		list_iter_destroy(&(*aself)->iter);
+		ft_memdel((void **)&(*aself)->table);
 		ft_memdel((void **)aself);
 	}
 }

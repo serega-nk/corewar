@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 20:34:58 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/13 23:35:22 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ struct	s_lexer
 
 struct	s_parser
 {
-	int		i;
+	t_list_iter		*iter;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -75,19 +75,15 @@ t_bool			lexer_eof(t_lexer *self);
 t_token_type	lexer_type(t_lexer *self);
 void			lexer_start(t_lexer *self);
 char			*lexer_value(t_lexer *self);
-
 t_bool			lexer_tokenize_comment(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_spec(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_string(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_whitespace(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_word(t_lexer *self, t_token *token);
-
 t_bool			lexer_tokenize(t_lexer *self, t_list **atokens);
 
-t_parser		*parser_create(void);
+t_parser		*parser_create(t_list *tokens);
 void			parser_destroy(t_parser **aself);
-
-
 
 
 

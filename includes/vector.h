@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 23:34:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:43:43 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/13 23:55:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-void	parser_destroy(t_parser **aself)
+# include "libft.h"
+# include "ft_xexit.h"
+
+typedef struct s_vector		t_vector;
+
+struct		s_vector
 {
-	if (aself && *aself)
-	{
-		list_iter_destroy(&(*aself)->iter);
-		ft_memdel((void **)aself);
-	}
-}
+	void	**table;
+	size_t	capacity;
+	size_t	count;	
+};
+
+#endif

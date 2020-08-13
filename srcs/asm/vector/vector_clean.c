@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   vector_clean.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 23:34:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:44:27 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/13 23:47:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "vector.h"
 
-void	parser_destroy(t_parser **aself)
+void	vector_clean(t_vector *self, void (*delf)())
 {
-	if (aself && *aself)
-	{
-		list_iter_destroy(&(*aself)->iter);
-		ft_memdel((void **)aself);
-	}
+
 }

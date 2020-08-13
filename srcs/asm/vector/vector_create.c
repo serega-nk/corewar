@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   vector_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 23:34:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:44:47 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/14 00:01:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "vector.h"
 
-void	parser_destroy(t_parser **aself)
+t_vector	*vector_create(void)
 {
-	if (aself && *aself)
-	{
-		list_iter_destroy(&(*aself)->iter);
-		ft_memdel((void **)aself);
-	}
+	t_vector	*self;
+
+	self = (t_vector *)ft_xmemalloc(sizeof(t_vector));
+	self->capacity = 2;
+	self->table = (void **)ft_xmemalloc(self->capacity * sizeof(void *));
+	return (self);
 }

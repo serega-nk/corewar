@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 21:33:00 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/13 23:31:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	test(char *fn)
 	read(fd, addr, size);
 	close(fd);
 	
-	t_lexer *lexer = lexer_create(addr, size);
+	t_lexer *lexer = lexer_create(addr, size + 1);
 	
 	t_list	*tokens;	
 
