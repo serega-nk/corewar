@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: bconchit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 04:41:00 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 21:35:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2019/10/06 01:28:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
 
 char	*ft_strndup(const char *src, size_t maxsize)
 {
