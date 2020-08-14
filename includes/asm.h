@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 18:41:40 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/14 18:57:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_bool			lexer_tokenize_spec(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_string(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_whitespace(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_word(t_lexer *self, t_token *token);
-t_bool			lexer_tokenize(t_lexer *self, t_list **atokens);
+t_bool			lexer_tokenize(t_lexer *self, t_vector **atokens);
 
 t_parser		*parser_create(t_list *tokens);
 void			parser_destroy(t_parser **aself);

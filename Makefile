@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/14 18:50:43 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/14 18:59:10 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,17 +47,6 @@ SOURCES		= \
 			token_print.c \
 		) \
 		main.c \
-	) \
-	$(addprefix vector/, \
-		vector_clean.c \
-		vector_create.c \
-		vector_destroy.c \
-		vector_get.c \
-		vector_next.c \
-		vector_pop_back.c \
-		vector_push_back.c \
-		vector_resize.c \
-		vector_start.c \
 	) \
 
 LIBFT_DIR	= ./libft
