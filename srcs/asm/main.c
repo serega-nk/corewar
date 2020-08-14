@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 23:31:54 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/14 18:54:02 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,33 +116,73 @@ void	print_usage(char *name)
 void	test(char *fn)
 {
 	int fd = open(fn, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Can't read source file %s\n", fn);
-		return ;
-	}
-	size_t size = lseek(fd, 0, SEEK_END);
-	lseek(fd, 0, SEEK_SET);
-	char *addr = malloc(size + 1);
-	addr[size] = '\0';
-	read(fd, addr, size);
+	// if (fd < 0)
+	// {
+	// 	ft_printf("Can't read source file %s\n", fn);
+	// 	return ;
+	// }
+	// size_t size = lseek(fd, 0, SEEK_END);
+	// lseek(fd, 0, SEEK_SET);
+	// char *addr = malloc(size + 1);
+	// addr[size] = '\0';
+	// read(fd, addr, size);
 	close(fd);
 	
-	t_lexer *lexer = lexer_create(addr, size + 1);
+	// t_lexer *lexer = lexer_create(addr, size + 1);
 	
-	t_list	*tokens;	
+	// t_list	*tokens;	
 
-	if (lexer_tokenize(lexer, &tokens))
+	// if (lexer_tokenize(lexer, &tokens))
+	// {
+	// 	t_token *token = NULL;
+	// 	t_list_iter *iter = list_iter_create(tokens);
+	// 	while (list_iter_next(iter, (void **)&token))
+	// 	{
+	// 		token_print(token);
+	// 	}
+	// 	list_iter_destroy(&iter);
+	// }	
+	// lexer_destroy(&lexer);
+
+	t_vector *vector = vector_create();
+	
+	vector_push_back(vector, (void **)ft_xstrdup("A"));
+	vector_push_back(vector, (void **)ft_xstrdup("B"));
+	
 	{
-		t_token *token = NULL;
-		t_list_iter *iter = list_iter_create(tokens);
-		while (list_iter_next(iter, (void **)&token))
+		char *line = NULL;
+		t_bool ret = vector_get(vector, 0, (void **)&line);
+		ft_printf("ret = %d, line = %s\n", ret, line);
+	}
+	
+	{
+		char *line = NULL;
+		t_bool ret = vector_get(vector, 1, (void **)&line);
+		ft_printf("ret = %d, line = %s\n", ret, line);
+	}
+
+	{
+		char *line = NULL;
+		t_bool ret = vector_get(vector, 3, (void **)&line);
+		ft_printf("ret = %d, line = %s\n", ret, line);
+	}
+	{
+		//vector_pop_back(vector, (void **)ft_xstrdup("B"));		
+	}
+
+	vector_clean(vector, &ft_strdel);
+	vector_push_back(vector, (void **)ft_xstrdup("B"));
+	ft_printf("#aaa\n");
+	{
+		char *line = NULL;
+		vector_start(vector);
+		while (vector_next(vector, (void **)&line))
 		{
-			token_print(token);
+			ft_printf("line = %s\n", line);
 		}
-		list_iter_destroy(&iter);
-	}	
-	lexer_destroy(&lexer);
+	}
+
+	vector_destroy(&vector);
 }
 
 int		main(int argc, char *argv[])
