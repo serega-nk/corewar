@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_create.c                                    :+:      :+:    :+:   */
+/*   lexer_tokenize_spec.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:25:05 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 18:59:01 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/13 20:06:50 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_parser	*parser_create(t_vector *tokens)
+t_bool	lexer_tokenize_spec(t_lexer *self, t_token *token)
 {
-	t_parser	*self;
-
-	self = (t_parser *)ft_xmemalloc(sizeof(t_parser));
-	self->tokens = tokens;
-	return (self);
+	token = (t_token *)token;
+	lexer_next(self);
+	return (TRUE);
 }

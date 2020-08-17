@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_create.c                                    :+:      :+:    :+:   */
+/*   lexer_value.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:25:05 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 18:16:01 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/13 18:56:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_parser	*parser_create(t_vector *tokens)
+char	*lexer_value(t_lexer *self)
 {
-	t_parser	*self;
-
-	self = (t_parser *)ft_xmemalloc(sizeof(t_parser));
-	self->tokens = tokens;
-	return (self);
+	if (self->start > self->pos)
+		return (NULL);
+	return (ft_xstrndup(self->input + self->start, self->pos - self->start));
 }

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_create.c                                    :+:      :+:    :+:   */
+/*   parser_peek.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:25:05 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:26:10 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/14 20:22:35 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_parser	*parser_create(t_vector *tokens)
+t_token			*parser_peek(t_parser *self, int rel)
 {
-	t_parser	*self;
+	t_token		*token;
 
-	self = (t_parser *)ft_xmemalloc(sizeof(t_parser));
-	self->tokens = tokens;
-	return (self);
+	if (vector_get(self->tokens, self->pos + rel, (void **)&token))
+		return (token);
+	return (NULL);
 }

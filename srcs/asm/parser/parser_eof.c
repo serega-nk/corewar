@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_create.c                                    :+:      :+:    :+:   */
+/*   parser_eof.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:25:05 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:25:57 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/14 20:24:48 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_parser	*parser_create(t_vector *tokens)
+t_bool	parser_eof(t_parser *self)
 {
-	t_parser	*self;
-
-	self = (t_parser *)ft_xmemalloc(sizeof(t_parser));
-	self->tokens = tokens;
-	return (self);
+	return (self->pos >= self->tokens->count);
 }
