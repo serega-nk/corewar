@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_destroy.c                                    :+:      :+:    :+:   */
+/*   parser_instruction.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 20:10:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/28 22:25:02 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/29 20:41:39 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 21:31:34 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		lexer_destroy(t_lexer **aself)
+t_bool	parser_instruction(t_parser *self)
 {
-	if (aself && *aself)
+	char	*key;
+	t_op	*op;
+
+	key = parser_peek(self, 0)->value;
+	if ((op = op_get(key)) == NULL)
 	{
-		vector_clean((*aself)->tokens, &token_destroy);
-		vector_destroy(&(*aself)->tokens);
-		ft_memdel((void **)aself);
+		ft_printf("Invalid instruction at token ");
+		token_print(parser_peek(self, 0));
+		return (FALSE);
 	}
+	// index = 0;
+	// while (index < op->argc)
+	// {
+		
+	// }
+	// op->argc
+	ft_printf("INSTRUCTION %s\n", key);
+
+	return (FALSE);
 }

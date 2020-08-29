@@ -1,4 +1,5 @@
 .name    "zork"
+.name    "zork2"
 .comment "just a basic living prog
 asdasdasda sda
 sdasdasdas"

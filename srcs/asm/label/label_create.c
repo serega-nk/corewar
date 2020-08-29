@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_destroy.c                                    :+:      :+:    :+:   */
+/*   label_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 20:10:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/28 22:25:02 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/02 16:34:59 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 20:17:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		lexer_destroy(t_lexer **aself)
+t_label		*label_create(char *name, int index)
 {
-	if (aself && *aself)
-	{
-		vector_clean((*aself)->tokens, &token_destroy);
-		vector_destroy(&(*aself)->tokens);
-		ft_memdel((void **)aself);
-	}
+	t_label	*self;
+
+	self = (t_label *)ft_xmemalloc(sizeof(t_label));
+	self->name = ft_xstrdup(name);
+	self->index = index;
+	return (self);
 }

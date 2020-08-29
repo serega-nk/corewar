@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_destroy.c                                    :+:      :+:    :+:   */
+/*   parser_has_next.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 20:10:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/28 22:25:02 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/29 17:06:26 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 19:24:56 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		lexer_destroy(t_lexer **aself)
+t_bool	parser_has_next(t_parser *self)
 {
-	if (aself && *aself)
-	{
-		vector_clean((*aself)->tokens, &token_destroy);
-		vector_destroy(&(*aself)->tokens);
-		ft_memdel((void **)aself);
-	}
+	return (parser_peek(self, 0)->type != TOKEN_TYPE_END);
 }

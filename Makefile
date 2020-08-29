@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/14 18:59:10 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/29 21:27:41 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,10 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
+		$(addprefix label/, \
+			label_create.c \
+			label_destroy.c \
+		) \
 		$(addprefix lexer/, \
 			$(addprefix tokenize/, \
 				lexer_tokenize_comment.c \
@@ -40,6 +44,18 @@ SOURCES		= \
 		$(addprefix parser/, \
 			parser_create.c \
 			parser_destroy.c \
+			parser_has_header.c \
+			parser_has_instruction.c \
+			parser_has_label.c \
+			parser_has_next.c \
+			parser_has_skip.c \
+			parser_header.c \
+			parser_instruction.c \
+			parser_label.c \
+			parser_make.c \
+			parser_move.c \
+			parser_peek.c \
+			parser_skip.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \
@@ -48,6 +64,7 @@ SOURCES		= \
 		) \
 		main.c \
 	) \
+	op.c \
 
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a

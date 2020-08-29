@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_eof.c                                       :+:      :+:    :+:   */
+/*   label_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/13 23:25:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:24:48 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/02 16:38:41 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 20:17:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_eof(t_parser *self)
+void	label_destroy(t_label **aself)
 {
-	return (self->pos >= self->tokens->count);
+	if (aself && *aself)
+	{
+		ft_strdel(&(*aself)->name);
+		ft_memdel((void **)aself);
+	}
 }

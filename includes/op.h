@@ -6,12 +6,14 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/08/06 22:17:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/29 21:28:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
+
+# include "libft.h"
 
 /*
 ** Toutes les tailles sont en octets.
@@ -77,12 +79,26 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-// typedef struct	s_header
-// {
-// 	unsigned int	magic;
-// 	char			prog_name[PROG_NAME_LENGTH + 1];
-// 	unsigned int	prog_size;
-// 	char			comment[COMMENT_LENGTH + 1];
-// }				t_header;
+typedef struct	s_header
+{
+	unsigned int	magic;
+	char			prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int	prog_size;
+	char			comment[COMMENT_LENGTH + 1];
+}				t_header;
+
+typedef struct	s_op
+{
+	char	*name;
+	int		argc;
+	int		args[3];
+	int		code;
+	int		cycle;
+	char	*desc;
+	int		carry;
+	int		flag;
+}				t_op;
+
+t_op			*op_get(char *name);
 
 #endif

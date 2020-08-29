@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_next.c                                      :+:      :+:    :+:   */
+/*   parser_has_instruction.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/13 23:26:03 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:23:55 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/29 17:06:12 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 20:43:00 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_token			*parser_next(t_parser *self)
+t_bool	parser_has_instruction(t_parser *self)
 {
-	t_token		*token;
-
-	token = parser_peek(self);
-	self->pos++;
-	return (token);
+	return (parser_peek(self, 0)->type == TOKEN_TYPE_WORD &&
+			parser_peek(self, 1)->type == TOKEN_TYPE_WHITESPACE);
 }

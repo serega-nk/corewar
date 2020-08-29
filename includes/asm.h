@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 20:24:58 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/29 21:24:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "ft_printf.h"
 # include "ft_xexit.h"
+# include "gnl.h"
+# include "hashtab.h"
 # include "libft.h"
 # include "list.h"
-# include "gnl.h"
 # include "vector.h"
 
 # include "op.h"
@@ -25,6 +26,7 @@
 typedef enum e_token_type	t_token_type;
 
 typedef struct s_token		t_token;
+typedef struct s_label		t_label;
 typedef struct s_lexer		t_lexer;
 typedef struct s_parser		t_parser;
 
@@ -32,11 +34,11 @@ enum	e_token_type
 {
 	TOKEN_TYPE_WORD,
 	TOKEN_TYPE_STRING,
-	TOKEN_TYPE_COMMENT,	
+	TOKEN_TYPE_COMMENT,
 	TOKEN_TYPE_WHITESPACE,
 	TOKEN_TYPE_LABEL,
 	TOKEN_TYPE_SEPARATOR,
-	TOKEN_TYPE_DIRECT,	
+	TOKEN_TYPE_DIRECT,
 	TOKEN_TYPE_ENDLINE,
 	TOKEN_TYPE_END,
 };
@@ -49,6 +51,12 @@ struct	s_token
 	char			*value;
 };
 
+struct	s_label
+{
+	char			*name;
+	int				index;
+};
+
 struct	s_lexer
 {
 	char			*input;
@@ -57,17 +65,25 @@ struct	s_lexer
 	size_t			start;
 	int				ln;
 	int				col;
+	t_vector		*tokens;
 };
 
 struct	s_parser
 {
 	t_vector		*tokens;
 	size_t			pos;
+	t_token			*end;
+	t_hashtab		*labels;
+	t_hashtab		*headers;
+	t_vector		*instructions;	
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
 void			token_print(t_token *self);
+
+t_label			*label_create(char *name, int index);
+void			label_destroy(t_label **aself);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
@@ -82,12 +98,22 @@ t_bool			lexer_tokenize_spec(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_string(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_whitespace(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_word(t_lexer *self, t_token *token);
-t_bool			lexer_tokenize(t_lexer *self, t_vector **atokens);
+t_bool			lexer_tokenize(t_lexer *self);
 
 t_parser		*parser_create(t_vector *tokens);
 void			parser_destroy(t_parser **aself);
-
-
+t_bool			parser_has_header(t_parser *self);
+t_bool			parser_has_instruction(t_parser *self);
+t_bool			parser_has_label(t_parser *self);
+t_bool			parser_has_next(t_parser *self);
+t_bool			parser_has_skip(t_parser *self);
+t_bool			parser_header(t_parser *self);
+t_bool			parser_instruction(t_parser *self);
+t_bool			parser_label(t_parser *self);
+t_bool			parser_make(t_parser *self);
+void			parser_move(t_parser *self, int rel);
+t_token			*parser_peek(t_parser *self, int rel);
+t_bool			parser_skip(t_parser *self);
 
 // typedef struct s_compiler	t_compiler;
 // typedef struct s_app		t_app;

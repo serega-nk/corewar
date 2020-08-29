@@ -1,1 +1,20 @@
 Syntax error at token [TOKEN][010:001] END "(null)"
+
+
+SOURCE CODE ---( COMPILER )--> EXECUTABLE
+
+COMPILER:
+1) LEXER
+2) PARSER
+3) SEMANTIC ANALYZER
+4) OPIMIZER
+5) CODE GENERATOR
+
+
+IMAGE CODE ---( COMPILER )--> IMAGE FILE
+
+LEXER
+* Performs lexiacal analysis
+* Looks for valid tokens
+SOURCE CODE ---(LEXER)--> List of tokens
+* Must provide a set of valid tokens 

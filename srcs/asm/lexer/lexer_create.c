@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 20:16:02 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/06 22:57:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/28 22:24:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_lexer		*lexer_create(char *input, size_t length)
 	self->length = length;
 	self->ln = 1;
 	self->col = 1;
+	self->tokens = vector_create();
 	return (self);
 }

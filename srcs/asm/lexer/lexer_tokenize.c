@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:47:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 18:58:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/29 21:33:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,20 @@ static t_bool	(*g_funcs[])(t_lexer *, t_token *) = {
 	&lexer_tokenize_spec
 };
 
-t_bool			lexer_tokenize(t_lexer *self, t_vector **atokens)
+t_bool			lexer_tokenize(t_lexer *self)
 {
-	t_vector		*tokens;
 	t_token			*token;
 
-	tokens = vector_create();
 	while (lexer_eof(self) == FALSE)
 	{
 		token = token_create(lexer_type(self), self->ln, self->col);
+		vector_push_back(self->tokens, token);
 		if ((*g_funcs[token->type])(self, token) == FALSE)
 		{
 			ft_printf("Syntax error at token ");
 			token_print(token);
-			token_destroy(&token);
-			vector_clean(tokens, &token_destroy);
-			vector_destroy(&tokens);
 			return (FALSE);
 		}
-		vector_push_back(tokens, token);
 	}
-	*atokens = tokens;
 	return (TRUE);
 }
