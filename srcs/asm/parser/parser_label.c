@@ -6,32 +6,36 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:01:51 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/29 20:39:34 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/30 20:31:14 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_label(t_parser *self)
+t_bool			parser_label(t_parser *self)
 {
+	t_token		*token;
 	t_label		*label;
 
-	label = label_create(parser_peek(self, 0)->value,
-		self->instructions->count);
+	token = parser_peek(self, 0);
+	if (label_name_check(token->value) == FALSE)
+	{
+		return (token_error(token, "Label invalid name "));
+	}
+	label = label_create(token->value, self->instructions->count);
 	if (hashtab_insert(self->labels, label->name, label) == FALSE)
 	{
-		ft_printf("Label '%s' is already defined in the scope ", label->name);
-		token_print(parser_peek(self, 0));
 		label_destroy(&label);
-		return (FALSE);
+		return (token_error(token, "Label is already defined in the scope "));
 	}
 	parser_move(self, 2);
-	if (parser_has_skip(self) == FALSE)
+	token = parser_peek(self, 0);
+	if (token->type != TOKEN_TYPE_WORD &&
+		token->type != TOKEN_TYPE_WHITESPACE &&
+		token->type != TOKEN_TYPE_COMMENT &&
+		token->type != TOKEN_TYPE_ENDLINE)
 	{
-		ft_printf("Syntax error at token ");
-		token_print(parser_peek(self, 0));
-		return (FALSE);
+		return (token_error(token, "Syntax error at token "));
 	}
-	ft_printf("LABEL %s: = %d\n", label->name, label->index);
 	return (TRUE);
 }

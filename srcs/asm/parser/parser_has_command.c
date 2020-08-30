@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_has_skip.c                                  :+:      :+:    :+:   */
+/*   parser_has_command.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/29 16:46:49 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/30 17:28:46 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/29 16:46:54 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 21:49:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_has_skip(t_parser *self)
+t_bool	parser_has_command(t_parser *self)
 {
-	t_token		*token;
-
-	token = parser_peek(self, 0);
-	return (token->type == TOKEN_TYPE_WHITESPACE ||
-			token->type == TOKEN_TYPE_COMMENT ||
-			token->type == TOKEN_TYPE_ENDLINE);
+	return (parser_peek(self, 0)->type == TOKEN_TYPE_WORD &&
+			parser_peek(self, 1)->type == TOKEN_TYPE_WHITESPACE &&
+			parser_peek(self, 2)->type == TOKEN_TYPE_STRING);
 }

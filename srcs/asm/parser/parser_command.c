@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_header.c                                    :+:      :+:    :+:   */
+/*   parser_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:07:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/29 20:28:25 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/30 19:01:25 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_header(t_parser *self)
+t_bool	parser_command(t_parser *self)
 {
-	char		*key;
-	char		*value;
+	t_token		*t0;
+	t_token		*t2;
 
-	key = parser_peek(self, 0)->value;
-	value = parser_peek(self, 2)->value;
-	if (hashtab_insert(self->headers, key, value) == FALSE)
-	{
-		ft_printf("Header '%s' is already defined in the scope ", key);
-		token_print(parser_peek(self, 0));
-		return (FALSE);
-	}
+	t0 = parser_peek(self, 0);
+	t2 = parser_peek(self, 2);
+	if (ft_strequ(t0->value, NAME_CMD_STRING) == FALSE &&
+		ft_strequ(t0->value, COMMENT_CMD_STRING) == FALSE)
+		return (token_error(t0, "Command invalid name "));
+	if (hashtab_insert(self->commands, t0->value, t2->value) == FALSE)
+		return (token_error(t0, "Command is already defined in the scope "));
 	parser_move(self, 3);
-	if (parser_has_skip(self) == FALSE) {
-		ft_printf("Syntax error at token ");
-		token_print(parser_peek(self, 0));
-		return (FALSE);
-	}
-	ft_printf("HEADER! key = %s, value = %s\n", key, value);
+	t0 = parser_peek(self, 0);
+	if (t0->type != TOKEN_TYPE_WHITESPACE &&
+		t0->type != TOKEN_TYPE_COMMENT &&
+		t0->type != TOKEN_TYPE_ENDLINE)
+		return (token_error(t0, "Syntax error at token "));
 	return (TRUE);
 }
