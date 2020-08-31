@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:47:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/29 21:33:13 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 09:59:59 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ t_bool			lexer_tokenize(t_lexer *self)
 		vector_push_back(self->tokens, token);
 		if ((*g_funcs[token->type])(self, token) == FALSE)
 		{
-			ft_printf("Syntax error at token ");
-			token_print(token);
-			return (FALSE);
+			return (token_error(token, "Lexical error"));
 		}
 	}
 	return (TRUE);

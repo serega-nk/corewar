@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 18:34:45 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/30 17:12:35 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 09:46:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char		*g_types[] = {
 t_bool			token_error(t_token *self, char *str)
 {
 	if (str)
-		ft_printf_fd(STDOUT_FILENO, "%s", str);
+		ft_printf_fd(STDOUT_FILENO, "%s at token ", str);
 	if (self->value)
 		ft_printf_fd(STDOUT_FILENO, "[TOKEN][%03d:%03d] %s \"%s\"\n",
 			self->ln, self->col, g_types[self->type], self->value);

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 09:05:55 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:05:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ struct	s_parser
 t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
 t_bool			token_error(t_token *self, char *str);
-void			token_print(t_token *self);
 
 t_label			*label_create(char *name, int index);
 void			label_destroy(t_label **aself);
@@ -138,18 +137,18 @@ t_bool			lexer_tokenize(t_lexer *self);
 
 t_parser		*parser_create(t_vector *tokens);
 void			parser_destroy(t_parser **aself);
+t_bool			parser_eof(t_parser *self);
 t_token			*parser_peek(t_parser *self, int rel);
 void			parser_move(t_parser *self, int rel);
 t_bool			parser_make(t_parser *self);
 t_bool			parser_has_command(t_parser *self);
 t_bool			parser_has_instruction(t_parser *self);
 t_bool			parser_has_label(t_parser *self);
-t_bool			parser_has_next(t_parser *self);
 t_bool			parser_has_skip(t_parser *self);
-t_bool			parser_command(t_parser *self);
-t_bool			parser_instruction(t_parser *self);
-t_bool			parser_label(t_parser *self);
-t_bool			parser_skip(t_parser *self);
+t_bool			parser_make_command(t_parser *self);
+t_bool			parser_make_instruction(t_parser *self);
+t_bool			parser_make_label(t_parser *self);
+t_bool			parser_make_skip(t_parser *self);
 
 // typedef struct s_compiler	t_compiler;
 // typedef struct s_app		t_app;

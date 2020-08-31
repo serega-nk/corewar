@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/31 06:17:04 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/31 11:05:22 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,26 +51,29 @@ SOURCES		= \
 			lexer_value.c \
 		) \
 		$(addprefix parser/, \
-			parser_command.c \
+			$(addprefix has/, \
+				parser_has_command.c \
+				parser_has_instruction.c \
+				parser_has_label.c \
+				parser_has_skip.c \
+			) \
+			$(addprefix make/, \
+				parser_make_command.c \
+				parser_make_instruction.c \
+				parser_make_label.c \
+				parser_make_skip.c \
+			) \
 			parser_create.c \
 			parser_destroy.c \
-			parser_has_command.c \
-			parser_has_instruction.c \
-			parser_has_label.c \
-			parser_has_next.c \
-			parser_has_skip.c \
-			parser_instruction.c \
-			parser_label.c \
+			parser_eof.c \
 			parser_make.c \
 			parser_move.c \
 			parser_peek.c \
-			parser_skip.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \
 			token_destroy.c \
 			token_error.c \
-			token_print.c \
 		) \
 		main.c \
 	) \
