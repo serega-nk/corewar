@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 15:41:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 15:44:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static t_bool	check_arg_type(t_arg_type arg_type, t_arg_type allow)
 t_bool			parse_argument_token(t_argument *argument)
 {
 	char		*ptr;
-	
+
 	if (argument->arg_type & T_LAB)
 	{
 		if (label_name_check(argument->token->value) == FALSE)
-			return (token_error(argument->token, "Invalid name of the label"));		
+			return (token_error(argument->token, "Invalid name of the label"));
 	}
-	else 
+	else
 	{
 		ptr = argument->token->value;
 		if (parse_skip(&ptr, "r"))
@@ -70,6 +70,6 @@ t_bool			parser_make_argument(t_parser *self,
 	{
 		return (token_error(argument->token,
 			"Invalid parameter type for instruction"));
-	}	
+	}
 	return (TRUE);
 }
