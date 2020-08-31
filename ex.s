@@ -7,6 +7,6 @@ l2:sti				r1,%:live,%0##
 lll:##adasdasd
 	and	r1 	, %0,r1     #aasdasd
 live:	live	%1
-	zjmp	%:live
+	zjmp	%:liwve
 
 aaa:

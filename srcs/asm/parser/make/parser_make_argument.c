@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 15:44:13 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:03:00 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ t_bool			parser_make_argument(t_parser *self,
 	if (parser_accept(self, TOKEN_TYPE_DIRECT))
 		argument->arg_type |= T_DIR;
 	if (parser_accept(self, TOKEN_TYPE_LABEL))
+	{
 		argument->arg_type |= T_LAB;
+		vector_push_back(self->convert_labels, (void **)argument);
+	}
 	argument->token = parser_peek(self, 0);
 	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE)
 		return (token_error(parser_peek(self, 0), "Invalid argument"));
