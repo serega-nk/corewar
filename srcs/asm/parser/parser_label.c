@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:01:51 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/30 20:31:14 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 08:56:44 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool			parser_label(t_parser *self)
 	token = parser_peek(self, 0);
 	if (label_name_check(token->value) == FALSE)
 	{
-		return (token_error(token, "Label invalid name "));
+		return (token_error(token, "Invalid name of the label at token "));
 	}
 	label = label_create(token->value, self->instructions->count);
 	if (hashtab_insert(self->labels, label->name, label) == FALSE)

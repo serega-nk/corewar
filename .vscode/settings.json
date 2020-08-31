@@ -2,6 +2,25 @@
 	"files.associations": {
 		"__node_handle": "c",
 		"typeinfo": "c",
-		"sstream": "c"
-	}
+		"sstream": "c",
+		"type_traits": "c",
+		"__bit_reference": "c",
+		"__functional_base": "c",
+		"algorithm": "c",
+		"atomic": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"__memory": "c",
+		"functional": "c",
+		"iterator": "c",
+		"limits": "c",
+		"memory": "c",
+		"optional": "c",
+		"ratio": "c",
+		"system_error": "c",
+		"tuple": "c",
+		"vector": "c",
+		"locale": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }

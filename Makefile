@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/30 20:31:07 by bconchit         ###   ########.fr        #
+#    Updated: 2020/08/31 06:17:04 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,14 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
+		$(addprefix argument/, \
+			argument_create.c \
+			argument_destroy.c \
+		) \
+		$(addprefix instruction/, \
+			instruction_create.c \
+			instruction_destroy.c \
+		) \
 		$(addprefix label/, \
 			label_create.c \
 			label_destroy.c \

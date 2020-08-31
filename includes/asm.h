@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/30 20:30:55 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 09:05:55 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,22 @@
 # include "hashtab.h"
 # include "libft.h"
 # include "list.h"
+# include "parse.h"
 # include "vector.h"
 
 # include "op.h"
 
-typedef enum e_token_type	t_token_type;
+typedef enum e_token_type		t_token_type;
 
-typedef struct s_token		t_token;
-typedef struct s_label		t_label;
-typedef struct s_lexer		t_lexer;
-typedef struct s_parser		t_parser;
+typedef struct s_token			t_token;
+
+typedef struct s_command		t_command;
+typedef struct s_label			t_label;
+typedef struct s_instruction	t_instruction;
+typedef struct s_argument		t_argument;
+
+typedef struct s_lexer			t_lexer;
+typedef struct s_parser			t_parser;
 
 enum	e_token_type
 {
@@ -51,10 +57,32 @@ struct	s_token
 	char			*value;
 };
 
+struct	s_command
+{
+	t_token			*token;
+	char			*name;
+	char			*value;
+};
+
 struct	s_label
 {
+	t_token			*token;
 	char			*name;
 	int				index;
+};
+
+struct	s_instruction
+{
+	t_token			*token;
+	t_op			*op;
+	t_vector		*arguments;
+};
+
+struct	s_argument
+{
+	t_token			*token;
+	t_arg_type		arg_type;
+	int				number;
 };
 
 struct	s_lexer
@@ -86,6 +114,12 @@ void			token_print(t_token *self);
 t_label			*label_create(char *name, int index);
 void			label_destroy(t_label **aself);
 t_bool			label_name_check(char *name);
+
+t_argument		*argument_create(void);
+void			argument_destroy(t_argument **aself);
+
+t_instruction	*instruction_create(void);
+void			instruction_destroy(t_instruction **aself);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
