@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 15:30:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:00:36 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ struct	s_argument
 	t_token			*token;
 	t_arg_type		arg_type;
 	int				number;
+	t_label			label;
 };
 
 struct	s_lexer
@@ -103,7 +104,8 @@ struct	s_parser
 	t_token			*end;
 	t_hashtab		*labels;
 	t_hashtab		*commands;
-	t_vector		*instructions;	
+	t_vector		*instructions;
+	t_vector		*convert_labels;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 09:55:47 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 15:52:52 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_parser	*parser_create(t_vector *tokens)
 	self->labels = hashtab_create();
 	self->commands = hashtab_create();
 	self->instructions = vector_create();
+	self->convert_labels = vector_create();
 	return (self);
 }

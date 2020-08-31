@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 09:00:15 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:01:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	parser_destroy(t_parser **aself)
 {
 	if (aself && *aself)
 	{
+		vector_destroy(&(*aself)->convert_labels);
 		vector_clean((*aself)->instructions, &instruction_destroy);
 		vector_destroy(&(*aself)->instructions);
 		hashtab_destroy(&(*aself)->commands);
