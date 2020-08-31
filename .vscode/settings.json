@@ -20,7 +20,8 @@
 		"system_error": "c",
 		"tuple": "c",
 		"vector": "c",
-		"locale": "c"
+		"locale": "c",
+		"complex": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

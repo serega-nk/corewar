@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/08/29 22:18:46 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:29:55 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ typedef struct	s_header
 
 typedef struct	s_op
 {
-	char	*name;
-	int		argc;
-	int		args[3];
-	int		code;
-	int		cycle;
-	char	*desc;
-	int		carry;
-	int		flag;
+	char		*name;
+	int			argc;
+	t_arg_type	args[3];
+	int			code;
+	int			cycle;
+	char		*desc;
+	int			carry;
+	int			flag;
 }				t_op;
 
 t_op			*op_get(char *name);

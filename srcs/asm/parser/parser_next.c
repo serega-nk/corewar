@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argument_create.c                                  :+:      :+:    :+:   */
+/*   parser_next.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/31 06:11:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:14:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/31 12:22:25 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/31 12:23:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_argument	*argument_create(void)
+t_token		*parser_next(t_parser *self)
 {
-	t_argument	*self;
+	t_token		*token;
 
-	self = (t_argument *)ft_xmemalloc(sizeof(t_argument));
-	return (self);
+	token = parser_peek(self, 0);
+	parser_move(self, 1);
+	return (token);
 }

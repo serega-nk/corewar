@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argument_create.c                                  :+:      :+:    :+:   */
+/*   parser_has_label.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/31 06:11:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:14:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/29 19:08:18 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/29 19:08:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_argument	*argument_create(void)
+t_bool	parser_has_label(t_parser *self)
 {
-	t_argument	*self;
-
-	self = (t_argument *)ft_xmemalloc(sizeof(t_argument));
-	return (self);
+	return (parser_peek(self, 0)->type == TOKEN_TYPE_WORD &&
+			parser_peek(self, 1)->type == TOKEN_TYPE_LABEL);
 }

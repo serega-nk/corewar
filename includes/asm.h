@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:05:43 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/08/31 15:30:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,21 @@ void			parser_destroy(t_parser **aself);
 t_bool			parser_eof(t_parser *self);
 t_token			*parser_peek(t_parser *self, int rel);
 void			parser_move(t_parser *self, int rel);
-t_bool			parser_make(t_parser *self);
+t_bool			parser_accept(t_parser *self, t_token_type type);
+t_token			*parser_next(t_parser *self);
 t_bool			parser_has_command(t_parser *self);
 t_bool			parser_has_instruction(t_parser *self);
 t_bool			parser_has_label(t_parser *self);
 t_bool			parser_has_skip(t_parser *self);
+t_bool			parser_make_argument(t_parser *self,
+	t_instruction *instruction, t_arg_type allow);
+t_bool			parser_make_arguments(t_parser *self,
+	t_instruction *instruction);
 t_bool			parser_make_command(t_parser *self);
 t_bool			parser_make_instruction(t_parser *self);
 t_bool			parser_make_label(t_parser *self);
 t_bool			parser_make_skip(t_parser *self);
+t_bool			parser_make(t_parser *self);
 
 // typedef struct s_compiler	t_compiler;
 // typedef struct s_app		t_app;
