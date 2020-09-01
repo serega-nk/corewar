@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/28 23:17:48 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:54:19 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,28 @@ void	test(char *fn)
 		if (parser_make(parser))
 		{
 			ft_printf("OK\n");
+
+			// LABELS
+
+			ft_printf("#LABELS:\n");
+			
+			t_label *label;
+			hashtab_start(parser->labels);			
+			while (hashtab_next_kv(parser->labels, NULL, (void **)&label))
+			{
+				ft_printf("%s = %d\n", label->name, label->index);
+			}
+			ft_printf("#INSTRUCTIONS:\n");
+			t_instruction *instruction;
+			int	index = 0;
+			vector_start(parser->instructions);			
+			while (vector_next(parser->instructions, (void **)&instruction))
+			{
+				ft_printf("%s = %d\n", instruction->op->name, index);
+				index++;
+			}
+			
+
 		}
 		parser_destroy(&parser);
 	}

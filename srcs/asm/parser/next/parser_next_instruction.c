@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:41:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:21:03 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:41:34 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ t_bool	parser_next_instruction(t_parser *self)
 
 	instruction = instruction_create();
 	vector_push_back(self->instructions, instruction);
-	instruction->token = parser_next(self);
+	instruction->token = parser_peek(self, 0);
+	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE)
+		return (token_error(parser_peek(self, 0), "Syntax error"));
 	if ((instruction->op = op_get(instruction->token->value)) == NULL)
 	{
 		return (token_error(instruction->token,

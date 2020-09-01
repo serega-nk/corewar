@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 16:46:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:19:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:25:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 t_bool	parser_next_skip(t_parser *self)
 {
-	t_token		*token0;
-	t_token		*token1;
-
-	token0 = parser_peek(self, 0);
-	token1 = parser_peek(self, 1);
-	if (token0->type == TOKEN_TYPE_COMMENT &&
-		token1->type != TOKEN_TYPE_ENDLINE)
+	if (parser_peek(self, 0)->type == TOKEN_TYPE_COMMENT &&
+		parser_peek(self, 1)->type != TOKEN_TYPE_ENDLINE)
 	{
-		return (token_error(token1, "Syntax error at token "));
+		return (token_error(parser_peek(self, 1), "Syntax error"));
 	}
-	if (token0->type != TOKEN_TYPE_ENDLINE &&
-		token1->type == TOKEN_TYPE_END)
+	if (parser_peek(self, 0)->type != TOKEN_TYPE_ENDLINE &&
+		parser_peek(self, 1)->type == TOKEN_TYPE_END)
 	{
-		return (token_error(token0,
-			"Syntax error - unexpected end of input, after token "));
+		return (token_error(parser_peek(self, 0),
+			"Syntax error - unexpected end of input"));
 	}
 	parser_move(self, 1);
 	return (TRUE);

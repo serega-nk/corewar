@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:20:20 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:30:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
 t_bool			token_error(t_token *self, char *str);
 
-t_label			*label_create(char *name, int index);
+t_label			*label_create(t_token *token, char *name, int index);
 void			label_destroy(t_label **aself);
 t_bool			label_name_check(char *name);
 
