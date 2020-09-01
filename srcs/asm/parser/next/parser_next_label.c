@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_make_label.c                                :+:      :+:    :+:   */
+/*   parser_next_label.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:01:51 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:00:25 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:19:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_make_label(t_parser *self)
+t_bool	parser_next_label(t_parser *self)
 {
 	t_token		*token;
 	t_label		*label;
 
 	token = parser_peek(self, 0);
 	if (label_name_check(token->value) == FALSE)
-	{
 		return (token_error(token, "Invalid name of the label"));
-	}
 	label = label_create(token->value, self->instructions->count);
 	if (hashtab_insert(self->labels, label->name, label) == FALSE)
 	{

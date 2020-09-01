@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 16:00:36 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:20:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,14 +148,14 @@ t_bool			parser_has_command(t_parser *self);
 t_bool			parser_has_instruction(t_parser *self);
 t_bool			parser_has_label(t_parser *self);
 t_bool			parser_has_skip(t_parser *self);
-t_bool			parser_make_argument(t_parser *self,
+t_bool			parser_next_argument(t_parser *self,
 	t_instruction *instruction, t_arg_type allow);
-t_bool			parser_make_arguments(t_parser *self,
+t_bool			parser_next_arguments(t_parser *self,
 	t_instruction *instruction);
-t_bool			parser_make_command(t_parser *self);
-t_bool			parser_make_instruction(t_parser *self);
-t_bool			parser_make_label(t_parser *self);
-t_bool			parser_make_skip(t_parser *self);
+t_bool			parser_next_command(t_parser *self);
+t_bool			parser_next_instruction(t_parser *self);
+t_bool			parser_next_label(t_parser *self);
+t_bool			parser_next_skip(t_parser *self);
 t_bool			parser_make(t_parser *self);
 
 // typedef struct s_compiler	t_compiler;

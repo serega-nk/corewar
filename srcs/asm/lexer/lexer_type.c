@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 19:29:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/13 20:26:03 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:17:50 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_token_type	lexer_type(t_lexer *self)
 		return (TOKEN_TYPE_DIRECT);
 	if (ch == ENDLINE_CHAR)
 		return (TOKEN_TYPE_ENDLINE);
-	if (ch == END_CHAR)
+	if (ch == END_CHAR || ch < 0)
 		return (TOKEN_TYPE_END);
 	return (TOKEN_TYPE_WORD);
 }

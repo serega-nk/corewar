@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 00:23:42 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 16:00:16 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:22:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static t_bool	parser_make_head(t_parser *self)
 	{
 		if (parser_has_command(self))
 		{
-			if (parser_make_command(self) == FALSE)
+			if (parser_next_command(self) == FALSE)
 				return (FALSE);
 		}
 		else if (parser_has_skip(self))
 		{
-			if (parser_make_skip(self) == FALSE)
+			if (parser_next_skip(self) == FALSE)
 				return (FALSE);
 		}
 		else
@@ -44,17 +44,17 @@ static t_bool	parser_make_body(t_parser *self)
 	{
 		if (parser_has_label(self))
 		{
-			if (parser_make_label(self) == FALSE)
+			if (parser_next_label(self) == FALSE)
 				return (FALSE);
 		}
 		else if (parser_has_instruction(self))
 		{
-			if (parser_make_instruction(self) == FALSE)
+			if (parser_next_instruction(self) == FALSE)
 				return (FALSE);
 		}
 		else if (parser_has_skip(self))
 		{
-			if (parser_make_skip(self) == FALSE)
+			if (parser_next_skip(self) == FALSE)
 				return (FALSE);
 		}
 		else

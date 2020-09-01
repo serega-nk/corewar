@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_make_skip.c                                 :+:      :+:    :+:   */
+/*   parser_next_skip.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 16:46:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:00:17 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:19:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_make_skip(t_parser *self)
+t_bool	parser_next_skip(t_parser *self)
 {
 	t_token		*token0;
 	t_token		*token1;

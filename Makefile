@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/31 15:31:27 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/01 16:19:58 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ SOURCES		= \
 				parser_has_label.c \
 				parser_has_skip.c \
 			) \
-			$(addprefix make/, \
-				parser_make_argument.c \
-				parser_make_arguments.c \
-				parser_make_command.c \
-				parser_make_instruction.c \
-				parser_make_label.c \
-				parser_make_skip.c \
+			$(addprefix next/, \
+				parser_next_argument.c \
+				parser_next_arguments.c \
+				parser_next_command.c \
+				parser_next_instruction.c \
+				parser_next_label.c \
+				parser_next_skip.c \
 			) \
 			parser_accept.c \
 			parser_create.c \

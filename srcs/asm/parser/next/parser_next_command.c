@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_make_command.c                              :+:      :+:    :+:   */
+/*   parser_next_command.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:07:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 11:02:53 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:19:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_make_command(t_parser *self)
+t_bool	parser_next_command(t_parser *self)
 {
 	t_token		*t0;
 	t_token		*t2;

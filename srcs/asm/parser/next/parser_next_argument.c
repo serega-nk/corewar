@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_make_argument.c                             :+:      :+:    :+:   */
+/*   parser_next_argument.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 16:03:00 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:19:02 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_bool			parse_argument_token(t_argument *argument)
 	return (TRUE);
 }
 
-t_bool			parser_make_argument(t_parser *self,
+t_bool			parser_next_argument(t_parser *self,
 	t_instruction *instruction, t_arg_type allow)
 {
 	t_argument	*argument;

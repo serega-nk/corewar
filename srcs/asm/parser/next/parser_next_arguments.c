@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_make_arguments.c                            :+:      :+:    :+:   */
+/*   parser_next_arguments.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:47:19 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/31 15:43:16 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:20:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_make_arguments(t_parser *self, t_instruction *instruction)
+t_bool	parser_next_arguments(t_parser *self, t_instruction *instruction)
 {
 	int			index;
 	t_arg_type	arg_type;
@@ -22,7 +22,7 @@ t_bool	parser_make_arguments(t_parser *self, t_instruction *instruction)
 	{
 		arg_type = instruction->op->args[index++];
 		parser_accept(self, TOKEN_TYPE_WHITESPACE);
-		if (parser_make_argument(self, instruction, arg_type) == FALSE)
+		if (parser_next_argument(self, instruction, arg_type) == FALSE)
 			return (FALSE);
 		parser_accept(self, TOKEN_TYPE_WHITESPACE);
 		if (parser_accept(self, TOKEN_TYPE_SEPARATOR) == FALSE)
