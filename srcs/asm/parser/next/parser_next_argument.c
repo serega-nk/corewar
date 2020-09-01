@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:19:02 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:02:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_bool	check_arg_type(t_arg_type arg_type, t_arg_type allow)
 	return (TRUE);
 }
 
-t_bool			parse_argument_token(t_argument *argument)
+t_bool			argument_parse_token(t_argument *argument)
 {
 	char		*ptr;
 
@@ -67,7 +67,7 @@ t_bool			parser_next_argument(t_parser *self,
 	argument->token = parser_peek(self, 0);
 	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE)
 		return (token_error(parser_peek(self, 0), "Invalid argument"));
-	if (parse_argument_token(argument) == FALSE)
+	if (argument_parse_token(argument) == FALSE)
 		return (FALSE);
 	if (check_arg_type(argument->arg_type, allow) == FALSE)
 	{

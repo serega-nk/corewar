@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:30:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:10:22 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ struct	s_lexer
 
 struct	s_parser
 {
-	t_vector		*tokens;
+	t_lexer			*lexer;
 	size_t			pos;
 	t_token			*end;
 	t_hashtab		*labels;
@@ -137,7 +137,7 @@ t_bool			lexer_tokenize_whitespace(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_word(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize(t_lexer *self);
 
-t_parser		*parser_create(t_vector *tokens);
+t_parser		*parser_create(t_lexer *lexer);
 void			parser_destroy(t_parser **aself);
 t_bool			parser_eof(t_parser *self);
 t_token			*parser_peek(t_parser *self, int rel);

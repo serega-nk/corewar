@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/01 16:19:58 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/01 17:04:24 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,18 +19,25 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
-		$(addprefix argument/, \
-			argument_create.c \
-			argument_destroy.c \
-		) \
-		$(addprefix instruction/, \
-			instruction_create.c \
-			instruction_destroy.c \
-		) \
-		$(addprefix label/, \
-			label_create.c \
-			label_destroy.c \
-			label_name_check.c \
+		$(addprefix classes/, \
+			$(addprefix argument/, \
+				argument_create.c \
+				argument_destroy.c \
+			) \
+			$(addprefix instruction/, \
+				instruction_create.c \
+				instruction_destroy.c \
+			) \
+			$(addprefix label/, \
+				label_create.c \
+				label_destroy.c \
+				label_name_check.c \
+			) \
+			$(addprefix token/, \
+				token_create.c \
+				token_destroy.c \
+				token_error.c \
+			) \
 		) \
 		$(addprefix lexer/, \
 			$(addprefix tokenize/, \
@@ -73,11 +80,6 @@ SOURCES		= \
 			parser_move.c \
 			parser_next.c \
 			parser_peek.c \
-		) \
-		$(addprefix token/, \
-			token_create.c \
-			token_destroy.c \
-			token_error.c \
 		) \
 		main.c \
 	) \

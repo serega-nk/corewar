@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 16:54:19 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:10:35 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	test(char *fn)
 	t_lexer *lexer = lexer_create(addr, size);
 	if (lexer_tokenize(lexer))
 	{
-		t_parser *parser = parser_create(lexer->tokens);
+		t_parser *parser = parser_create(lexer);
 		if (parser_make(parser))
 		{
 			ft_printf("OK\n");
