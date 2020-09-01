@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 17:10:35 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:40:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,17 +135,23 @@ void	test(char *fn)
 		t_parser *parser = parser_create(lexer);
 		if (parser_make(parser))
 		{
-			ft_printf("OK\n");
+			
+			t_compiler *compiler = compiler_create(parser);
+			if (compiler_make(compiler, "filename.cor"))
+			{
+				ft_printf("OK\n");			
+			}
+			compiler_destroy(&compiler);		
 
 			// LABELS
 
 			ft_printf("#LABELS:\n");
-			
+
 			t_label *label;
 			hashtab_start(parser->labels);			
 			while (hashtab_next_kv(parser->labels, NULL, (void **)&label))
 			{
-				ft_printf("%s = %d\n", label->name, label->index);
+				ft_printf("%s, offset = %lld\n", label->name, label->offset);
 			}
 			ft_printf("#INSTRUCTIONS:\n");
 			t_instruction *instruction;
@@ -153,10 +159,9 @@ void	test(char *fn)
 			vector_start(parser->instructions);			
 			while (vector_next(parser->instructions, (void **)&instruction))
 			{
-				ft_printf("%s = %d\n", instruction->op->name, index);
-				index++;
-			}
-			
+				ft_printf("%.3d %s, offset = %lld, size = %lld\n", ++index, instruction->op->name, instruction->offset, instruction->size);
+				
+			}	
 
 		}
 		parser_destroy(&parser);

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   compiler_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:54:35 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/01 17:08:33 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/01 17:08:34 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+void		compiler_destroy(t_compiler **aself)
 {
 	if (aself && *aself)
 	{
-		vector_destroy(&(*aself)->convert_labels);
-		vector_clean((*aself)->instructions, &instruction_destroy);
-		vector_destroy(&(*aself)->instructions);
-		hashtab_clean((*aself)->labels, &label_destroy);
-		hashtab_destroy(&(*aself)->labels);
-		token_destroy(&(*aself)->end);
 		ft_memdel((void **)aself);
 	}
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   instruction_create.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:54:35 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/31 03:27:11 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/31 09:03:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+t_instruction		*instruction_create(void)
 {
-	if (aself && *aself)
-	{
-		vector_destroy(&(*aself)->convert_labels);
-		vector_clean((*aself)->instructions, &instruction_destroy);
-		vector_destroy(&(*aself)->instructions);
-		hashtab_clean((*aself)->labels, &label_destroy);
-		hashtab_destroy(&(*aself)->labels);
-		token_destroy(&(*aself)->end);
-		ft_memdel((void **)aself);
-	}
+	t_instruction	*self;
+
+	self = (t_instruction *)ft_xmemalloc(sizeof(t_instruction));
+	self->arguments = vector_create();
+	return (self);
 }

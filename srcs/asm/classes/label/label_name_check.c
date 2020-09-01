@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_destroy.c                                   :+:      :+:    :+:   */
+/*   label_name_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 20:32:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:54:35 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/30 20:30:27 by bconchit          #+#    #+#             */
+/*   Updated: 2020/08/30 20:30:40 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	parser_destroy(t_parser **aself)
+t_bool	label_name_check(char *name)
 {
-	if (aself && *aself)
+	while (*name)
 	{
-		vector_destroy(&(*aself)->convert_labels);
-		vector_clean((*aself)->instructions, &instruction_destroy);
-		vector_destroy(&(*aself)->instructions);
-		hashtab_clean((*aself)->labels, &label_destroy);
-		hashtab_destroy(&(*aself)->labels);
-		token_destroy(&(*aself)->end);
-		ft_memdel((void **)aself);
+		if (ft_strchr(LABEL_CHARS, (int)*name) == NULL)
+			return (FALSE);
+		name++;
 	}
+	return (TRUE);
 }
