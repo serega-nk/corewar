@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_output_instructions.c                     :+:      :+:    :+:   */
+/*   instruction_print.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 22:27:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:59:52 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/03 00:56:16 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/03 01:01:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	compiler_output_instructions(t_compiler *self)
+void	instruction_print(t_instruction *self)
 {
-	t_instruction	*instruction;
-
-	ft_printf("=== INSTRUCTIONS: ===\n");
-	if (self && self->parser && self->parser->instructions)
-	{
-		vector_start(self->parser->instructions);
-		while (vector_next(self->parser->instructions, (void **)&instruction))
-			instruction_print(instruction);
-	}
+	ft_printf("[INSTR][%03d:%03d] opcode == %#.2x\n",
+		self->token->ln, self->token->col, self->op->code);
 }

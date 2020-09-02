@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:47:16 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 01:00:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void			argument_destroy(t_argument **aself);
 t_instruction	*instruction_create(void);
 void			instruction_destroy(t_instruction **aself);
 size_t			instruction_calc_size(t_instruction *self);
+void			instruction_print(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
