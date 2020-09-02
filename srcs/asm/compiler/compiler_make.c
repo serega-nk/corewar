@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:17:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 22:42:42 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/02 23:21:47 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 t_bool	compiler_make(t_compiler *self)
 {
-	ft_printf("Writing output program to %s\n", self->outputfile);
-	if (self)
+	if (compiler_make_load(self) &&
+		compiler_make_lexer(self) &&
+		compiler_make_parser(self) &&
+		compiler_make_compile(self) &&
+		compiler_make_save(self))
+	{
+		ft_printf("Writing output program to %s\n", self->outputfile);
 		return (TRUE);
-	return (FALSE);
-	// compiler_make_header(self);
-	// compiler_make_calc_prog_size(self);
-	// compiler_make_convert_labels(self);
-	// return (compiler_make_write(self, filename));
+	}
+	else
+	{
+		ft_printf_fd(STDERR_FILENO, "Error compile file %s\n",
+			self->sourcefile);
+		return (FALSE);
+	}
 }

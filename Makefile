@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/02 22:32:38 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/02 23:35:21 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SOURCES		= \
 			$(addprefix instruction/, \
 				instruction_create.c \
 				instruction_destroy.c \
+				instruction_calc_size.c \
 			) \
 			$(addprefix label/, \
 				label_create.c \
@@ -46,6 +47,13 @@ SOURCES		= \
 			) \
 		) \
 		$(addprefix compiler/, \
+			$(addprefix make/, \
+				compiler_make_compile.c \
+				compiler_make_lexer.c \
+				compiler_make_load.c \
+				compiler_make_parser.c \
+				compiler_make_save.c \
+			) \
 			$(addprefix output/, \
 				compiler_output_annotated.c \
 				compiler_output_instructions.c \

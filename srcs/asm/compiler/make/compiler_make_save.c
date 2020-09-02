@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_free.c                                         :+:      :+:    :+:   */
+/*   compiler_make_save.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 19:19:25 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:25:40 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/02 23:28:01 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/02 23:53:53 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	app_free(t_app *self)
+t_bool	compiler_make_save(t_compiler *self)
 {
-	compiler_destroy(&self->compiler);
+	if (self)
+		return (TRUE);
+	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 22:33:59 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/02 23:30:01 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			app_options(t_app *self)
 	}
 	if (self->argc == 0 || self->option_h)
 	{
-		ft_printf("Usage: %s [-ahit] <sourcefile.s>\n", name);
+		ft_printf("Usage: %s [-ahilt] <sourcefile.s>\n", name);
 		ft_xexit(EXIT_SUCCESS);
 	}
 }

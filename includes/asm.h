@@ -6,12 +6,14 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:01:14 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:12:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
+
+# include <fcntl.h>
 
 # include "ft_printf.h"
 # include "ft_xexit.h"
@@ -126,6 +128,7 @@ struct	s_app
 	t_bool			option_i;
 	t_bool			option_l;
 	t_bool			option_t;
+	t_compiler		*compiler;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -141,6 +144,7 @@ void			argument_destroy(t_argument **aself);
 
 t_instruction	*instruction_create(void);
 void			instruction_destroy(t_instruction **aself);
+size_t			instruction_calc_size(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
@@ -178,10 +182,14 @@ t_bool			parser_next_label(t_parser *self);
 t_bool			parser_next_skip(t_parser *self);
 t_bool			parser_make(t_parser *self);
 
-
 t_compiler		*compiler_create(char *sourcefile);
 void			compiler_destroy(t_compiler **aself);
 t_bool			compiler_make(t_compiler *self);
+t_bool			compiler_make_load(t_compiler *self);
+t_bool			compiler_make_lexer(t_compiler *self);
+t_bool			compiler_make_parser(t_compiler *self);
+t_bool			compiler_make_compile(t_compiler *self);
+t_bool			compiler_make_save(t_compiler *self);
 void			compiler_output_tokens(t_compiler *self);
 void			compiler_output_labels(t_compiler *self);
 void			compiler_output_instructions(t_compiler *self);
