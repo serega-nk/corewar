@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_parser.c                             :+:      :+:    :+:   */
+/*   token_type_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:27:52 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:53:50 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/03 00:36:13 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/03 00:39:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	compiler_make_parser(t_compiler *self)
+static char		*g_types[] = {
+	"WORD",
+	"STRING",
+	"COMMENT",
+	"WHITESPACE",
+	"LABEL",
+	"SEPARATOR",
+	"DIRECT",
+	"ENDLINE",
+	"END"
+};
+
+char			*token_type_name(t_token_type token_type)
 {
-	if (self)
-		return (TRUE);
-	return (TRUE);
+	return (g_types[token_type]);
 }

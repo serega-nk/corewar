@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:17:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:21:47 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:52:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 t_bool	compiler_make(t_compiler *self)
 {
 	if (compiler_make_load(self) &&
-		compiler_make_lexer(self) &&
-		compiler_make_parser(self) &&
 		compiler_make_compile(self) &&
 		compiler_make_save(self))
 	{

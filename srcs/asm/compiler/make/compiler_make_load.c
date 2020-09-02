@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:27:35 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:11:44 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:32:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static size_t	readall(int fd, char *data, size_t size)
 	while (used < size)
 	{
 		n = read(fd, data + used, size - used);
-		if (n == 0)
+		if (n <= 0)
 			break ;
 		used += n;
 	}
@@ -58,7 +58,7 @@ t_bool			compiler_make_load(t_compiler *self)
 	if (ret != self->source_size)
 	{
 		ft_printf_fd(STDERR_FILENO, "Can't read source file %s" \
-			", only %lu bytes out of %lu were read",
+			", only %lu bytes out of %lu were read\n",
 			self->sourcefile, ret, self->source_size);
 		return (FALSE);
 	}

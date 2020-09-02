@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:12:57 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:47:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ struct	s_lexer
 
 struct	s_parser
 {
-	t_lexer			*lexer;
+	t_vector		*tokens;
 	size_t			pos;
 	char			*command_name;
 	char			*command_comment;
@@ -108,6 +108,7 @@ struct	s_parser
 
 struct	s_compiler
 {
+	t_lexer			*lexer;
 	t_parser		*parser;
 	t_header		header;
 	char			*sourcefile;
@@ -131,13 +132,17 @@ struct	s_app
 	t_compiler		*compiler;
 };
 
+char			*token_type_name(t_token_type token_type);
+
 t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
 t_bool			token_error(t_token *self, char *str);
+void			token_print(t_token *self);
 
 t_label			*label_create(t_token *token, char *name, int index);
 void			label_destroy(t_label **aself);
 t_bool			label_name_check(char *name);
+void			label_print(t_label *label);
 
 t_argument		*argument_create(void);
 void			argument_destroy(t_argument **aself);
@@ -161,7 +166,7 @@ t_bool			lexer_tokenize_whitespace(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize_word(t_lexer *self, t_token *token);
 t_bool			lexer_tokenize(t_lexer *self);
 
-t_parser		*parser_create(t_lexer *lexer);
+t_parser		*parser_create(t_vector *tokens);
 void			parser_destroy(t_parser **aself);
 t_bool			parser_eof(t_parser *self);
 t_token			*parser_peek(t_parser *self, int rel);
@@ -186,8 +191,6 @@ t_compiler		*compiler_create(char *sourcefile);
 void			compiler_destroy(t_compiler **aself);
 t_bool			compiler_make(t_compiler *self);
 t_bool			compiler_make_load(t_compiler *self);
-t_bool			compiler_make_lexer(t_compiler *self);
-t_bool			compiler_make_parser(t_compiler *self);
 t_bool			compiler_make_compile(t_compiler *self);
 t_bool			compiler_make_save(t_compiler *self);
 void			compiler_output_tokens(t_compiler *self);

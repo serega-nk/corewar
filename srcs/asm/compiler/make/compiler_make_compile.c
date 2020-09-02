@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:27:00 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:53:35 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:33:24 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 t_bool	compiler_make_compile(t_compiler *self)
 {
-	if (self)
-		return (TRUE);
+	self->lexer = lexer_create(self->source_data, self->source_size);
+	if (lexer_tokenize(self->lexer) == FALSE)
+		return (FALSE);
+	self->parser = parser_create(self->lexer->tokens);
+	if (parser_make(self->parser) == FALSE)
+		return (FALSE);	
 	return (TRUE);
 }

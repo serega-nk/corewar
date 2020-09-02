@@ -6,18 +6,18 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 21:59:36 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 20:55:56 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 00:21:59 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_parser	*parser_create(t_lexer *lexer)
+t_parser	*parser_create(t_vector *tokens)
 {
 	t_parser	*self;
 
 	self = (t_parser *)ft_xmemalloc(sizeof(t_parser));
-	self->lexer = lexer;
+	self->tokens = tokens;
 	self->end = token_create(TOKEN_TYPE_END, 0, 0);
 	self->labels = hashtab_create();
 	self->instructions = vector_create();

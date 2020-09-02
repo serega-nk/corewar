@@ -4,6 +4,4 @@
 l2:
 ll:
 sti		r5,%-1, %:ll
-live:	live	%1
-l2:
-l2:
+    live:	live	%1
