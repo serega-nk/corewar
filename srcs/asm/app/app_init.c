@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make.c                                    :+:      :+:    :+:   */
+/*   app_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 19:17:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 22:42:42 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/02 19:19:11 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/02 21:51:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	compiler_make(t_compiler *self)
+void	app_init(t_app *self, int argc, char *argv[])
 {
-	ft_printf("Writing output program to %s\n", self->outputfile);
-	if (self)
-		return (TRUE);
-	return (FALSE);
-	// compiler_make_header(self);
-	// compiler_make_calc_prog_size(self);
-	// compiler_make_convert_labels(self);
-	// return (compiler_make_write(self, filename));
+	ft_bzero(self, sizeof(t_app));
+	ft_on_xexit(&app_free, self);
+	self->argc = argc;
+	self->argv = argv;
 }

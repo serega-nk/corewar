@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/01 21:33:01 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/02 22:32:38 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,12 @@ OBJ_DIR		= ./objs
 HEADERS		= asm.h
 SOURCES		= \
 	$(addprefix asm/, \
+		$(addprefix app/, \
+			app_bytecodes.c \
+			app_free.c \
+			app_init.c \
+			app_options.c \
+		) \
 		$(addprefix classes/, \
 			$(addprefix argument/, \
 				argument_create.c \
@@ -40,11 +46,11 @@ SOURCES		= \
 			) \
 		) \
 		$(addprefix compiler/, \
-			$(addprefix make/, \
-				compiler_make_calc_prog_size.c \
-				compiler_make_convert_labels.c \
-				compiler_make_header.c \
-				compiler_make_write.c \
+			$(addprefix output/, \
+				compiler_output_annotated.c \
+				compiler_output_instructions.c \
+				compiler_output_labels.c \
+				compiler_output_tokens.c \
 			) \
 			compiler_create.c \
 			compiler_destroy.c \

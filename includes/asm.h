@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 21:08:51 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/02 23:01:14 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_argument		t_argument;
 typedef struct s_lexer			t_lexer;
 typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
+
+typedef struct s_app			t_app;
 
 enum	e_token_type
 {
@@ -106,6 +108,24 @@ struct	s_compiler
 {
 	t_parser		*parser;
 	t_header		header;
+	char			*sourcefile;
+	char			*outputfile;
+	char			*source_data;
+	size_t			source_size;
+	char			*output_data;
+	size_t			output_size;
+};
+
+struct	s_app
+{
+	t_bool			error;
+	int				argc;
+	char			**argv;
+	t_bool			option_a;
+	t_bool			option_h;
+	t_bool			option_i;
+	t_bool			option_l;
+	t_bool			option_t;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -159,8 +179,17 @@ t_bool			parser_next_skip(t_parser *self);
 t_bool			parser_make(t_parser *self);
 
 
-t_compiler		*compiler_create(t_parser *parser);
+t_compiler		*compiler_create(char *sourcefile);
 void			compiler_destroy(t_compiler **aself);
-t_bool			compiler_make(t_compiler *self, char *filename);
+t_bool			compiler_make(t_compiler *self);
+void			compiler_output_tokens(t_compiler *self);
+void			compiler_output_labels(t_compiler *self);
+void			compiler_output_instructions(t_compiler *self);
+void			compiler_output_annotated(t_compiler *self);
+
+void			app_init(t_app *self, int argc, char *argv[]);
+void			app_options(t_app *self);
+void			app_bytecodes(t_app *self);
+void			app_free(t_app *self);
 
 #endif

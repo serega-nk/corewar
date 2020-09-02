@@ -6,17 +6,33 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:07:28 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:16:48 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/02 23:02:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_compiler	*compiler_create(t_parser *parser)
+static char		*make_outputfile(char *sourcefile)
+{
+	char		*basename;
+	char		*outputfile;
+	size_t		length;
+
+	basename = ft_xstrdup(sourcefile);	
+	length = ft_strlen(basename);
+	if (length >= 2 && ft_strequ(basename + length - 2, ".s"))
+		basename[length - 2] = '\0';
+	outputfile = ft_xstrdup2(basename, ".cor");
+	ft_strdel(&basename);
+	return (outputfile);
+}
+
+t_compiler		*compiler_create(char *sourcefile)
 {
 	t_compiler	*self;
 
 	self = (t_compiler *)ft_xmemalloc(sizeof(t_compiler));
-	self->parser = parser;
+	self->sourcefile = sourcefile;
+	self->outputfile = make_outputfile(sourcefile);
 	return (self);
 }

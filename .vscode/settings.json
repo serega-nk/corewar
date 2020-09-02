@@ -21,7 +21,8 @@
 		"tuple": "c",
 		"vector": "c",
 		"locale": "c",
-		"complex": "c"
+		"complex": "c",
+		"ostream": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
