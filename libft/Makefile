@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/08/14 18:56:10 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/04 00:29:57 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SOURCES		= \
 		ft_min.c \
 		ft_swap.c \
 		ft_quicksort.c \
+		ft_memrev.c \
 	) \
 	$(addprefix ft_printf/, \
 		ft_printf_fd.c \

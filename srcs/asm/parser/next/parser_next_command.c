@@ -6,13 +6,62 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:07:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:53:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 21:24:41 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	parser_next_command(t_parser *self)
+static t_bool	parser_next_command_case_name(t_parser *self, t_token *t0,
+	t_token *t2)
+{
+	size_t	length;
+
+	if (self->cmd_name)
+		return (token_error(t0, "Command is already defined in the scope"));
+	length = ft_strlen(t2->value);
+	if (length == 0)
+		return (token_error(t2, "Champion name empty"));
+	if (length > PROG_NAME_LENGTH)
+	{
+		ft_printf_fd(STDERR_FILENO, 
+			"Champion name too long (Max length %d)", PROG_NAME_LENGTH);
+		return (token_error(t2, NULL));
+	}	
+	self->cmd_name = t2->value;
+	return (TRUE);
+}
+
+static t_bool	parser_next_command_case_comment(t_parser *self, t_token *t0,
+	t_token *t2)
+{
+	size_t	length;
+
+	if (self->cmd_comment)
+		return (token_error(t0, "Command is already defined in the scope"));
+	length = ft_strlen(t2->value);
+	if (length > COMMENT_LENGTH)
+	{
+		ft_printf_fd(STDERR_FILENO, 
+			"Champion comment too long (Max length %d)", COMMENT_LENGTH);
+		return (token_error(t2, NULL));
+	}
+	self->cmd_comment = t2->value;
+	return (TRUE);
+}
+
+static t_bool	parser_next_command_case(t_parser *self, t_token *t0,
+	t_token *t2)
+{
+	if (ft_strequ(t0->value, NAME_CMD_STRING))
+		return (parser_next_command_case_name(self, t0, t2));
+	else if (ft_strequ(t0->value, COMMENT_CMD_STRING))
+		return (parser_next_command_case_comment(self, t0, t2));
+	else
+		return (token_error(t0, "Invalid name of the command"));
+}
+
+t_bool			parser_next_command(t_parser *self)
 {
 	t_token		*t0;
 	t_token		*t2;
@@ -23,32 +72,8 @@ t_bool	parser_next_command(t_parser *self)
 		parser_accept(self, TOKEN_TYPE_WHITESPACE) == FALSE ||
 		parser_accept(self, TOKEN_TYPE_STRING) == FALSE)
 		return (token_error(parser_peek(self, 0), "Syntax error"));
-	if (ft_strequ(t0->value, NAME_CMD_STRING))
-	{
-		if (self->command_name)
-			return (token_error(t0, "Command is already defined in the scope"));
-		if (ft_strlen(t2->value) > PROG_NAME_LENGTH)
-		{
-			ft_printf_fd(STDERR_FILENO, 
-				"Champion name too long (Max length %d)", PROG_NAME_LENGTH);
-			return (token_error(t2, NULL));
-		}			
-		self->command_name = t2->value;
-	}
-	else if (ft_strequ(t0->value, COMMENT_CMD_STRING))
-	{
-		if (self->command_comment)
-			return (token_error(t0, "Command is already defined in the scope"));
-		if (ft_strlen(t2->value) > COMMENT_LENGTH)
-		{
-			ft_printf_fd(STDERR_FILENO, 
-				"Champion comment too long (Max length %d)", COMMENT_LENGTH);
-			return (token_error(t2, NULL));
-		}			
-		self->command_comment = t2->value;
-	}
-	else
-		return (token_error(t0, "Invalid name of the command"));
+	if (parser_next_command_case(self, t0, t2) == FALSE)
+		return (FALSE);
 	if (parser_accept(self, TOKEN_TYPE_WHITESPACE) == FALSE &&
 		parser_accept(self, TOKEN_TYPE_COMMENT) == FALSE &&
 		parser_accept(self, TOKEN_TYPE_ENDLINE) == FALSE)

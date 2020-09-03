@@ -22,7 +22,14 @@
 		"vector": "c",
 		"locale": "c",
 		"complex": "c",
-		"ostream": "c"
+		"ostream": "c",
+		"__locale": "c",
+		"__string": "c",
+		"string": "c",
+		"string_view": "c",
+		"__config": "cpp",
+		"__undef_macros": "cpp",
+		"array": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

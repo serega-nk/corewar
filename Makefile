@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/03 01:00:11 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/04 00:05:10 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INC_DIR		= ./includes
 SRC_DIR		= ./srcs
 OBJ_DIR		= ./objs
 
-HEADERS		= asm.h
+HEADERS		= asm.h op.h
 SOURCES		= \
 	$(addprefix asm/, \
 		$(addprefix app/, \
@@ -34,6 +34,7 @@ SOURCES		= \
 				instruction_create.c \
 				instruction_destroy.c \
 				instruction_calc_size.c \
+				instruction_make_bytecode.c \
 				instruction_print.c \
 			) \
 			$(addprefix label/, \

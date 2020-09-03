@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_header.c                             :+:      :+:    :+:   */
+/*   ft_memrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 21:16:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 21:17:19 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/04 00:28:55 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/04 00:30:17 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	compiler_make_header(t_compiler *self)
+void	ft_memrev(void *addr, size_t len)
 {
-	self->header.magic = COREWAR_EXEC_MAGIC;
-	ft_strncpy(self->header.prog_name, self->parser->command_name,
-		PROG_NAME_LENGTH);
-	ft_strncpy(self->header.comment, self->parser->command_comment,
-		COMMENT_LENGTH);
+	unsigned char	*ptr;
+	unsigned char	temp;
+	size_t			index;	
+
+	if (addr && len)
+	{
+		ptr = (unsigned char *)addr;
+		index = 0;
+		while (index < len / 2)
+		{
+			temp = ptr[len - index - 1];
+			ptr[len - index - 1] = ptr[index];
+			ptr[index] = temp;
+			index++;
+		}
+	}
 }

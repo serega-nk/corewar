@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 01:00:03 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 21:06:46 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ struct	s_instruction
 	t_token			*token;
 	t_op			*op;
 	t_vector		*arguments;
-	size_t			offset;
+	size_t			offset;	
 	size_t			size;
+	char			*bytecode;
 };
 
 struct	s_argument
@@ -98,8 +99,8 @@ struct	s_parser
 {
 	t_vector		*tokens;
 	size_t			pos;
-	char			*command_name;
-	char			*command_comment;
+	char			*cmd_name;
+	char			*cmd_comment;
 	t_token			*end;
 	t_hashtab		*labels;
 	t_vector		*instructions;
@@ -111,8 +112,11 @@ struct	s_compiler
 	t_lexer			*lexer;
 	t_parser		*parser;
 	t_header		header;
+	size_t			prog_size;
 	char			*sourcefile;
 	char			*outputfile;
+	int				output_fd;
+	int				source_fd;
 	char			*source_data;
 	size_t			source_size;
 	char			*output_data;
@@ -150,6 +154,7 @@ void			argument_destroy(t_argument **aself);
 t_instruction	*instruction_create(void);
 void			instruction_destroy(t_instruction **aself);
 size_t			instruction_calc_size(t_instruction *self);
+void			instruction_make_bytecode(t_instruction *self);
 void			instruction_print(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);

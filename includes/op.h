@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/09/01 17:00:52 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/04 00:48:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ typedef struct	s_op
 	int			code;
 	int			cycle;
 	char		*desc;
-	int			carry;
-	int			flag;
+	char		carry;
+	char		use_arg_type;
+	char		dir_size;
 }				t_op;
 
 t_op			*op_get(char *name);

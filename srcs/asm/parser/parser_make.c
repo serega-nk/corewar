@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 00:23:42 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 18:54:03 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/03 18:03:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_bool	parser_make_head(t_parser *self)
 		else
 			break ;
 	}
-	if (self->command_name == NULL || self->command_comment == NULL)
+	if (self->cmd_name == NULL || self->cmd_comment == NULL)
 	{
 		return (token_error(parser_peek(self, 0),
 			"Expected to enter the command"));
