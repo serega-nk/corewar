@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 21:57:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:16:50 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/06 01:29:25 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void		*ft_memcpy_rev(void *dst, const void *src, size_t n);
 size_t		ft_get_size(int fd);
 t_bool		ft_readall(int fd, char *data, size_t size);
 t_bool		ft_writeall(int fd, char *data, size_t size);
+void		ft_print_memory(const void *addr, size_t size);
 
 #endif
