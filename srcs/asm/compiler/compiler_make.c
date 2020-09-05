@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:17:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:49:04 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:51:31 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_bool	compiler_make(t_compiler *self, t_bool multi)
 		compiler_make_bytecode(self) &&
 		compiler_make_save(self) &&
 		ft_printf("{green}Writing output program to %s{eoc}",
-			self->outputfile)
-	);
+			self->outputfile));
 	ft_printf("\n");
 	return (result);
 }

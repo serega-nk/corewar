@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:28:01 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 21:35:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:51:41 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool	compiler_make_save(t_compiler *self)
 {
-	self->output_fd = open(self->outputfile, 
+	self->output_fd = open(self->outputfile,
 		O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (self->output_fd >= 0)
 	{
