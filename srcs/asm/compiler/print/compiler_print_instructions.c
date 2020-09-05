@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 22:27:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 22:55:13 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/06 00:13:50 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	compiler_print_instructions(t_compiler *self)
 	while (vector_next(self->parser->instructions, (void **)&instruction))
 	{
 		instruction_print(instruction);
+		ft_printf("\n");
 	}
 }

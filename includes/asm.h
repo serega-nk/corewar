@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:43:10 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/06 00:36:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void			label_print(t_label *label);
 
 t_argument		*argument_create(void);
 void			argument_destroy(t_argument **aself);
+void			argument_print(t_argument *self);
 
 t_instruction	*instruction_create(void);
 void			instruction_destroy(t_instruction **aself);

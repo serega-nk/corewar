@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:01:41 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:18:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/06 00:31:22 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	compiler_print_bytecode(t_compiler *self)
 {
 	if (self)
-		ft_printf("BYTECODE:\n");
+		ft_printf("=== BYTECODE: ===\n");
 }
