@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 21:57:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 02:46:27 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:19:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int			ft_max(int a, int b);
 int			ft_min(int a, int b);
 void		ft_swap(int *a, int *b);
 void		ft_quicksort(int arr[], int count);
+void		ft_close(int *afd);
 void		*ft_memcpy_rev(void *dst, const void *src, size_t n);
 
 #endif

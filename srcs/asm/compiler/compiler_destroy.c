@@ -6,20 +6,13 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:08:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 21:20:45 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:18:34 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	ft_close(int *afd)
-{
-	if (*afd >= 3)
-		close(*afd);
-	*afd = -1;
-}
-
-void		compiler_destroy(t_compiler **aself)
+void	compiler_destroy(t_compiler **aself)
 {
 	if (aself && *aself)
 	{

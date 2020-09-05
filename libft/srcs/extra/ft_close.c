@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_destroy.c                                 :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 21:42:35 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/05 21:51:39 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/05 18:18:56 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 18:19:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void		compiler_destroy(t_compiler **aself)
+void	ft_close(int *afd)
 {
-	if (aself && *aself)
-	{
-		parser_destroy(&(*aself)->parser);
-		lexer_destroy(&(*aself)->lexer);
-		ft_strdel(&(*aself)->text);
-		ft_memdel((void **)aself);
-	}
+	if (*afd >= 3)
+		close(*afd);
+	*afd = -1;
 }
