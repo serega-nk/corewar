@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/09/04 00:48:07 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 04:17:42 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # define IND_SIZE				2
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
+
+# define IND_LENGTH				2
+# define REG_LENGTH				1
+# define DIR_LENGTH				4
 
 # define REG_CODE				1
 # define DIR_CODE				2
@@ -92,12 +96,11 @@ typedef struct	s_op
 	char		*name;
 	size_t		argc;
 	t_arg_type	args[3];
-	int			code;
+	char		code;
 	int			cycle;
 	char		*desc;
-	char		carry;
-	char		use_arg_type;
-	char		dir_size;
+	char		use_types;
+	char		dir_ind;
 }				t_op;
 
 t_op			*op_get(char *name);

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:27:00 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/04 00:30:25 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 06:22:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static void		compiler_make_compile_instructions(t_compiler *self)
 
 static void		compiler_make_compile_header(t_compiler *self)
 {
-	self->header.magic = COREWAR_EXEC_MAGIC;
-	ft_strncpy(self->header.prog_name, self->parser->cmd_name,
-		PROG_NAME_LENGTH);
-	ft_strncpy(self->header.comment, self->parser->cmd_comment,
-		COMMENT_LENGTH);
-	self->header.prog_size = self->prog_size;
-	ft_memrev((void *)&self->header.magic, 4);
-	ft_memrev((void *)&self->header.prog_size, sizeof(self->header.prog_size));
+	unsigned int	magic;
+	
+	magic = COREWAR_EXEC_MAGIC;	
+	ft_memcpy_rev(&self->header.magic, &magic, sizeof(magic));
+	ft_strcpy(self->header.prog_name, self->parser->cmd_name);
+	ft_memcpy_rev(&self->header.prog_size, &self->prog_size,
+	 	sizeof(self->header.prog_size));
+	ft_strcpy(self->header.comment, self->parser->cmd_comment);
 }
 
 t_bool			compiler_make_compile(t_compiler *self)

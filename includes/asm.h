@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 21:06:46 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 02:28:26 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ struct	s_argument
 	t_arg_type		arg_type;
 	int				number;
 	t_label			*label;
+	size_t			size;
 };
 
 struct	s_lexer
