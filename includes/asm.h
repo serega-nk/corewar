@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 02:28:26 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:16:52 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_compiler		t_compiler;
 
 typedef struct s_app			t_app;
 
-enum	e_token_type
+enum			e_token_type
 {
 	TOKEN_TYPE_WORD,
 	TOKEN_TYPE_STRING,
@@ -50,7 +50,7 @@ enum	e_token_type
 	TOKEN_TYPE_END,
 };
 
-struct	s_token
+struct			s_token
 {
 	t_token_type	type;
 	int				ln;
@@ -58,7 +58,7 @@ struct	s_token
 	char			*value;
 };
 
-struct	s_label
+struct			s_label
 {
 	t_token			*token;
 	char			*name;
@@ -66,17 +66,17 @@ struct	s_label
 	size_t			offset;
 };
 
-struct	s_instruction
+struct			s_instruction
 {
 	t_token			*token;
 	t_op			*op;
 	t_vector		*arguments;
-	size_t			offset;	
+	size_t			offset;
 	size_t			size;
 	char			*bytecode;
 };
 
-struct	s_argument
+struct			s_argument
 {
 	t_token			*token;
 	t_arg_type		arg_type;
@@ -85,7 +85,7 @@ struct	s_argument
 	size_t			size;
 };
 
-struct	s_lexer
+struct			s_lexer
 {
 	char			*input;
 	size_t			length;
@@ -96,7 +96,7 @@ struct	s_lexer
 	t_vector		*tokens;
 };
 
-struct	s_parser
+struct			s_parser
 {
 	t_vector		*tokens;
 	size_t			pos;
@@ -108,7 +108,7 @@ struct	s_parser
 	t_vector		*convert_labels;
 };
 
-struct	s_compiler
+struct			s_compiler
 {
 	t_lexer			*lexer;
 	t_parser		*parser;
@@ -124,7 +124,7 @@ struct	s_compiler
 	size_t			output_size;
 };
 
-struct	s_app
+struct			s_app
 {
 	t_bool			error;
 	int				argc;

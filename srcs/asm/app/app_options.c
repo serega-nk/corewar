@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 23:30:01 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:15:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		app_options_parse(t_app *self, char *str)
 		{
 			ft_printf_fd(STDERR_FILENO, "Invalid Option\n");
 			ft_xexit(EXIT_FAILURE);
-		}		
+		}
 		str++;
 	}
 }

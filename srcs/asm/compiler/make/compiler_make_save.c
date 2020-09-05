@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:28:01 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 21:28:09 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:15:42 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_bool	save(t_compiler *self)
 	t_instruction	*instruction;
 
 	if (writeall(
-		self->output_fd, (char *)&self->header,	sizeof(self->header)) == FALSE)
+		self->output_fd, (char *)&self->header, sizeof(self->header)) == FALSE)
 	{
 		return (FALSE);
 	}

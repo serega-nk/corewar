@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:07:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 21:24:41 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:15:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static t_bool	parser_next_command_case_name(t_parser *self, t_token *t0,
 		return (token_error(t2, "Champion name empty"));
 	if (length > PROG_NAME_LENGTH)
 	{
-		ft_printf_fd(STDERR_FILENO, 
+		ft_printf_fd(STDERR_FILENO,
 			"Champion name too long (Max length %d)", PROG_NAME_LENGTH);
 		return (token_error(t2, NULL));
-	}	
+	}
 	self->cmd_name = t2->value;
 	return (TRUE);
 }
@@ -42,7 +42,7 @@ static t_bool	parser_next_command_case_comment(t_parser *self, t_token *t0,
 	length = ft_strlen(t2->value);
 	if (length > COMMENT_LENGTH)
 	{
-		ft_printf_fd(STDERR_FILENO, 
+		ft_printf_fd(STDERR_FILENO,
 			"Champion comment too long (Max length %d)", COMMENT_LENGTH);
 		return (token_error(t2, NULL));
 	}
@@ -68,7 +68,7 @@ t_bool			parser_next_command(t_parser *self)
 
 	t0 = parser_peek(self, 0);
 	t2 = parser_peek(self, 2);
-	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE || 
+	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE ||
 		parser_accept(self, TOKEN_TYPE_WHITESPACE) == FALSE ||
 		parser_accept(self, TOKEN_TYPE_STRING) == FALSE)
 		return (token_error(parser_peek(self, 0), "Syntax error"));

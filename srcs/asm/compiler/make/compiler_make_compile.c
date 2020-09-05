@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:27:00 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 06:22:43 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:14:37 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static void		compiler_make_compile_instructions(t_compiler *self)
 static void		compiler_make_compile_header(t_compiler *self)
 {
 	unsigned int	magic;
-	
-	magic = COREWAR_EXEC_MAGIC;	
+
+	magic = COREWAR_EXEC_MAGIC;
 	ft_memcpy_rev(&self->header.magic, &magic, sizeof(magic));
 	ft_strcpy(self->header.prog_name, self->parser->cmd_name);
 	ft_memcpy_rev(&self->header.prog_size, &self->prog_size,
-	 	sizeof(self->header.prog_size));
+		sizeof(self->header.prog_size));
 	ft_strcpy(self->header.comment, self->parser->cmd_comment);
 }
 
