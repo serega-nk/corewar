@@ -6,23 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:52 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:49:19 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:52:59 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-void	app_bytecodes_options(t_app *self)
-{
-	if (self->option_t)
-		compiler_print_tokens(self->compiler);
-	if (self->option_l)
-		compiler_print_labels(self->compiler);
-	if (self->option_i)
-		compiler_print_instructions(self->compiler);
-	if (self->option_b)
-		compiler_print_bytecode(self->compiler);
-}
 
 void	app_bytecodes(t_app *self)
 {
