@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/04 00:05:10 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/05 18:39:04 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,6 +147,7 @@ fclean:
 	rm -rf $(OBJ_DIR)
 	rm -rf $(NAME).dSYM
 	rm -rf $(NAME)
+	find . -type f -name "*.cor" -delete
 
 re: fclean all
 
