@@ -1,6 +1,7 @@
 asm
 corewar
 *.cor
+.vscode/
 
 # Prerequisites
 *.d
