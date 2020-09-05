@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_output_annotated.c                        :+:      :+:    :+:   */
+/*   ft_get_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 22:26:17 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/02 22:28:36 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/05 20:54:27 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 20:54:41 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-void	compiler_output_annotated(t_compiler *self)
+size_t	ft_get_size(int fd)
 {
-	if (self)
-		ft_printf("ANNOTATED:\n");
+	off_t		curr;
+	size_t		size;
+
+	curr = lseek(fd, 0, SEEK_CUR);
+	size = lseek(fd, 0, SEEK_END);
+	lseek(fd, curr, SEEK_SET);
+	return (size);
 }

@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/05 18:19:32 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/05 21:01:19 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,9 @@ SOURCES		= \
 		ft_quicksort.c \
 		ft_close.c \
 		ft_memcpy_rev.c \
+		ft_get_size.c \
+		ft_readall.c \
+		ft_writeall.c \
 	) \
 	$(addprefix ft_printf/, \
 		ft_printf_fd.c \

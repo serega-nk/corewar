@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 18:15:29 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:15:23 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void		app_options_parse(t_app *self, char *str)
 {
 	while (*str)
 	{
-		if (*str == 'a')
-			self->option_a = TRUE;
+		if (*str == 'b')
+			self->option_b = TRUE;
 		else if (*str == 'h')
 		{
 			self->option_h = TRUE;
@@ -59,7 +59,7 @@ void			app_options(t_app *self)
 	}
 	if (self->argc == 0 || self->option_h)
 	{
-		ft_printf("Usage: %s [-ahilt] <sourcefile.s>\n", name);
+		ft_printf("Usage: %s [-bhilt] <sourcefile.s>\n", name);
 		ft_xexit(EXIT_SUCCESS);
 	}
 }

@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_type_name.c                                  :+:      :+:    :+:   */
+/*   compiler_print_bytecode.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 00:36:13 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:39:29 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/05 19:01:41 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 23:18:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static char		*g_types[] = {
-	"WORD",
-	"STRING",
-	"COMMENT",
-	"WHITESPACE",
-	"LABEL",
-	"SEPARATOR",
-	"DIRECT",
-	"ENDLINE",
-	"END"
-};
-
-char			*token_type_name(t_token_type token_type)
+void	compiler_print_bytecode(t_compiler *self)
 {
-	return (g_types[token_type]);
+	if (self)
+		ft_printf("BYTECODE:\n");
 }

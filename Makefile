@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/05 18:39:04 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/05 23:46:12 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,20 +48,23 @@ SOURCES		= \
 				token_destroy.c \
 				token_error.c \
 				token_print.c \
-				token_type_name.c \
 			) \
 		) \
 		$(addprefix compiler/, \
 			$(addprefix make/, \
-				compiler_make_compile.c \
+				compiler_make_analyzed.c \
+				compiler_make_bytecode.c \
+				compiler_make_convert_labels.c \
+				compiler_make_header.c \
 				compiler_make_load.c \
+				compiler_make_prog_size.c \
 				compiler_make_save.c \
 			) \
-			$(addprefix output/, \
-				compiler_output_annotated.c \
-				compiler_output_instructions.c \
-				compiler_output_labels.c \
-				compiler_output_tokens.c \
+			$(addprefix print/, \
+				compiler_print_bytecode.c \
+				compiler_print_instructions.c \
+				compiler_print_labels.c \
+				compiler_print_tokens.c \
 			) \
 			compiler_create.c \
 			compiler_destroy.c \

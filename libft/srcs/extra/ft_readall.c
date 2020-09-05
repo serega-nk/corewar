@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_load.c                               :+:      :+:    :+:   */
+/*   ft_readall.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:27:35 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:21:54 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/05 20:53:12 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 20:53:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "libft.h"
 
-t_bool	compiler_make_load(t_compiler *self)
+t_bool	ft_readall(int fd, char *data, size_t size)
 {
-	self->source_fd = open(self->sourcefile, O_RDONLY);
-	if (self->source_fd >= 0)
+	size_t		used;
+	ssize_t		n;
+
+	used = 0;
+	while (used < size)
 	{
-		self->source_size = ft_get_size(self->source_fd);
-		self->source_data = ft_xmalloc(self->source_size);
-		if (ft_readall(self->source_fd, self->source_data, self->source_size))
-			return (TRUE);
+		n = read(fd, data + used, size - used);
+		if (n <= 0)
+			break ;
+		used += n;
 	}
-	ft_printf("Can't read source file %s", self->sourcefile);
-	return (FALSE);
+	return (used == size);
 }

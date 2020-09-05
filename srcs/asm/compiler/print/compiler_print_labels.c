@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_load.c                               :+:      :+:    :+:   */
+/*   compiler_print_labels.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:27:35 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:21:54 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/02 22:27:38 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 22:55:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	compiler_make_load(t_compiler *self)
+void	compiler_print_labels(t_compiler *self)
 {
-	self->source_fd = open(self->sourcefile, O_RDONLY);
-	if (self->source_fd >= 0)
+	t_label		*label;
+
+	ft_printf("=== LABELS: ===\n");
+	hashtab_start(self->parser->labels);
+	while (hashtab_next_kv(self->parser->labels, NULL, (void **)&label))
 	{
-		self->source_size = ft_get_size(self->source_fd);
-		self->source_data = ft_xmalloc(self->source_size);
-		if (ft_readall(self->source_fd, self->source_data, self->source_size))
-			return (TRUE);
+		label_print(label);
 	}
-	ft_printf("Can't read source file %s", self->sourcefile);
-	return (FALSE);
 }

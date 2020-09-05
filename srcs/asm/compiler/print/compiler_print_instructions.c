@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_load.c                               :+:      :+:    :+:   */
+/*   compiler_print_instructions.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:27:35 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:21:54 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/02 22:27:57 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 22:55:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_bool	compiler_make_load(t_compiler *self)
+void	compiler_print_instructions(t_compiler *self)
 {
-	self->source_fd = open(self->sourcefile, O_RDONLY);
-	if (self->source_fd >= 0)
+	t_instruction	*instruction;
+
+	ft_printf("=== INSTRUCTIONS: ===\n");
+	vector_start(self->parser->instructions);
+	while (vector_next(self->parser->instructions, (void **)&instruction))
 	{
-		self->source_size = ft_get_size(self->source_fd);
-		self->source_data = ft_xmalloc(self->source_size);
-		if (ft_readall(self->source_fd, self->source_data, self->source_size))
-			return (TRUE);
+		instruction_print(instruction);
 	}
-	ft_printf("Can't read source file %s", self->sourcefile);
-	return (FALSE);
 }

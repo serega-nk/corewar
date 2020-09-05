@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_output_instructions.c                     :+:      :+:    :+:   */
+/*   compiler_make_convert_labels.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 22:27:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:59:52 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/05 22:35:48 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/05 22:51:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	compiler_output_instructions(t_compiler *self)
+t_bool	compiler_make_convert_labels(t_compiler *self)
 {
 	t_instruction	*instruction;
+	t_argument		*argument;
 
-	ft_printf("=== INSTRUCTIONS: ===\n");
-	if (self && self->parser && self->parser->instructions)
+	vector_start(self->parser->instructions);
+	while (vector_next(self->parser->instructions, (void **)&instruction))
 	{
-		vector_start(self->parser->instructions);
-		while (vector_next(self->parser->instructions, (void **)&instruction))
-			instruction_print(instruction);
+		vector_start(instruction->arguments);
+		while (vector_next(instruction->arguments, (void **)&argument))
+		{
+			if (argument->label)
+			{
+				argument->number = \
+					argument->label->offset - instruction->offset;
+			}
+		}
 	}
+	return (TRUE);
 }

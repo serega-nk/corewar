@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 18:16:52 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:43:10 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ struct			s_app
 	int				argc;
 	char			**argv;
 	t_bool			option_a;
+	t_bool			option_b;
 	t_bool			option_h;
 	t_bool			option_i;
 	t_bool			option_l;
@@ -196,14 +197,18 @@ t_bool			parser_make(t_parser *self);
 
 t_compiler		*compiler_create(char *sourcefile);
 void			compiler_destroy(t_compiler **aself);
-t_bool			compiler_make(t_compiler *self);
+t_bool			compiler_make(t_compiler *self, t_bool multi);
 t_bool			compiler_make_load(t_compiler *self);
-t_bool			compiler_make_compile(t_compiler *self);
+t_bool			compiler_make_analyzed(t_compiler *self);
+t_bool			compiler_make_prog_size(t_compiler *self);
+t_bool			compiler_make_convert_labels(t_compiler *self);
+t_bool			compiler_make_header(t_compiler *self);
+t_bool			compiler_make_bytecode(t_compiler *self);
 t_bool			compiler_make_save(t_compiler *self);
-void			compiler_output_tokens(t_compiler *self);
-void			compiler_output_labels(t_compiler *self);
-void			compiler_output_instructions(t_compiler *self);
-void			compiler_output_annotated(t_compiler *self);
+void			compiler_print_tokens(t_compiler *self);
+void			compiler_print_labels(t_compiler *self);
+void			compiler_print_instructions(t_compiler *self);
+void			compiler_print_bytecode(t_compiler *self);
 
 void			app_init(t_app *self, int argc, char *argv[]);
 void			app_options(t_app *self);

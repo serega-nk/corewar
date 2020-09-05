@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_output_tokens.c                           :+:      :+:    :+:   */
+/*   compiler_print_tokens.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 22:26:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/03 00:42:12 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/05 23:31:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	compiler_output_tokens(t_compiler *self)
+void	compiler_print_tokens(t_compiler *self)
 {
 	t_token		*token;
 
+	ft_printf("\n");
 	ft_printf("=== TOKENS: ===\n");
-	if (self && self->lexer && self->lexer->tokens)
+	vector_start(self->lexer->tokens);
+	while (vector_next(self->lexer->tokens, (void **)&token))
 	{
-		vector_start(self->lexer->tokens);
-		while (vector_next(self->lexer->tokens, (void **)&token))
-			token_print(token);
+		token_print(token);
+		ft_printf("\n");
 	}
 }
