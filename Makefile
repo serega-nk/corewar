@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/06 00:37:03 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/06 19:51:15 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,7 @@ SOURCES		= \
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
-CC			= gcc
+CC			= gcc -g
 WFLAGS		= -Wall -Wextra -Werror
 IFLAGS		= -I$(INC_DIR)/ -I$(LIBFT_DIR)/includes/
 LFLAGS		= -L$(LIBFT_DIR)/ -lft
@@ -159,6 +159,7 @@ norm:
 	@norminette $(INCS) $(SRCS)
 
 vv: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 42.s
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) ./_res/champs/42.s ./_res/champs/ex.s
+	#valgrind ./$(NAME) ./_res/champs/42.s ./_res/champs/ex.s
 
 .PHONY: all clean fclean re norm vv
