@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 23:52:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 00:00:27 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/06 20:59:22 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool		vector_get(t_vector *self, size_t index, void **adata)
 {
-	if (self && adata && index >= 0 && index < self->count)
+	if (self && adata && index < self->count)
 	{
 		*adata = self->table[index];
 		return (TRUE);
