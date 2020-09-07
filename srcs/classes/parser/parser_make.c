@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 00:23:42 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 07:14:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 00:03:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,17 @@ static t_bool	parser_make_labels(t_parser *self)
 	return (TRUE);
 }
 
+static t_bool	parser_make_check(t_parser *self)
+{
+	if (self->instructions->count == 0)
+		return (token_error(parser_peek(self, 0), "No instructions"));
+	return (TRUE);
+}
+
 t_bool			parser_make(t_parser *self)
 {
 	return (parser_make_head(self) &&
 			parser_make_body(self) &&
-			parser_make_labels(self));
+			parser_make_labels(self) &&
+			parser_make_check(self));
 }
