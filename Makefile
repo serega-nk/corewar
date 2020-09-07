@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/07 22:48:10 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/08 01:48:13 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INC_DIR		= ./includes
 SRC_DIR		= ./srcs
 OBJ_DIR		= ./objs
 
-HEADERS		= asm.h disasm.h op.h
+HEADERS		= asm.h classes.h disasm.h op.h
 
 SOURCES_C	= \
 	$(addprefix classes/, \
@@ -47,8 +47,15 @@ SOURCES_C	= \
 			compiler_make.c \
 		) \
 		$(addprefix decompiler/, \
+			$(addprefix make/, \
+				decompiler_make_header.c \
+				decompiler_make_instructions.c \
+				decompiler_make_load.c \
+				decompiler_make_print.c \
+			) \
 			decompiler_create.c \
 			decompiler_destroy.c \
+			decompiler_make.c \
 		) \
 		$(addprefix instruction/, \
 			instruction_create.c \

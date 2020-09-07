@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   decompiler_make.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/07 22:30:27 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 00:20:42 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/08 00:06:47 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/08 00:27:51 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disasm.h"
 
-void	app_execute(t_app *self)
+t_bool		decompiler_make(t_decompiler *self)
 {
-	if (self->argc > 0)
+	if (decompiler_make_load(self) &&
+		decompiler_make_header(self) &&
+		decompiler_make_instructions(self))
 	{
-		self->decompiler = decompiler_create(self->argv[0]);
-		if (decompiler_make(self->decompiler) == FALSE)
-			self->error = TRUE;
-		decompiler_destroy(&self->decompiler);
+		decompiler_make_print(self);
+		return (TRUE);
 	}
+	return (FALSE);
 }

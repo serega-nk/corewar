@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   decompiler_make_print.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/07 22:30:27 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 00:20:42 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/08 00:12:40 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/08 01:26:46 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disasm.h"
 
-void	app_execute(t_app *self)
+t_bool	decompiler_make_print(t_decompiler *self)
 {
-	if (self->argc > 0)
-	{
-		self->decompiler = decompiler_create(self->argv[0]);
-		if (decompiler_make(self->decompiler) == FALSE)
-			self->error = TRUE;
-		decompiler_destroy(&self->decompiler);
-	}
+	ft_printf(".name = \"%s\"\n", self->header.prog_name);
+	ft_printf(".comment = \"%s\"\n", self->header.comment);
+	ft_printf("\n");		
+	return (TRUE);
 }
