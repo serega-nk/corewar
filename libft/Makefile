@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/06 01:29:38 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/07 19:19:31 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,6 +159,7 @@ SOURCES		= \
 	$(addprefix parse/, \
 		parse_goto.c \
 		parse_int.c \
+		parse_long.c \
 		parse_none.c \
 		parse_skip.c \
 		parse_str.c \
