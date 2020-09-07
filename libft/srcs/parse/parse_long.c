@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 02:44:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 19:18:55 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 19:39:55 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_bool	parse_long(char **addr, long *avalue)
 {
 	char			*ptr;
 	unsigned long	value;
+	unsigned long	save;
 	int				negative;
 
 	ptr = *addr;
@@ -27,10 +28,10 @@ t_bool	parse_long(char **addr, long *avalue)
 		if (*ptr == '0' && ft_isdigit(*(ptr + 1)))
 			return (FALSE);
 		value = 0;
-		while (ft_isdigit(*ptr))
+		while (ft_isdigit(*ptr) && ((save = value) || 1))
 		{
 			value = value * 10 + (*ptr++ - '0');
-			if ((long)(value - negative) < 0)
+			if ((long)(value - negative) < 0 || save > value)
 				return (FALSE);
 		}
 		*addr = ptr;

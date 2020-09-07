@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/06 00:36:13 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 19:22:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ struct			s_argument
 {
 	t_token			*token;
 	t_arg_type		arg_type;
-	int				number;
+	long			number;
 	t_label			*label;
 	size_t			size;
 };

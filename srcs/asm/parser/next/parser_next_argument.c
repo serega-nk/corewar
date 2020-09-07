@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 00:00:37 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 19:22:27 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_bool			argument_parse_token(t_argument *argument)
 		ptr = argument->token->value;
 		if (parse_skip(&ptr, "r"))
 			argument->arg_type |= T_REG;
-		if ((parse_int(&ptr, &argument->number) && parse_none(&ptr)) == FALSE)
+		if ((parse_long(&ptr, &argument->number) && parse_none(&ptr)) == FALSE)
 			return (token_error(argument->token, "Invalid argument"));
 		if (argument->arg_type & T_REG &&
 			(argument->number <= 0 || argument->number > REG_NUMBER))
