@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_bytecodes.c                                    :+:      :+:    :+:   */
+/*   app_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:52 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:52:59 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 22:30:02 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	app_bytecodes(t_app *self)
+void	app_execute(t_app *self)
 {
 	t_bool	multi;
 

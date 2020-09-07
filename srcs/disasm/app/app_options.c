@@ -6,29 +6,21 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 23:27:10 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 23:24:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "disasm.h"
 
 static t_bool	app_options_parse(t_app *self, char *str)
 {
 	while (*str)
 	{
-		if (*str == 'b')
-			self->option_b = TRUE;
-		else if (*str == 'h')
+		if (*str == 'h')
 		{
 			self->option_h = TRUE;
 			return (FALSE);
 		}
-		else if (*str == 'i')
-			self->option_i = TRUE;
-		else if (*str == 'l')
-			self->option_l = TRUE;
-		else if (*str == 't')
-			self->option_t = TRUE;
 		else
 		{
 			ft_printf_fd(STDERR_FILENO, "Invalid Option\n");
@@ -61,7 +53,7 @@ void			app_options(t_app *self)
 	}
 	if (self->argc == 0 || self->option_h)
 	{
-		ft_printf("Usage: %s [-bhilt] <sourcefile.s>\n", name);
+		ft_printf("Usage: %s [-h] <corfile.cor>\n", name);
 		ft_xexit(EXIT_SUCCESS);
 	}
 }

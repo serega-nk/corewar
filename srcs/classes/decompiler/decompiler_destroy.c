@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_destroy.c                                 :+:      :+:    :+:   */
+/*   decompiler_destroy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 17:08:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/06 00:07:07 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/07 22:15:40 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/07 22:15:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "disasm.h"
 
-void	compiler_destroy(t_compiler **aself)
+void	decompiler_destroy(t_decompiler **aself)
 {
 	if (aself && *aself)
 	{
-		ft_close(&(*aself)->output_fd);
-		ft_strdel(&(*aself)->output_data);
-		parser_destroy(&(*aself)->parser);
-		lexer_destroy(&(*aself)->lexer);
-		ft_strdel(&(*aself)->source_data);
-		ft_close(&(*aself)->source_fd);
-		ft_strdel(&(*aself)->outputfile);
+		ft_strdel(&(*aself)->bytecode_data);
+		ft_close(&(*aself)->bytecode_fd);
 		ft_memdel((void **)aself);
 	}
 }

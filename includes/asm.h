@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 22:08:14 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 22:30:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ void			compiler_print_bytecode(t_compiler *self);
 
 void			app_init(t_app *self, int argc, char *argv[]);
 void			app_options(t_app *self);
-void			app_bytecodes(t_app *self);
+void			app_execute(t_app *self);
 void			app_free(t_app *self);
 
 #endif

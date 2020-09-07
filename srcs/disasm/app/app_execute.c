@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   app_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 22:36:02 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/07 22:30:27 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/07 23:28:47 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "disasm.h"
 
-int		main(int argc, char *argv[])
+void	app_execute(t_app *self)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (app.error == FALSE ? EXIT_SUCCESS : EXIT_FAILURE);
+	if (self->argc > 0)
+	{
+		self->decompiler = decompiler_create(self->argv[0]);
+		ft_printf("OK\n");
+		decompiler_destroy(&self->decompiler);
+	}
 }

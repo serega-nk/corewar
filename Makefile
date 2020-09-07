@@ -6,50 +6,25 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/07 00:13:04 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/07 22:48:10 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= asm
+NAME_A 		= asm
+NAME_D 		= disasm
 
 INC_DIR		= ./includes
 SRC_DIR		= ./srcs
 OBJ_DIR		= ./objs
 
-HEADERS		= asm.h op.h
-SOURCES		= \
-	$(addprefix asm/, \
-		$(addprefix app/, \
-			app_bytecodes.c \
-			app_free.c \
-			app_init.c \
-			app_options.c \
-		) \
-		$(addprefix classes/, \
-			$(addprefix argument/, \
-				argument_create.c \
-				argument_destroy.c \
-				argument_print.c \
-			) \
-			$(addprefix instruction/, \
-				instruction_create.c \
-				instruction_destroy.c \
-				instruction_calc_size.c \
-				instruction_make_bytecode.c \
-				instruction_print.c \
-			) \
-			$(addprefix label/, \
-				label_create.c \
-				label_destroy.c \
-				label_name_check.c \
-				label_print.c \
-			) \
-			$(addprefix token/, \
-				token_create.c \
-				token_destroy.c \
-				token_error.c \
-				token_print.c \
-			) \
+HEADERS		= asm.h disasm.h op.h
+
+SOURCES_C	= \
+	$(addprefix classes/, \
+		$(addprefix argument/, \
+			argument_create.c \
+			argument_destroy.c \
+			argument_print.c \
 		) \
 		$(addprefix compiler/, \
 			$(addprefix make/, \
@@ -70,6 +45,23 @@ SOURCES		= \
 			compiler_create.c \
 			compiler_destroy.c \
 			compiler_make.c \
+		) \
+		$(addprefix decompiler/, \
+			decompiler_create.c \
+			decompiler_destroy.c \
+		) \
+		$(addprefix instruction/, \
+			instruction_create.c \
+			instruction_destroy.c \
+			instruction_calc_size.c \
+			instruction_make_bytecode.c \
+			instruction_print.c \
+		) \
+		$(addprefix label/, \
+			label_create.c \
+			label_destroy.c \
+			label_name_check.c \
+			label_print.c \
 		) \
 		$(addprefix lexer/, \
 			$(addprefix tokenize/, \
@@ -113,9 +105,36 @@ SOURCES		= \
 			parser_next.c \
 			parser_peek.c \
 		) \
-		main.c \
+		$(addprefix token/, \
+			token_create.c \
+			token_destroy.c \
+			token_error.c \
+			token_print.c \
+		) \
 	) \
 	op.c \
+
+SOURCES_A	= \
+	$(addprefix asm/, \
+		$(addprefix app/, \
+			app_execute.c \
+			app_free.c \
+			app_init.c \
+			app_options.c \
+		) \
+		main.c \
+	) \
+
+SOURCES_D	= \
+	$(addprefix disasm/, \
+		$(addprefix app/, \
+			app_execute.c \
+			app_free.c \
+			app_init.c \
+			app_options.c \
+		) \
+		main.c \
+	) \
 
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -126,13 +145,20 @@ IFLAGS		= -I$(INC_DIR)/ -I$(LIBFT_DIR)/includes/
 LFLAGS		= -L$(LIBFT_DIR)/ -lft
 
 INCS		= $(addprefix $(INC_DIR)/, $(HEADERS))
-SRCS		= $(addprefix $(SRC_DIR)/, $(SOURCES))
-OBJS		= $(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
+SRCS_C		= $(addprefix $(SRC_DIR)/, $(SOURCES_C))
+SRCS_A		= $(addprefix $(SRC_DIR)/, $(SOURCES_A))
+SRCS_D		= $(addprefix $(SRC_DIR)/, $(SOURCES_D))
+OBJS_C		= $(addprefix $(OBJ_DIR)/, $(SOURCES_C:.c=.o))
+OBJS_A		= $(addprefix $(OBJ_DIR)/, $(SOURCES_A:.c=.o))
+OBJS_D		= $(addprefix $(OBJ_DIR)/, $(SOURCES_D:.c=.o))
 
-all: $(NAME)
+all: $(NAME_A) $(NAME_D)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS) $(LFLAGS) -o $@
+$(NAME_A): $(LIBFT) $(OBJS_C) $(OBJS_A)
+	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS_C) $(OBJS_A) $(LFLAGS) -o $@
+
+$(NAME_D): $(LIBFT) $(OBJS_C) $(OBJS_D)
+	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS_C) $(OBJS_D) $(LFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) Makefile
 	@mkdir -p ${@D}
@@ -144,22 +170,25 @@ $(LIBFT):
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -rf $(OBJ_DIR)
-	rm -rf $(NAME).dSYM
+	rm -rf $(NAME_A).dSYM
+	rm -rf $(NAME_D).dSYM
 
 fclean:
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -rf $(OBJ_DIR)
-	rm -rf $(NAME).dSYM
-	rm -rf $(NAME)
+	rm -rf $(NAME_A).dSYM
+	rm -rf $(NAME_D).dSYM
+	rm -rf $(NAME_A)
+	rm -rf $(NAME_D)
 	find . -type f -name "*.cor" -delete
 
 re: fclean all
 
 norm:
-	@norminette $(INCS) $(SRCS)
+	@norminette $(INCS) $(SRCS_C) $(SRCS_A) $(SRCS_D)
 
-vv: $(NAME)
-	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) ./_res/champs/42.s ./_res/champs/ex.s
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) `find . -type f -name "*.s"`
+vv: $(NAME_A)
+	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) ./_res/champs/42.s ./_res/champs/ex.s
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
 
 .PHONY: all clean fclean re norm vv
