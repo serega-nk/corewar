@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 19:22:09 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/07 22:08:14 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ struct			s_compiler
 	t_parser		*parser;
 	t_header		header;
 	size_t			prog_size;
-	char			*sourcefile;
-	char			*outputfile;
-	int				output_fd;
+	char			*source_fn;
 	int				source_fd;
 	char			*source_data;
 	size_t			source_size;
-	char			*output_data;
-	size_t			output_size;
+	char			*bytecode_fn;
+	int				bytecode_fd;
+	char			*bytecode_data;
+	size_t			bytecode_size;
 };
 
 struct			s_app
@@ -196,7 +196,7 @@ t_bool			parser_next_label(t_parser *self);
 t_bool			parser_next_skip(t_parser *self);
 t_bool			parser_make(t_parser *self);
 
-t_compiler		*compiler_create(char *sourcefile);
+t_compiler		*compiler_create(char *source_fn);
 void			compiler_destroy(t_compiler **aself);
 t_bool			compiler_make(t_compiler *self, t_bool multi);
 t_bool			compiler_make_load(t_compiler *self);

@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_print_bytecode.c                          :+:      :+:    :+:   */
+/*   disasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 19:01:41 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 22:12:10 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/07 21:46:30 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/07 22:05:44 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#ifndef DISASM_H
+# define DISASM_H
 
-void	compiler_print_bytecode(t_compiler *self)
+# include <fcntl.h>
+
+# include "ft_printf.h"
+# include "ft_xexit.h"
+# include "libft.h"
+# include "op.h"
+
+typedef struct s_decompiler		t_decompiler;
+
+struct		s_decompiler
 {
-	ft_printf("=== BYTECODE: ===\n");
-	ft_print_memory(self->bytecode_data, self->bytecode_size);
-}
+	char	*bytecode_fn;
+	int		bytecode_fd;
+	char	*bytecode_data;
+	size_t	bytecode_size;
+};
+
+#endif
