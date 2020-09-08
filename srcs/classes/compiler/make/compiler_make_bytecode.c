@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:38:02 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 22:10:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 t_bool	compiler_make_bytecode(t_compiler *self)
 {

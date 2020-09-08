@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compiler_make_save.c                               :+:      :+:    :+:   */
+/*   argument_repr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:28:01 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/08 13:16:02 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/08 13:20:31 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_bool	compiler_make_save(t_compiler *self)
+char	*argument_repr(t_argument *self)
 {
-	self->bytecode_fd = open(self->bytecode_fn,
-		O_CREAT | O_TRUNC | O_WRONLY, 0644);
-	if (self->bytecode_fd >= 0)
+	char	str;
+
+	if (self->repr == NULL)
 	{
-		if (ft_writeall(self->bytecode_fd,
-			self->bytecode_data, self->bytecode_size))
-		{
-			return (TRUE);
-		}
+		if (self->arg_type & T_REG)
+			str = "T_REG";
+		else if (self->arg_type & T_DIR)
+			str = "T_DIR";
+		else if (self->arg_type & T_IND)
+			str = "T_IND";
+		else
+			str = "NONE";
+		self->repr = ft_xprintf(
+			"[%03d:%03d] ARGUMENT: type = %s, size = %lu, value = %d",
+			self->token->ln, self->token->col, str, self->size, self->number);
 	}
-	ft_printf("Can't write output file %s", self->bytecode_fn);
-	return (FALSE);
+	return (self->repr);
 }

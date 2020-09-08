@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:35:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 04:16:34 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 size_t	instruction_calc_size(t_instruction *self)
 {

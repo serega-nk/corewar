@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:47:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 00:02:54 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 static t_bool	(*g_funcs[])(t_lexer *, t_token *) = {
 	&lexer_tokenize_word,

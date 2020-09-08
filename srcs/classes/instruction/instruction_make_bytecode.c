@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 21:03:51 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 06:52:31 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 static char		calc_types(t_instruction *self)
 {

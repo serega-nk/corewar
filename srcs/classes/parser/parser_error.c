@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_error.c                                      :+:      :+:    :+:   */
+/*   parser_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/13 18:34:45 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 23:35:11 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/08 13:51:01 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/08 13:57:37 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
-t_bool	token_error(t_token *self, char *str)
+t_bool	parser_error(t_parser *self, t_token *token, char *message)
 {
-	if (str)
-		ft_printf("{red}%s at token{eoc} ", str);
-	token_print(self);
+	ft_strdel(&self->error_message);
+	self->error_message = ft_xprintf(
+		"%s at token %s", message, token_repr(token));
 	return (FALSE);
 }

@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 00:12:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 01:26:46 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disasm.h"
+#include "disclasses.h"
 
 t_bool	decompiler_make_print(t_decompiler *self)
 {

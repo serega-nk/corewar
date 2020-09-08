@@ -6,25 +6,20 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:07:28 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 22:09:12 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:24:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 static char		*make_bytecode_fn(char *source_fn)
 {
-	char		*basename;
-	char		*bytecode_fn;
 	size_t		length;
 
-	basename = ft_xstrdup(source_fn);
-	length = ft_strlen(basename);
-	if (length >= 2 && ft_strequ(basename + length - 2, ".s"))
-		basename[length - 2] = '\0';
-	bytecode_fn = ft_xstrdup2(basename, ".cor");
-	ft_strdel(&basename);
-	return (bytecode_fn);
+	length = ft_strlen(source_fn);
+	if (length >= 2 && ft_strequ(source_fn + length - 2, ".s"))
+		length -= 2;
+	return (ft_xprintf("%.*s.cor", length, source_fn));
 }
 
 t_compiler		*compiler_create(char *source_fn)

@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:47:19 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/01 17:01:06 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:10:01 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 t_bool	parser_next_arguments(t_parser *self, t_instruction *instruction)
 {
@@ -28,7 +28,7 @@ t_bool	parser_next_arguments(t_parser *self, t_instruction *instruction)
 	}
 	if (instruction->arguments->count != instruction->op->argc)
 	{
-		return (token_error(instruction->token,
+		return (parser_error(self, instruction->token,
 			"Invalid parameter count for instruction"));
 	}
 	return (TRUE);

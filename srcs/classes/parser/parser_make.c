@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 00:23:42 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 00:03:18 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:56:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 static t_bool	parser_make_head(t_parser *self)
 {
@@ -31,7 +31,7 @@ static t_bool	parser_make_head(t_parser *self)
 	}
 	if (self->cmd_name == NULL || self->cmd_comment == NULL)
 	{
-		return (token_error(parser_peek(self, 0),
+		return (parser_error(self, parser_peek(self, 0),
 			"Expected to enter the command"));
 	}
 	return (TRUE);
@@ -57,7 +57,7 @@ static t_bool	parser_make_body(t_parser *self)
 				return (FALSE);
 		}
 		else
-			return (token_error(parser_peek(self, 0), "Syntax error"));
+			return (parser_error(self, parser_peek(self, 0), "Syntax error"));
 	}
 	return (TRUE);
 }
@@ -72,7 +72,7 @@ static t_bool	parser_make_labels(t_parser *self)
 		if (hashtab_get(self->labels, argument->token->value,
 			(void **)&argument->label) == FALSE)
 		{
-			return (token_error(argument->token, "Label not defined"));
+			return (parser_error(self, argument->token, "Label not defined"));
 		}
 	}
 	return (TRUE);
@@ -81,7 +81,7 @@ static t_bool	parser_make_labels(t_parser *self)
 static t_bool	parser_make_check(t_parser *self)
 {
 	if (self->instructions->count == 0)
-		return (token_error(parser_peek(self, 0), "No instructions"));
+		return (parser_error(self, parser_peek(self, 0), "No instructions"));
 	return (TRUE);
 }
 

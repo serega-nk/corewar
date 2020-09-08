@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 01:47:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:07:05 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef enum e_token_type		t_token_type;
 
 typedef struct s_token			t_token;
 typedef struct s_label			t_label;
-typedef struct s_instruction	t_instruction;
 typedef struct s_argument		t_argument;
+typedef struct s_instruction	t_instruction;
 typedef struct s_lexer			t_lexer;
 typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
@@ -53,6 +53,7 @@ struct			s_token
 	int				ln;
 	int				col;
 	char			*value;
+	char			*repr;
 };
 
 struct			s_label
@@ -61,6 +62,17 @@ struct			s_label
 	char			*name;
 	int				index;
 	size_t			offset;
+	char			*repr;
+};
+
+struct			s_argument
+{
+	t_token			*token;
+	t_arg_type		arg_type;
+	long			number;
+	t_label			*label;
+	size_t			size;
+	char			*repr;
 };
 
 struct			s_instruction
@@ -71,15 +83,7 @@ struct			s_instruction
 	size_t			offset;
 	size_t			size;
 	char			*bytecode;
-};
-
-struct			s_argument
-{
-	t_token			*token;
-	t_arg_type		arg_type;
-	long			number;
-	t_label			*label;
-	size_t			size;
+	char			*repr;
 };
 
 struct			s_lexer
@@ -91,6 +95,7 @@ struct			s_lexer
 	int				ln;
 	int				col;
 	t_vector		*tokens;
+	char			*error_message
 };
 
 struct			s_parser
@@ -103,6 +108,7 @@ struct			s_parser
 	t_hashtab		*labels;
 	t_vector		*instructions;
 	t_vector		*convert_labels;
+	char			*error_message
 };
 
 struct			s_compiler
@@ -119,6 +125,7 @@ struct			s_compiler
 	int				bytecode_fd;
 	char			*bytecode_data;
 	size_t			bytecode_size;
+	char			*error_message
 };
 
 struct			s_decompiler
@@ -129,27 +136,27 @@ struct			s_decompiler
 	size_t			bytecode_size;
 	size_t			bytecode_pos;
 	t_header		header;
+	char			*error_message
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
-t_bool			token_error(t_token *self, char *str);
-void			token_print(t_token *self);
+char			*token_repr(t_token *self);
 
+t_bool			label_name_check(char *name);
 t_label			*label_create(t_token *token, char *name, int index);
 void			label_destroy(t_label **aself);
-t_bool			label_name_check(char *name);
-void			label_print(t_label *label);
+char			*label_repr(t_label *self);
 
 t_argument		*argument_create(void);
 void			argument_destroy(t_argument **aself);
-void			argument_print(t_argument *self);
+char			*argument_repr(t_argument *self);
 
 t_instruction	*instruction_create(void);
 void			instruction_destroy(t_instruction **aself);
 size_t			instruction_calc_size(t_instruction *self);
 void			instruction_make_bytecode(t_instruction *self);
-void			instruction_print(t_instruction *self);
+char			*instruction_repr(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
@@ -168,6 +175,8 @@ t_bool			lexer_tokenize(t_lexer *self);
 
 t_parser		*parser_create(t_vector *tokens);
 void			parser_destroy(t_parser **aself);
+t_bool			parser_error(t_parser *self, t_token *token, char *message);
+t_bool			parser_errorf(t_parser *self, t_token *token, char *message);
 t_bool			parser_eof(t_parser *self);
 t_token			*parser_peek(t_parser *self, int rel);
 void			parser_move(t_parser *self, int rel);

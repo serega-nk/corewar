@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 19:22:27 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:13:27 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 static t_bool	check_arg_type(t_arg_type arg_type, t_arg_type allow)
 {
@@ -25,14 +25,15 @@ static t_bool	check_arg_type(t_arg_type arg_type, t_arg_type allow)
 	return (TRUE);
 }
 
-t_bool			argument_parse_token(t_argument *argument)
+t_bool			parser_next_argument_parse_token(t_parser *self,
+	t_argument *argument)
 {
 	char		*ptr;
 
 	if (argument->arg_type & T_LAB)
 	{
 		if (label_name_check(argument->token->value) == FALSE)
-			return (token_error(argument->token, "Invalid name of the label"));
+			return (parser_error(self, argument->token, "Invalid name label"));
 	}
 	else
 	{
@@ -40,10 +41,10 @@ t_bool			argument_parse_token(t_argument *argument)
 		if (parse_skip(&ptr, "r"))
 			argument->arg_type |= T_REG;
 		if ((parse_long(&ptr, &argument->number) && parse_none(&ptr)) == FALSE)
-			return (token_error(argument->token, "Invalid argument"));
+			return (parser_error(self, argument->token, "Invalid argument"));
 		if (argument->arg_type & T_REG &&
 			(argument->number <= 0 || argument->number > REG_NUMBER))
-			return (token_error(argument->token, "Invalid register number"));
+			return (parser_error(self, argument->token, "Invalid reg number"));
 	}
 	if (!(argument->arg_type & T_REG) && !(argument->arg_type & T_DIR))
 		argument->arg_type |= T_IND;
@@ -66,12 +67,12 @@ t_bool			parser_next_argument(t_parser *self,
 	}
 	argument->token = parser_peek(self, 0);
 	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE)
-		return (token_error(parser_peek(self, 0), "Invalid argument"));
-	if (argument_parse_token(argument) == FALSE)
+		return (parser_error(self, parser_peek(self, 0), "Invalid argument"));
+	if (parser_next_argument_parse_token(self, argument) == FALSE)
 		return (FALSE);
 	if (check_arg_type(argument->arg_type, allow) == FALSE)
 	{
-		return (token_error(argument->token,
+		return (parser_error(self, argument->token,
 			"Invalid parameter type for instruction"));
 	}
 	return (TRUE);

@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 22:27:38 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/06 00:14:04 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:12:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
 void	compiler_print_labels(t_compiler *self)
 {
@@ -20,7 +20,6 @@ void	compiler_print_labels(t_compiler *self)
 	hashtab_start(self->parser->labels);
 	while (hashtab_next_kv(self->parser->labels, NULL, (void **)&label))
 	{
-		label_print(label);
-		ft_printf("\n");
+		ft_printf("%s\n", label_repr(label));
 	}
 }

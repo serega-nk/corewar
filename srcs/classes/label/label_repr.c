@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   label_print.c                                      :+:      :+:    :+:   */
+/*   label_repr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/03 00:44:16 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/06 00:54:20 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/08 13:09:11 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/08 13:09:44 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
-void	label_print(t_label *self)
+char	*label_repr(t_label *self)
 {
-	ft_printf("[%03d:%03d] LABEL: name = %s, offset = %d",
-		self->token->ln, self->token->col, self->name, self->offset);
+	if (self->repr == NULL)
+	{
+		self->repr = ft_xprintf("[%03d:%03d] LABEL: name = %s, offset = %d",
+			self->token->ln, self->token->col, self->name, self->offset);
+	}
+	return (self->repr);
 }
