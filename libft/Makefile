@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/07 19:19:31 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/08 13:10:57 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,6 @@ SOURCES		= \
 		ft_print_memory.c \
 	) \
 	$(addprefix ft_printf/, \
-		ft_printf_fd.c \
-		ft_printf.c \
-		ft_snprintf.c \
-		\
 		$(addprefix output/, \
 			ft_pf_output_flush.c \
 			ft_pf_output_putchar.c \
@@ -94,6 +90,10 @@ SOURCES		= \
 			ft_pf_print_string.c \
 			ft_pf_print_unsigned.c \
 		) \
+		ft_printf_fd.c \
+		ft_printf.c \
+		ft_snprintf.c \
+		ft_xprintf.c \
 	) \
 	$(addprefix ft_xexit/, \
 		ft_on_xexit.c \
