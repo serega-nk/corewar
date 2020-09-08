@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 01:37:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/07/24 17:45:06 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:04:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_snprintf(char *str, size_t n, const char *format, ...)
 	{
 		self.fd = -1;
 		self.str = str;
-		self.n = n;
+		self.n = (n > 0) ? n - 1 : 0;
 		self.format = format;
 		va_start(self.ap, format);
 		ft_pf_parse_while(&self);
