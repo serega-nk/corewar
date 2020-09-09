@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:52 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:53:19 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 23:08:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		app_execute_success(t_app *self)
 	if (self->option_i)
 		compiler_print_instructions(self->compiler);
 	if (self->option_b)
-		compiler_print_bytecode(self->compiler);	
+		compiler_print_bytecode(self->compiler);
 }
 
 static void		app_execute_errors(t_app *self)

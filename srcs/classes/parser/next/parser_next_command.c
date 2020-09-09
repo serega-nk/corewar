@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 17:07:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 14:09:06 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 23:06:25 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_bool	parser_next_command_case_name(t_parser *self, t_token *t0,
 		return (parser_error(self, t2, "Champion name empty"));
 	if (length > PROG_NAME_LENGTH)
 	{
-		return (parser_errorf(self, t2,	ft_xprintf(
+		return (parser_errorf(self, t2, ft_xprintf(
 			"Champion name too long (Max length %d)", PROG_NAME_LENGTH)));
 	}
 	self->cmd_name = t2->value;
@@ -41,7 +41,7 @@ static t_bool	parser_next_command_case_comment(t_parser *self, t_token *t0,
 	length = ft_strlen(t2->value);
 	if (length > COMMENT_LENGTH)
 	{
-		return (parser_errorf(self, t2,	ft_xprintf(
+		return (parser_errorf(self, t2, ft_xprintf(
 			"Champion comment too long (Max length %d)", COMMENT_LENGTH)));
 	}
 	self->cmd_comment = t2->value;
