@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/07 23:27:10 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:40:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void			app_options(t_app *self)
 		ft_printf("Usage: %s [-bhilt] <sourcefile.s>\n", name);
 		ft_xexit(EXIT_SUCCESS);
 	}
+	self->multi = self->argc != 1;
 }

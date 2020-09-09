@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 14:58:29 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 14:13:27 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:11:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ t_bool			parser_next_argument_parse_token(t_parser *self,
 			return (parser_error(self, argument->token, "Invalid argument"));
 		if (argument->arg_type & T_REG &&
 			(argument->number <= 0 || argument->number > REG_NUMBER))
-			return (parser_error(self, argument->token, "Invalid reg number"));
+		{
+			return (parser_error(self, argument->token,
+				"Invalid register number"));
+		}
 	}
 	if (!(argument->arg_type & T_REG) && !(argument->arg_type & T_DIR))
 		argument->arg_type |= T_IND;

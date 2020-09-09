@@ -6,11 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 22:03:54 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:32:04 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disclasses.h"
+#include "disasm.h"
 
 t_decompiler		*decompiler_create(char *bytecode_fn)
 {

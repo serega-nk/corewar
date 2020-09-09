@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 03:28:46 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:08:39 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	instruction_destroy(t_instruction **aself)
 {
 	if (aself && *aself)
 	{
+		ft_strdel(&(*aself)->repr);
 		ft_memdel((void **)&(*aself)->bytecode);
 		vector_clean((*aself)->arguments, &argument_destroy);
 		vector_destroy(&(*aself)->arguments);

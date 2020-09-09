@@ -6,13 +6,13 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:17:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 13:27:05 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:31:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_bool	compiler_make(t_compiler *self, t_bool multi)
+t_bool	compiler_make(t_compiler *self)
 {
 	if (compiler_make_load(self) &&
 		compiler_make_analyzed(self) &&

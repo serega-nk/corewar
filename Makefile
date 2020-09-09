@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/08 01:48:13 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/09 22:32:34 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SOURCES_C	= \
 		$(addprefix argument/, \
 			argument_create.c \
 			argument_destroy.c \
-			argument_print.c \
+			argument_repr.c \
 		) \
 		$(addprefix compiler/, \
 			$(addprefix make/, \
@@ -44,6 +44,8 @@ SOURCES_C	= \
 			) \
 			compiler_create.c \
 			compiler_destroy.c \
+			compiler_error.c \
+			compiler_errorf.c \
 			compiler_make.c \
 		) \
 		$(addprefix decompiler/, \
@@ -62,13 +64,13 @@ SOURCES_C	= \
 			instruction_destroy.c \
 			instruction_calc_size.c \
 			instruction_make_bytecode.c \
-			instruction_print.c \
+			instruction_repr.c \
 		) \
 		$(addprefix label/, \
 			label_create.c \
 			label_destroy.c \
 			label_name_check.c \
-			label_print.c \
+			label_repr.c \
 		) \
 		$(addprefix lexer/, \
 			$(addprefix tokenize/, \
@@ -81,6 +83,8 @@ SOURCES_C	= \
 			lexer_create.c \
 			lexer_destroy.c \
 			lexer_eof.c \
+			lexer_error.c \
+			lexer_errorf.c \
 			lexer_next.c \
 			lexer_peek.c \
 			lexer_start.c \
@@ -107,6 +111,8 @@ SOURCES_C	= \
 			parser_create.c \
 			parser_destroy.c \
 			parser_eof.c \
+			parser_error.c \
+			parser_errorf.c \
 			parser_make.c \
 			parser_move.c \
 			parser_next.c \
@@ -115,8 +121,7 @@ SOURCES_C	= \
 		$(addprefix token/, \
 			token_create.c \
 			token_destroy.c \
-			token_error.c \
-			token_print.c \
+			token_repr.c \
 		) \
 	) \
 	op.c \

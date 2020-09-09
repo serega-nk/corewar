@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 22:26:50 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:18:36 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	compiler_print_tokens(t_compiler *self)
 	vector_start(self->lexer->tokens);
 	while (vector_next(self->lexer->tokens, (void **)&token))
 	{
-		token_print(token);
-		ft_printf("\n");
+		ft_printf("%s\n", token_repr(token));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 14:07:05 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:31:25 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ struct			s_lexer
 	int				ln;
 	int				col;
 	t_vector		*tokens;
-	char			*error_message
+	t_bool			error;
+	char			*error_message;
 };
 
 struct			s_parser
@@ -108,7 +109,8 @@ struct			s_parser
 	t_hashtab		*labels;
 	t_vector		*instructions;
 	t_vector		*convert_labels;
-	char			*error_message
+	t_bool			error;
+	char			*error_message;
 };
 
 struct			s_compiler
@@ -125,7 +127,8 @@ struct			s_compiler
 	int				bytecode_fd;
 	char			*bytecode_data;
 	size_t			bytecode_size;
-	char			*error_message
+	t_bool			error;
+	char			*error_message;
 };
 
 struct			s_decompiler
@@ -136,7 +139,8 @@ struct			s_decompiler
 	size_t			bytecode_size;
 	size_t			bytecode_pos;
 	t_header		header;
-	char			*error_message
+	t_bool			error;
+	char			*error_message;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -160,6 +164,8 @@ char			*instruction_repr(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
+t_bool			lexer_error(t_lexer *self, t_token *token, char *message);
+t_bool			lexer_errorf(t_lexer *self, t_token *token, char *message);
 char			lexer_peek(t_lexer *self, int relative_position);
 char			lexer_next(t_lexer *self);
 t_bool			lexer_eof(t_lexer *self);
@@ -198,7 +204,9 @@ t_bool			parser_make(t_parser *self);
 
 t_compiler		*compiler_create(char *source_fn);
 void			compiler_destroy(t_compiler **aself);
-t_bool			compiler_make(t_compiler *self, t_bool multi);
+t_bool			compiler_error(t_compiler *self, char *message);
+t_bool			compiler_errorf(t_compiler *self, char *message);
+t_bool			compiler_make(t_compiler *self);
 t_bool			compiler_make_load(t_compiler *self);
 t_bool			compiler_make_analyzed(t_compiler *self);
 t_bool			compiler_make_prog_size(t_compiler *self);

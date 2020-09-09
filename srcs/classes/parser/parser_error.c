@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 13:51:01 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 13:57:37 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:10:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	parser_error(t_parser *self, t_token *token, char *message)
 {
+	self->error = TRUE;
 	ft_strdel(&self->error_message);
 	self->error_message = ft_xprintf(
 		"%s at token %s", message, token_repr(token));

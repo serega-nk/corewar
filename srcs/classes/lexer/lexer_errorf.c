@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lexer_errorf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:41:23 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/09 22:28:17 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/09 22:28:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+t_bool	lexer_errorf(t_lexer *self, t_token *token, char *message)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (app.errors == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+	lexer_error(self, token, message);
+	ft_strdel(&message);
+	return (FALSE);
 }

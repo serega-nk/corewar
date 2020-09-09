@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   compiler_errorf.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:41:23 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/09 22:23:31 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/09 22:57:11 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+t_bool	compiler_errorf(t_compiler *self, char *message)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (app.errors == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+	ft_printf("|%s|\n", message);
+	
+	compiler_error(self, message);
+	ft_strdel(&message);
+	return (FALSE);
 }

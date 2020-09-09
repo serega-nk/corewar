@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 22:41:30 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 01:47:57 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:41:36 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_app			t_app;
 
 struct		s_app
 {
-	t_bool			error;
 	int				argc;
 	char			**argv;
 	t_bool			option_a;
@@ -32,6 +31,9 @@ struct		s_app
 	t_bool			option_l;
 	t_bool			option_t;
 	t_compiler		*compiler;
+	t_bool			multi;
+	int				errors;
+	int				success;
 };
 
 void		app_init(t_app *self, int argc, char *argv[]);

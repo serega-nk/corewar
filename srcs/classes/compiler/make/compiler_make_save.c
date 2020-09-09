@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 23:28:01 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:56:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_bool	compiler_make_save(t_compiler *self)
 			return (TRUE);
 		}
 	}
-	ft_printf("Can't write output file %s", self->bytecode_fn);
-	return (FALSE);
+	ft_printf("#1\n");
+	return (compiler_errorf(self, ft_xprintf(
+		"Can't write output file %s", self->bytecode_fn)));	
 }
