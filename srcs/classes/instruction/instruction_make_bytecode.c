@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 21:03:51 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 12:31:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/12 00:15:00 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void			instruction_make_bytecode(t_instruction *self)
 	vector_start(self->arguments);
 	while (vector_next(self->arguments, (void **)&argument))
 	{
-		ft_memcpy_rev(self->bytecode + pos, &argument->number, argument->size);
+		ft_memcpy(self->bytecode + pos, &argument->number, argument->size);
+		ft_memrev(self->bytecode + pos, argument->size);
 		pos += argument->size;
 	}
 }

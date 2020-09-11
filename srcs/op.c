@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2020/09/07 21:45:08 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/10 21:12:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_op		g_op_tab[17] =
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
-t_op			*op_get(char *name)
+t_op			*get_op_from_name(char *name)
 {
 	t_op	*walk;
 
@@ -47,6 +47,20 @@ t_op			*op_get(char *name)
 	while (walk->name)
 	{
 		if (ft_strequ(walk->name, name))
+			return (walk);
+		walk++;
+	}
+	return (NULL);
+}
+
+t_op			*get_op_from_code(char code)
+{
+	t_op	*walk;
+
+	walk = g_op_tab;
+	while (walk->code)
+	{
+		if (walk->code == code)
 			return (walk);
 		walk++;
 	}

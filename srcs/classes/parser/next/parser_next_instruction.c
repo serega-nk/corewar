@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 20:41:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/08 13:59:05 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/10 21:14:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	parser_next_instruction(t_parser *self)
 	instruction->token = parser_peek(self, 0);
 	if (parser_accept(self, TOKEN_TYPE_WORD) == FALSE)
 		return (parser_error(self, parser_peek(self, 0), "Syntax error"));
-	if ((instruction->op = op_get(instruction->token->value)) == NULL)
+	if ((instruction->op = get_op_from_name(instruction->token->value)) == NULL)
 	{
 		return (parser_error(self, instruction->token,
 			"Invalid name of the instruction"));

@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/09 22:32:34 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/11 18:50:56 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ HEADERS		= asm.h classes.h disasm.h op.h
 SOURCES_C	= \
 	$(addprefix classes/, \
 		$(addprefix argument/, \
+			argument_calc_size.c \
 			argument_create.c \
 			argument_destroy.c \
 			argument_repr.c \
@@ -50,14 +51,36 @@ SOURCES_C	= \
 		) \
 		$(addprefix decompiler/, \
 			$(addprefix make/, \
-				decompiler_make_header.c \
-				decompiler_make_instructions.c \
+				decompiler_make_deparser.c \
+				decompiler_make_lines.c \
 				decompiler_make_load.c \
-				decompiler_make_print.c \
 			) \
 			decompiler_create.c \
 			decompiler_destroy.c \
+			decompiler_error.c \
+			decompiler_errorf.c \
 			decompiler_make.c \
+		) \
+		$(addprefix deparser/, \
+			$(addprefix make/, \
+				deparser_make_header.c \
+				deparser_make_instructions.c \
+			) \
+			$(addprefix next/, \
+				deparser_next_arg_types.c \
+				deparser_next_argument.c \
+				deparser_next_instruction.c \
+				deparser_next_op.c \
+			) \
+			deparser_create.c \
+			deparser_destroy.c \
+			deparser_eof.c \
+			deparser_error.c \
+			deparser_errorf.c \
+			deparser_make.c \
+			deparser_move.c \
+			deparser_next.c \
+			deparser_peek.c \
 		) \
 		$(addprefix instruction/, \
 			instruction_create.c \
@@ -65,6 +88,7 @@ SOURCES_C	= \
 			instruction_calc_size.c \
 			instruction_make_bytecode.c \
 			instruction_repr.c \
+			instruction_sourcecode.c \
 		) \
 		$(addprefix label/, \
 			label_create.c \

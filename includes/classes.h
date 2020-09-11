@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:31:25 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/11 18:51:59 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_instruction	t_instruction;
 typedef struct s_lexer			t_lexer;
 typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
+typedef struct s_deparser		t_deparser;
 typedef struct s_decompiler		t_decompiler;
 
 enum			e_token_type
@@ -79,11 +80,13 @@ struct			s_instruction
 {
 	t_token			*token;
 	t_op			*op;
+	t_arg_type		*arg_types;
 	t_vector		*arguments;
 	size_t			offset;
 	size_t			size;
 	char			*bytecode;
 	char			*repr;
+	char			*sourcecode;
 };
 
 struct			s_lexer
@@ -131,14 +134,25 @@ struct			s_compiler
 	char			*error_message;
 };
 
+struct			s_deparser
+{
+	char			*data;
+	size_t			size;
+	size_t			pos;
+	t_header		header;
+	t_vector		*instructions;
+	t_bool			error;
+	char			*error_message;
+};
+
 struct			s_decompiler
 {
 	char			*bytecode_fn;
 	int				bytecode_fd;
 	char			*bytecode_data;
 	size_t			bytecode_size;
-	size_t			bytecode_pos;
-	t_header		header;
+	t_deparser		*deparser;
+	t_vector		*lines;
 	t_bool			error;
 	char			*error_message;
 };
@@ -154,6 +168,7 @@ char			*label_repr(t_label *self);
 
 t_argument		*argument_create(void);
 void			argument_destroy(t_argument **aself);
+size_t			argument_calc_size(t_argument *self, t_bool dir_ind);
 char			*argument_repr(t_argument *self);
 
 t_instruction	*instruction_create(void);
@@ -161,6 +176,7 @@ void			instruction_destroy(t_instruction **aself);
 size_t			instruction_calc_size(t_instruction *self);
 void			instruction_make_bytecode(t_instruction *self);
 char			*instruction_repr(t_instruction *self);
+char			*instruction_sourcecode(t_instruction *self);
 
 t_lexer			*lexer_create(char *input, size_t length);
 void			lexer_destroy(t_lexer **aself);
@@ -219,12 +235,33 @@ void			compiler_print_labels(t_compiler *self);
 void			compiler_print_instructions(t_compiler *self);
 void			compiler_print_bytecode(t_compiler *self);
 
+
+t_deparser		*deparser_create(char *data, size_t size);
+void			deparser_destroy(t_deparser **aself);
+t_bool			deparser_eof(t_deparser *self);
+t_bool			deparser_error(t_deparser *self, char *message);
+t_bool			deparser_errorf(t_deparser *self, char *message);
+t_bool			deparser_make(t_deparser *self);
+void			deparser_move(t_deparser *self, int rel);
+t_bool			deparser_next(t_deparser *self, void *ptr, size_t size);
+t_bool			deparser_peek(t_deparser *self, int rel, void *ptr,
+	size_t size);
+t_bool			deparser_make_header(t_deparser *self);
+t_bool			deparser_make_instructions(t_deparser *self);
+t_bool			deparser_next_arg_types(t_deparser *self,
+	t_instruction *instruction);
+t_bool			deparser_next_argument(t_deparser *self,
+	t_instruction *instruction, size_t index);
+t_bool			deparser_next_instruction(t_deparser *self);
+t_bool			deparser_next_op(t_deparser *self, t_instruction *instruction);
+
 t_decompiler	*decompiler_create(char *bytecode_fn);
 void			decompiler_destroy(t_decompiler **aself);
+t_bool			decompiler_error(t_decompiler *self, char *message);
+t_bool			decompiler_errorf(t_decompiler *self, char *message);
 t_bool			decompiler_make(t_decompiler *self);
+t_bool			decompiler_make_deparser(t_decompiler *self);
+t_bool			decompiler_make_lines(t_decompiler *self);
 t_bool			decompiler_make_load(t_decompiler *self);
-t_bool			decompiler_make_header(t_decompiler *self);
-t_bool			decompiler_make_instructions(t_decompiler *self);
-t_bool			decompiler_make_print(t_decompiler *self);
 
 #endif

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   deparser_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/07 21:33:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 23:56:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/11 16:12:29 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/11 16:33:11 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disasm.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+t_deparser	*deparser_create(char *data, size_t size)
 {
-	t_app	app;
+	t_deparser	*self;
 
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	self = (t_deparser *)ft_xmemalloc(sizeof(t_deparser));
+	self->data = data;
+	self->size = size;
+	self->instructions = vector_create();
+	return (self);
 }

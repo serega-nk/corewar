@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 22:03:54 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:32:04 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:13:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ t_decompiler		*decompiler_create(char *bytecode_fn)
 	self = (t_decompiler *)ft_xmemalloc(sizeof(t_decompiler));
 	self->bytecode_fn = bytecode_fn;
 	self->bytecode_fd = -1;
+	self->lines = vector_create();
 	return (self);
 }

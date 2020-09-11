@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   decompiler_make_print.c                            :+:      :+:    :+:   */
+/*   deparser_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/08 00:12:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:32:01 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/11 16:17:15 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/11 16:17:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disasm.h"
+#include "classes.h"
 
-t_bool	decompiler_make_print(t_decompiler *self)
+t_bool	deparser_error(t_deparser *self, char *message)
 {
-	ft_printf(".name = \"%s\"\n", self->header.prog_name);
-	ft_printf(".comment = \"%s\"\n", self->header.comment);
-	ft_printf("\n");		
-	return (TRUE);
+	self->error = TRUE;
+	ft_strdel(&self->error_message);
+	self->error_message = ft_xprintf("%s", message);
+	return (FALSE);
 }

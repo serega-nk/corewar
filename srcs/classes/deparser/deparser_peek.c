@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   deparser_peek.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/07 21:33:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 23:56:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/11 16:07:36 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/11 23:36:52 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disasm.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+t_bool	deparser_peek(t_deparser *self, int rel, void *ptr, size_t size)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	if (self->pos + rel < 0 || self->pos + rel + size > self->size)
+		return (FALSE);
+	ft_memcpy(ptr, self->data + self->pos + rel, size);
+	return (TRUE);
 }

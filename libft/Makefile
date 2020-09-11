@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/08 13:10:57 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/12 00:23:31 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,21 +41,21 @@ SOURCES		= \
 		deque_push_front.c \
 	) \
 	$(addprefix extra/, \
-		ft_isspace.c \
-		ft_memdup.c \
-		ft_strnlen.c \
-		ft_strndup.c \
-		ft_index.c \
-		ft_max.c \
-		ft_min.c \
-		ft_swap.c \
-		ft_quicksort.c \
 		ft_close.c \
-		ft_memcpy_rev.c \
 		ft_get_size.c \
-		ft_readall.c \
-		ft_writeall.c \
+		ft_index.c \
+		ft_isspace.c \
+		ft_max.c \
+		ft_memdup.c \
+		ft_memrev.c \
+		ft_min.c \
 		ft_print_memory.c \
+		ft_quicksort.c \
+		ft_readall.c \
+		ft_strndup.c \
+		ft_strnlen.c \
+		ft_swap.c \
+		ft_writeall.c \
 	) \
 	$(addprefix ft_printf/, \
 		$(addprefix output/, \

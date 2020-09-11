@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   argument_calc_size.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/07 21:33:31 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 23:56:34 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/11 18:00:05 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/11 18:05:02 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "disasm.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+size_t	argument_calc_size(t_argument *self, t_bool dir_ind)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	self->size = 0;
+	if (self->arg_type & T_REG)
+		self->size = NUM_SIZE;
+	else if (self->arg_type & T_DIR)
+		self->size = (dir_ind ? IND_SIZE : DIR_SIZE);
+	else if (self->arg_type & T_IND)
+		self->size = IND_SIZE;
+	return (self->size);
 }

@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction_calc_size.c                            :+:      :+:    :+:   */
+/*   instruction_sourcecode.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/02 23:35:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/11 23:40:10 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/10 13:38:17 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/12 00:28:48 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-size_t			instruction_calc_size(t_instruction *self)
+char			*instruction_sourcecode(t_instruction *self)
 {
 	t_argument	*argument;
+	char		*temp;
+	int			index;
 
-	self->size = 1;
-	if (self->op->use_types)
-	{
-		self->size += 1;
-	}
+	ft_strdel(&self->sourcecode);
+	self->sourcecode = ft_xprintf("%s", self->op->name);
+	index = 0;
 	vector_start(self->arguments);
 	while (vector_next(self->arguments, (void **)&argument))
 	{
-		self->size += argument_calc_size(argument, self->op->dir_ind);
+		temp = self->sourcecode;
+		self->sourcecode = ft_xprintf("%s%s %s%s%ld",
+			temp,
+			(index > 0 ? "," : ""),
+			(argument->arg_type & T_DIR ? "%" : ""),
+			(argument->arg_type & T_REG ? "r" : ""),
+			argument->number);
+		ft_strdel(&temp);		
+		index++;	
 	}
-	return (self->size);
+	return (self->sourcecode);
 }

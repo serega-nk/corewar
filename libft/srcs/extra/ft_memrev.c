@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy_rev.c                                    :+:      :+:    :+:   */
+/*   ft_memrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 02:41:27 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/05 03:07:24 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/11 23:26:42 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/11 23:59:52 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy_rev(void *dst, const void *src, size_t n)
+void	ft_memrev(void *addr, size_t size)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			index;
+	char	*ptr;
+	size_t	index;
+	char	temp;
 
-	if (!dst && !src)
-		return (NULL);
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
+	ptr = (char *)addr;
 	index = 0;
-	while (index < n)
+	while (index < size / 2)
 	{
-		d[index] = s[n - index - 1];
+		temp = ptr[index];
+		ptr[index] = ptr[size - index - 1];
+		ptr[size - index - 1] = temp;
 		index++;
 	}
-	return (dst);
 }
