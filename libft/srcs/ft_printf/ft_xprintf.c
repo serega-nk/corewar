@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 12:47:53 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/09 22:59:12 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/12 00:46:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	*ft_xprintf(const char *format, ...)
 		self.fd = -1;
 		self.format = format;
 		self.str = ft_xmemalloc(len + 1);
-		self.n = len;		
+		self.n = len;
 		va_start(self.ap, format);
 		ft_pf_parse_while(&self);
 		va_end(self.ap);
 	}
-	return (self.str);	
+	return (self.str);
 }

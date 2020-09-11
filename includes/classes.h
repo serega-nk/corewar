@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/11 18:51:59 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/12 00:42:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,6 @@ void			compiler_print_tokens(t_compiler *self);
 void			compiler_print_labels(t_compiler *self);
 void			compiler_print_instructions(t_compiler *self);
 void			compiler_print_bytecode(t_compiler *self);
-
 
 t_deparser		*deparser_create(char *data, size_t size);
 void			deparser_destroy(t_deparser **aself);

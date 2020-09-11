@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 13:38:17 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/12 00:28:48 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/12 00:44:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char			*instruction_sourcecode(t_instruction *self)
 			(argument->arg_type & T_DIR ? "%" : ""),
 			(argument->arg_type & T_REG ? "r" : ""),
 			argument->number);
-		ft_strdel(&temp);		
-		index++;	
+		ft_strdel(&temp);
+		index++;
 	}
 	return (self->sourcecode);
 }
