@@ -6,18 +6,19 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/11 18:50:56 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/12 12:10:22 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_A 		= asm
 NAME_D 		= disasm
+NAME_W 		= corewar
 
 INC_DIR		= ./includes
 SRC_DIR		= ./srcs
 OBJ_DIR		= ./objs
 
-HEADERS		= asm.h classes.h disasm.h op.h
+HEADERS		= asm.h classes.h corewar.h disasm.h op.h
 
 SOURCES_C	= \
 	$(addprefix classes/, \
@@ -172,6 +173,17 @@ SOURCES_D	= \
 		main.c \
 	) \
 
+SOURCES_W	= \
+	$(addprefix corewar/, \
+		$(addprefix app/, \
+			app_execute.c \
+			app_free.c \
+			app_init.c \
+			app_options.c \
+		) \
+		main.c \
+	) \
+
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
@@ -184,17 +196,22 @@ INCS		= $(addprefix $(INC_DIR)/, $(HEADERS))
 SRCS_C		= $(addprefix $(SRC_DIR)/, $(SOURCES_C))
 SRCS_A		= $(addprefix $(SRC_DIR)/, $(SOURCES_A))
 SRCS_D		= $(addprefix $(SRC_DIR)/, $(SOURCES_D))
+SRCS_W		= $(addprefix $(SRC_DIR)/, $(SOURCES_W))
 OBJS_C		= $(addprefix $(OBJ_DIR)/, $(SOURCES_C:.c=.o))
 OBJS_A		= $(addprefix $(OBJ_DIR)/, $(SOURCES_A:.c=.o))
 OBJS_D		= $(addprefix $(OBJ_DIR)/, $(SOURCES_D:.c=.o))
+OBJS_W		= $(addprefix $(OBJ_DIR)/, $(SOURCES_W:.c=.o))
 
-all: $(NAME_A) $(NAME_D)
+all: $(NAME_A) $(NAME_D) $(NAME_W)
 
 $(NAME_A): $(LIBFT) $(OBJS_C) $(OBJS_A)
 	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS_C) $(OBJS_A) $(LFLAGS) -o $@
 
 $(NAME_D): $(LIBFT) $(OBJS_C) $(OBJS_D)
 	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS_C) $(OBJS_D) $(LFLAGS) -o $@
+
+$(NAME_W): $(LIBFT) $(OBJS_C) $(OBJS_W)
+	$(CC) $(WFLAGS) $(IFLAGS) $(OBJS_C) $(OBJS_W) $(LFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) Makefile
 	@mkdir -p ${@D}
@@ -214,14 +231,16 @@ fclean:
 	rm -rf $(OBJ_DIR)
 	rm -rf $(NAME_A).dSYM
 	rm -rf $(NAME_D).dSYM
+	rm -rf $(NAME_W).dSYM
 	rm -rf $(NAME_A)
 	rm -rf $(NAME_D)
+	rm -rf $(NAME_W)
 	find . -type f -name "*.cor" -delete
 
 re: fclean all
 
 norm:
-	@norminette $(INCS) $(SRCS_C) $(SRCS_A) $(SRCS_D)
+	@norminette $(INCS) $(SRCS_C) $(SRCS_A) $(SRCS_D) $(SRCS_W)
 
 vv: $(NAME_A)
 	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) ./_res/champs/42.s ./_res/champs/ex.s
