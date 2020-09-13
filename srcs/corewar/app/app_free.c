@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:12:08 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/12 12:14:00 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/13 19:04:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	app_free(t_app *self)
 {
-	if (self)
-		self = NULL;
+	vector_destroy(&self->args);
 }

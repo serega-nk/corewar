@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_init.c                                         :+:      :+:    :+:   */
+/*   vector_peek.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:11:14 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/13 19:09:18 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/13 18:42:12 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/13 18:58:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vector.h"
 
-void		app_init(t_app *self, int argc, char *argv[])
+t_bool			vector_peek(t_vector *self, int rel, void **adata)
 {
-	int		index;
+	size_t		pos;
 
-	ft_bzero(self, sizeof(t_app));
-	ft_on_xexit(&app_free, self);
-	self->name = argv[0];
-	self->args = vector_create();
-	index = 1;
-	while (index < argc)
+	if (self && adata && self->pos + rel >= 0)
 	{
-		vector_push_back(self->args, argv[index]);
-		index++;
+		pos = self->pos + rel;
+		if (pos < self->count)
+		{
+			*adata = self->table[pos];
+			return (TRUE);
+		}
 	}
+	return (FALSE);
 }

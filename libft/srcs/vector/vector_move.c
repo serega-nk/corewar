@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_init.c                                         :+:      :+:    :+:   */
+/*   vector_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:11:14 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/13 19:09:18 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/13 18:35:36 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/13 18:42:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vector.h"
 
-void		app_init(t_app *self, int argc, char *argv[])
+void	vector_move(t_vector *self, int rel)
 {
-	int		index;
-
-	ft_bzero(self, sizeof(t_app));
-	ft_on_xexit(&app_free, self);
-	self->name = argv[0];
-	self->args = vector_create();
-	index = 1;
-	while (index < argc)
-	{
-		vector_push_back(self->args, argv[index]);
-		index++;
-	}
+	self->pos += rel;
 }

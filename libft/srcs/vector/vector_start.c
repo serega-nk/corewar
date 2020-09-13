@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:47:23 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 18:48:23 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/13 18:46:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	vector_start(t_vector *self)
 {
 	if (self)
-		self->start = 0;
+		self->pos = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/12 12:12:39 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/13 19:10:06 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,18 @@
 
 void			app_execute(t_app *self)
 {
-	while (self->argc > 0)
-	{
-		// self->compiler = compiler_create(*self->argv);
-		// if (compiler_make(self->compiler))
-		// 	app_execute_success(self);
-		// else
-		// 	app_execute_errors(self);
-		// compiler_destroy(&self->compiler);
-		self->argv++;
-		self->argc--;
-	}
+	if (self)
+		self = NULL;
+	
+	// while (self->argc > 0)
+	// {
+	// 	// self->compiler = compiler_create(*self->argv);
+	// 	// if (compiler_make(self->compiler))
+	// 	// 	app_execute_success(self);
+	// 	// else
+	// 	// 	app_execute_errors(self);
+	// 	// compiler_destroy(&self->compiler);
+	// 	self->argv++;
+	// 	self->argc--;
+	// }
 }

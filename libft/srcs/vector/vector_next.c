@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:47:38 by bconchit          #+#    #+#             */
-/*   Updated: 2020/08/14 18:54:56 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/13 18:46:05 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_bool		vector_next(t_vector *self, void **adata)
 {
-	if (self && adata && self->start < self->count)
+	if (vector_peek(self, 0, adata))
 	{
-		*adata = self->table[self->start++];
+		vector_move(self, 1);
 		return (TRUE);
 	}
 	return (FALSE);

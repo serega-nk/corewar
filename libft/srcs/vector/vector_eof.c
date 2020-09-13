@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_init.c                                         :+:      :+:    :+:   */
+/*   vector_eof.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:11:14 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/13 19:09:18 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/13 18:49:21 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/13 18:50:48 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vector.h"
 
-void		app_init(t_app *self, int argc, char *argv[])
+t_bool	vector_eof(t_vector *self)
 {
-	int		index;
-
-	ft_bzero(self, sizeof(t_app));
-	ft_on_xexit(&app_free, self);
-	self->name = argv[0];
-	self->args = vector_create();
-	index = 1;
-	while (index < argc)
-	{
-		vector_push_back(self->args, argv[index]);
-		index++;
-	}
+	return (self->pos < 0 || self->pos >= self->count);
 }
