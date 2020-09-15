@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:11:14 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/13 19:09:18 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/14 06:36:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void		app_init(t_app *self, int argc, char *argv[])
 		vector_push_back(self->args, argv[index]);
 		index++;
 	}
+	vector_start(self->args);
 }

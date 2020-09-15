@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/04 01:21:24 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/13 18:55:36 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/14 04:57:34 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -224,10 +224,13 @@ SOURCES		= \
 		vector_clean.c \
 		vector_create.c \
 		vector_destroy.c \
+		vector_eof.c \
 		vector_get.c \
 		vector_move.c \
 		vector_next.c \
+		vector_next2.c \
 		vector_peek.c \
+		vector_peek2.c \
 		vector_pop_back.c \
 		vector_push_back.c \
 		vector_resize.c \

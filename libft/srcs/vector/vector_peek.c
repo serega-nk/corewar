@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 18:42:12 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/13 18:58:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/14 04:44:47 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_bool			vector_peek(t_vector *self, int rel, void **adata)
 {
-	size_t		pos;
+	ssize_t		pos;
 
-	if (self && adata && self->pos + rel >= 0)
+	if (self && adata)
 	{
-		pos = self->pos + rel;
-		if (pos < self->count)
+		pos = (ssize_t)self->pos + rel;
+		if (pos >= 0 && pos < (ssize_t)self->count)
 		{
 			*adata = self->table[pos];
 			return (TRUE);
