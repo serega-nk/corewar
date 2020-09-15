@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   process_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:41:28 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 19:17:06 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 19:17:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+void	process_destroy(t_process **aself)
 {
-	self->vm = vm_create(self->files, self->nbr_cycles);
-	if (vm_run(self->vm) == FALSE)
-		self->error = TRUE;
+	if (aself && *aself)
+	{
+		ft_memdel((void **)aself);
+	}
 }

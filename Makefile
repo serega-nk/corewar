@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/15 17:03:47 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/15 19:14:24 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,6 @@ HEADERS		= asm.h classes.h corewar.h disasm.h op.h
 
 SOURCES_C	= \
 	$(addprefix classes/, \
-		$(addprefix arena/, \
-			arena_battle.c \
-			arena_create.c \
-			arena_destroy.c \
-		) \
 		$(addprefix argument/, \
 			argument_calc_size.c \
 			argument_create.c \
@@ -148,10 +143,24 @@ SOURCES_C	= \
 			parser_next.c \
 			parser_peek.c \
 		) \
+		$(addprefix player/, \
+			player_create.c \
+			player_destroy.c \
+		) \
+		$(addprefix process/, \
+			process_create.c \
+			process_clone.c \
+			process_destroy.c \
+		) \
 		$(addprefix token/, \
 			token_create.c \
 			token_destroy.c \
 			token_repr.c \
+		) \
+		$(addprefix vm/, \
+			vm_create.c \
+			vm_destroy.c \
+			vm_run.c \
 		) \
 	) \
 	op.c \

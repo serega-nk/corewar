@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 17:08:57 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:41:53 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ struct	s_app
 	long			nbr_cycles;
 	t_vector		*pending;
 	t_vector		*files;
-	t_arena			*arena;
+	t_vm			*vm;
 	int				error;	
 };
 

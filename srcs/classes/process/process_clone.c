@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arena_create.c                                     :+:      :+:    :+:   */
+/*   process_clone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:45:45 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 18:52:38 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 19:17:56 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_arena		*arena_create(t_vector *files, long nbr_cycles)
+t_process	*process_clone(t_process *parent)
 {
-	t_arena	*self;
+	t_process	*self;
 
-	self = (t_arena *)ft_xmemalloc(sizeof(t_arena));
-	self->files = files;
-	self->nbr_cycles = nbr_cycles;
+	self = process_create(parent->vm, parent->player);
 	return (self);
 }

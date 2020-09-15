@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   vm_create.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:41:28 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 18:38:05 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 18:38:39 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+t_vm	*vm_create(t_vector *files, long nbr_cycles)
 {
-	self->vm = vm_create(self->files, self->nbr_cycles);
-	if (vm_run(self->vm) == FALSE)
-		self->error = TRUE;
+	t_vm	*self;
+
+	self = (t_vm *)ft_xmemalloc(sizeof(t_vm));
+	self->files = files;
+	self->nbr_cycles = nbr_cycles;
+	return (self);
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 17:10:54 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 19:17:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "ft_printf.h"
 # include "hashtab.h"
 # include "libft.h"
+# include "list.h"
 # include "parse.h"
 # include "vector.h"
 
@@ -34,7 +35,10 @@ typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
 typedef struct s_deparser		t_deparser;
 typedef struct s_decompiler		t_decompiler;
-typedef struct s_arena			t_arena;
+
+typedef struct s_player			t_player;
+typedef struct s_process		t_process;
+typedef struct s_vm				t_vm;
 
 enum			e_token_type
 {
@@ -158,10 +162,27 @@ struct			s_decompiler
 	char			*error_message;
 };
 
-struct			s_arena
+struct			s_player
+{
+	int			id;
+	char		*name;
+	char		*comment;
+};
+
+struct			s_process
+{
+	t_vm		*vm;
+	t_player	*player;
+	char		reg[REG_SIZE * REG_NUMBER];
+};
+
+struct			s_vm
 {
 	t_vector	*files;
 	long		nbr_cycles;
+	t_vector	*players;
+	t_list		*processes;
+	char		mem[MEM_SIZE];
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -270,8 +291,15 @@ t_bool			decompiler_make_deparser(t_decompiler *self);
 t_bool			decompiler_make_lines(t_decompiler *self);
 t_bool			decompiler_make_load(t_decompiler *self);
 
-t_arena			*arena_create(t_vector *files, long nbr_cycles);
-void			arena_destroy(t_arena **aself);
-t_bool			arena_battle(t_arena *self);
+t_player		*player_create(char *name, char *comment);
+void			player_destroy(t_player **aself);
+
+t_process		*process_create(t_vm *vm, t_player *player);
+void			process_destroy(t_process **aself);
+t_process		*process_clone(t_process *parent);
+
+t_vm			*vm_create(t_vector *files, long nbr_cycles);
+void			vm_destroy(t_vm **aself);
+t_bool			vm_run(t_vm *self);
 
 #endif

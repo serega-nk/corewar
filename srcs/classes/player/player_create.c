@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arena_battle.c                                     :+:      :+:    :+:   */
+/*   player_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 16:48:44 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 17:10:32 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 19:14:00 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 19:14:01 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_bool	arena_battle(t_arena *self)
+t_player	*player_create(char *name, char *comment)
 {
-	int		index;
-	char	*path;
-	
-	ft_printf("nbr_cycles = %d\n", self->nbr_cycles);
-	
-	index = 0;
-	vector_start(self->files);
-	while (vector_next(self->files, (void **)&path))
-	{
-		ft_printf("#%d == %s\n", index, path);
-		index++;
-	}
-	return (TRUE);
+	t_player	*self;
+
+	self = (t_player *)ft_xmemalloc(sizeof(t_player));
+	self->name = name;
+	self->comment = comment;
+	return (self);
 }

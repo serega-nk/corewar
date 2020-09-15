@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   process_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:41:28 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 18:58:03 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+t_process	*process_create(t_vm *vm, t_player *player)
 {
-	self->vm = vm_create(self->files, self->nbr_cycles);
-	if (vm_run(self->vm) == FALSE)
-		self->error = TRUE;
+	t_process	*self;
+
+	self = (t_process *)ft_xmemalloc(sizeof(t_process));
+	self->vm = vm;
+	self->player = player;
+	return (self);
 }
