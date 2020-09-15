@@ -6,13 +6,13 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:48:44 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 17:01:31 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 17:10:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	arena_battle(t_arena *self)
+t_bool	arena_battle(t_arena *self)
 {
 	int		index;
 	char	*path;
@@ -26,4 +26,5 @@ void	arena_battle(t_arena *self)
 		ft_printf("#%d == %s\n", index, path);
 		index++;
 	}
+	return (TRUE);
 }

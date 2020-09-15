@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:40 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 17:10:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,6 @@ t_bool			decompiler_make_load(t_decompiler *self);
 
 t_arena			*arena_create(t_vector *files, long nbr_cycles);
 void			arena_destroy(t_arena **aself);
-void			arena_battle(t_arena *self);
+t_bool			arena_battle(t_arena *self);
 
 #endif
