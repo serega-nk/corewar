@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 19:17:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 21:10:44 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,5 +301,6 @@ t_process		*process_clone(t_process *parent);
 t_vm			*vm_create(t_vector *files, long nbr_cycles);
 void			vm_destroy(t_vm **aself);
 t_bool			vm_run(t_vm *self);
+t_bool			vm_loop(t_vm *self);
 
 #endif
