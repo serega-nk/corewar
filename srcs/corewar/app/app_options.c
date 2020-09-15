@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 01:22:57 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 12:20:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void		app_options_files(t_app *self)
 		else
 		{
 			vector_push_back(self->files, ptr);
-		}	
+		}
 	}
 }
 
@@ -72,5 +72,5 @@ void			app_options(t_app *self)
 {
 	app_options_usage(self);
 	app_options_nbr_cycles(self);
-	app_options_files(self);	
+	app_options_files(self);
 }
