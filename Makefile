@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+         #
+#    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/15 21:10:54 by wzei             ###   ########.fr        #
+#    Updated: 2020/09/15 21:40:04 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,7 +160,9 @@ SOURCES_C	= \
 		$(addprefix vm/, \
 			vm_create.c \
 			vm_destroy.c \
+			vm_load.c \
 			vm_loop.c \
+			vm_print.c \
 			vm_run.c \
 		) \
 	) \

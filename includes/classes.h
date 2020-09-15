@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 21:10:44 by wzei             ###   ########.fr       */
+/*   Updated: 2020/09/15 22:22:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ struct			s_process
 	t_vm		*vm;
 	t_player	*player;
 	char		reg[REG_SIZE * REG_NUMBER];
+	size_t		curr;
 };
 
 struct			s_vm
@@ -291,16 +292,18 @@ t_bool			decompiler_make_deparser(t_decompiler *self);
 t_bool			decompiler_make_lines(t_decompiler *self);
 t_bool			decompiler_make_load(t_decompiler *self);
 
-t_player		*player_create(char *name, char *comment);
+t_player		*player_create(int id, char *name, char *comment);
 void			player_destroy(t_player **aself);
 
-t_process		*process_create(t_vm *vm, t_player *player);
+t_process		*process_create(t_vm *vm, t_player *player, size_t curr);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
 
 t_vm			*vm_create(t_vector *files, long nbr_cycles);
 void			vm_destroy(t_vm **aself);
 t_bool			vm_run(t_vm *self);
+t_bool			vm_load(t_vm *self);
 t_bool			vm_loop(t_vm *self);
+void			vm_print(t_vm *self);
 
 #endif

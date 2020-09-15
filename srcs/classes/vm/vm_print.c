@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_create.c                                   :+:      :+:    :+:   */
+/*   vm_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 22:21:55 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 21:37:08 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 21:38:39 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_process	*process_create(t_vm *vm, t_player *player, size_t curr)
+void	vm_print(t_vm *self)
 {
-	t_process	*self;
-
-	self = (t_process *)ft_xmemalloc(sizeof(t_process));
-	self->vm = vm;
-	self->player = player;
-	self->curr = curr;
-	return (self);
+	ft_print_memory(self->mem, sizeof(self->mem));
 }
