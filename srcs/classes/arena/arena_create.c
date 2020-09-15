@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   arena_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:15 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 16:45:45 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+t_arena		*arena_create(t_vector *files, long nbr_cycles)
 {
-	self->arena = arena_create(self->files, self->nbr_cycles);
-	arena_battle(self->arena);
+	t_arena	*self;
+
+	self = (t_arena *)ft_xmemalloc(sizeof(t_arena));
+	self->files = files;
+	self->nbr_cycles = nbr_cycles;
+	return (self);
 }

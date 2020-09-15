@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   vector_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:15 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 12:30:04 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 12:34:13 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vector.h"
 
-void	app_execute(t_app *self)
+void	vector_set(t_vector *self, size_t index, void *data)
 {
-	self->arena = arena_create(self->files, self->nbr_cycles);
-	arena_battle(self->arena);
+	if (self)
+	{
+		if (self->count <= index)
+		{
+			self->count = index + 1;
+			if (self->capacity < self->count)
+				vector_resize(self, self->count);
+		}
+		self->table[index] = data;
+	}
 }

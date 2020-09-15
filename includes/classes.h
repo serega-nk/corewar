@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/12 00:42:07 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:50:40 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
 typedef struct s_deparser		t_deparser;
 typedef struct s_decompiler		t_decompiler;
+typedef struct s_arena			t_arena;
 
 enum			e_token_type
 {
@@ -157,6 +158,12 @@ struct			s_decompiler
 	char			*error_message;
 };
 
+struct			s_arena
+{
+	t_vector	*files;
+	long		nbr_cycles;
+};
+
 t_token			*token_create(t_token_type type, int ln, int col);
 void			token_destroy(t_token **aself);
 char			*token_repr(t_token *self);
@@ -262,5 +269,9 @@ t_bool			decompiler_make(t_decompiler *self);
 t_bool			decompiler_make_deparser(t_decompiler *self);
 t_bool			decompiler_make_lines(t_decompiler *self);
 t_bool			decompiler_make_load(t_decompiler *self);
+
+t_arena			*arena_create(t_vector *files, long nbr_cycles);
+void			arena_destroy(t_arena **aself);
+void			arena_battle(t_arena *self);
 
 #endif

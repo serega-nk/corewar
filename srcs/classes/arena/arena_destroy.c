@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   arena_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:15 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 16:42:42 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 16:42:56 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+void	arena_destroy(t_arena **aself)
 {
-	self->arena = arena_create(self->files, self->nbr_cycles);
-	arena_battle(self->arena);
+	if (aself && *aself)
+	{
+		ft_memdel((void **)aself);
+	}
 }

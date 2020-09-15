@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   arena_battle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:15 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/15 16:48:44 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 17:01:31 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-void	app_execute(t_app *self)
+void	arena_battle(t_arena *self)
 {
-	self->arena = arena_create(self->files, self->nbr_cycles);
-	arena_battle(self->arena);
+	int		index;
+	char	*path;
+	
+	ft_printf("nbr_cycles = %d\n", self->nbr_cycles);
+	
+	index = 0;
+	vector_start(self->files);
+	while (vector_next(self->files, (void **)&path))
+	{
+		ft_printf("#%d == %s\n", index, path);
+		index++;
+	}
 }

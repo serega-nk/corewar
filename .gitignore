@@ -1,4 +1,5 @@
 asm
+disasm
 corewar
 *.cor
 .vscode/

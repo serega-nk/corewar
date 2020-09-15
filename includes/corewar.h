@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 01:22:01 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:53:12 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ typedef struct s_app	t_app;
 struct	s_app
 {
 	char			*name;
-	t_vector		*args;
-	t_bool			option_dump;
+	int				argc;
+	char			**argv;
 	long			nbr_cycles;
-	t_vector		*sequence;
+	t_vector		*pending;
 	t_vector		*files;
+	t_arena			*arena;
 };
 
 void	app_init(t_app *self, int argc, char *argv[]);
 void	app_options(t_app *self);
 void	app_execute(t_app *self);
 void	app_free(t_app *self);
+
+void	app_options_usage(t_app *self);
+void	app_options_dump(t_app *self);
+void	app_options_files(t_app *self);
 
 #endif

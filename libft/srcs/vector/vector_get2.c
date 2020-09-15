@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_execute.c                                      :+:      :+:    :+:   */
+/*   vector_get2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:50:15 by bconchit         ###   ########.fr       */
+/*   Created: 2020/08/13 23:52:34 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/15 15:54:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "vector.h"
 
-void	app_execute(t_app *self)
+void	*vector_get2(t_vector *self, size_t index)
 {
-	self->arena = arena_create(self->files, self->nbr_cycles);
-	arena_battle(self->arena);
+	return (self && index < self->count ? self->table[index] : NULL);
 }

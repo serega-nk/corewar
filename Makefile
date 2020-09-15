@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/12 12:10:22 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/15 16:51:46 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ HEADERS		= asm.h classes.h corewar.h disasm.h op.h
 
 SOURCES_C	= \
 	$(addprefix classes/, \
+		$(addprefix arena/, \
+			arena_battle.c \
+			arena_create.c \
+			arena_destroy.c \
+		) \
 		$(addprefix argument/, \
 			argument_calc_size.c \
 			argument_create.c \
@@ -176,6 +181,11 @@ SOURCES_D	= \
 SOURCES_W	= \
 	$(addprefix corewar/, \
 		$(addprefix app/, \
+			$(addprefix options/, \
+				app_options_dump.c \
+				app_options_files.c \
+				app_options_usage.c \
+			) \
 			app_execute.c \
 			app_free.c \
 			app_init.c \
@@ -242,7 +252,7 @@ re: fclean all
 norm:
 	@norminette $(INCS) $(SRCS_C) $(SRCS_A) $(SRCS_D) $(SRCS_W)
 
-vv: $(NAME_A)
+vv: all
 	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) ./_res/champs/42.s ./_res/champs/ex.s
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
 
