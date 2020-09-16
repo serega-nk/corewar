@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:22:49 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/16 16:30:18 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/17 02:37:46 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static t_bool	load(t_vm *self, char *path, int index, int count)
 	{
 		ft_printf_fd(STDERR_FILENO, "ERROR READ BYTECODE\n");
 		ft_xexit(EXIT_FAILURE);
-	}		
+	}
+	ft_close(&fd);	
 	return (TRUE);
 }
 
