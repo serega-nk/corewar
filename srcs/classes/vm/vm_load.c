@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:22:49 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/16 16:26:36 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:30:18 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_bool	load(t_vm *self, char *path, int index, int count)
 	player = player_create(index, header.prog_name, header.comment);
 	vector_push_back(self->players, player);
 	process = process_create(self, player, index * (MEM_SIZE / count));
-	vector_push_back(self->players, player);
+	list_push_back(self->processes, process);
 	if (ft_readall(fd, self->mem + process->curr, size) == FALSE)
 	{
 		ft_printf_fd(STDERR_FILENO, "ERROR READ BYTECODE\n");
