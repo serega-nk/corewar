@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:43:40 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/17 02:19:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,9 @@ static void		app_options_files_after(t_app *self)
 {
 	char	*ptr;
 	size_t	index;
-	size_t	count;
 
 	vector_start(self->pending);
 	index = 0;
-	count = self->files->count;
 	while (index < self->files->count)
 	{
 		if (vector_get2(self->files, index) == NULL)
