@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:37:08 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/16 16:15:38 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/17 15:25:39 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		vm_print(t_vm *self)
 	index = 0;
 	while (index < sizeof(self->mem))
 	{
-		ft_printf("0x%.4x :", index);
+		ft_printf("0x%.4x : ", index);
 		pos = 0;
 		while (pos < OCTETS_PER_LINE)
 		{
@@ -31,7 +31,7 @@ void		vm_print(t_vm *self)
 				ch = (unsigned char)self->mem[index + pos];
 			else
 				ch = 0;
-			ft_printf(" %.2x", ch);
+			ft_printf("%.2x ", ch);
 			pos++;
 		}
 		ft_printf("\n");
