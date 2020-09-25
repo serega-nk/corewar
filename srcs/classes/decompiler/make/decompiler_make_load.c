@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 00:13:20 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/10 00:11:55 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/25 15:44:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_bool	decompiler_make_load(t_decompiler *self)
 		}
 	}
 	decompiler_errorf(self, ft_xprintf(
-		"Can't read bytecode file %s\n", self->bytecode_fn));
+		"Can't read bytecode file %s", self->bytecode_fn));
 	return (FALSE);
 }
