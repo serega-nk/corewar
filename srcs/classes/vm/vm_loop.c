@@ -14,6 +14,7 @@
 
 t_bool	vm_loop(t_vm *self)
 {
+	vm_print(self);
 	if (self)
 		return (TRUE);
 	return (TRUE);

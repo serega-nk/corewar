@@ -18,7 +18,7 @@ t_player	*player_create(int id, char *name, char *comment)
 
 	self = (t_player *)ft_xmemalloc(sizeof(t_player));
 	self->id = id;
-	self->name = name;
-	self->comment = comment;
+	self->name = ft_xstrdup(name);
+	self->comment = ft_xstrdup(comment);
 	return (self);
 }

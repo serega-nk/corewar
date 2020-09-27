@@ -164,9 +164,10 @@ struct			s_decompiler
 
 struct			s_player
 {
-	int			id;
-	char		*name;
-	char		*comment;
+	int				id;
+	char			*name;
+	char			*comment;
+	unsigned int	prog_size;
 };
 
 struct			s_process

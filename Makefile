@@ -269,4 +269,10 @@ vv: all
 	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) ./_res/champs/42.s ./_res/champs/ex.s
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
 
+test: $(NAME_W)
+	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
+	./_res/vm-linux/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	diff 1.txt 2.txt
+
+
 .PHONY: all clean fclean re norm vv
