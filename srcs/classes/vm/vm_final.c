@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vm_final.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 15:27:43 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/28 16:03:21 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/28 19:43:58 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+void	vm_final(t_vm *self)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	// ft_printf("Player %d (%s) won\n", self->winner->id, self->winner->name);
+	ft_printf("Contestant %d, \"%s\", has won !\n", self->winner->id, self->winner->name);
 }

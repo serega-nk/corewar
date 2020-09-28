@@ -6,19 +6,19 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 22:21:55 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 19:37:48 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_process	*process_create(t_vm *vm, t_player *player, size_t curr)
+t_process	*process_create(t_vm *vm, t_player *player, long pc)
 {
 	t_process	*self;
 
 	self = (t_process *)ft_xmemalloc(sizeof(t_process));
 	self->vm = vm;
 	self->player = player;
-	self->curr = curr;
+	self->pc = pc;
 	return (self);
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/16 16:10:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 19:43:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,24 +167,38 @@ struct			s_player
 	int				id;
 	char			*name;
 	char			*comment;
-	unsigned int	prog_size;
+	char			*data;
+	size_t			size;
+	int				fd;
+	t_bool			error;
+	char			*error_message;
+	long			lives_num;
 };
 
 struct			s_process
 {
-	t_vm		*vm;
-	t_player	*player;
-	char		reg[REG_SIZE * REG_NUMBER];
-	size_t		curr;
+	t_vm			*vm;
+	t_player		*player;
+	char			reg[REG_SIZE * REG_NUMBER];
+	long			pc;
+	long			last_live;
 };
 
 struct			s_vm
 {
-	t_vector	*files;
-	long		nbr_cycles;
-	t_vector	*players;
-	t_list		*processes;
-	char		mem[MEM_SIZE];
+	t_vector		*files;
+	long			nbr_cycles;
+	t_vector		*players;
+	t_list			*processes;
+	t_list			*new_processes;
+	char			mem[MEM_SIZE];
+	
+	long			cycles_num;
+	long			cycles_to_die;
+	long			cycles_after_check;
+	long			checks_num;
+	long			lives_num;
+	t_player		*winner;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -293,18 +307,28 @@ t_bool			decompiler_make_deparser(t_decompiler *self);
 t_bool			decompiler_make_lines(t_decompiler *self);
 t_bool			decompiler_make_load(t_decompiler *self);
 
-t_player		*player_create(int id, char *name, char *comment);
+t_player		*player_create(int id);
 void			player_destroy(t_player **aself);
+t_bool			player_load(t_player *self, char *path);
+t_bool			player_error(t_player *self, char *message);
+t_bool			player_errorf(t_player *self, char *message);
 
-t_process		*process_create(t_vm *vm, t_player *player, size_t curr);
+t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
+void			process_execute(t_process *self);
 
 t_vm			*vm_create(t_vector *files, long nbr_cycles);
 void			vm_destroy(t_vm **aself);
-t_bool			vm_run(t_vm *self);
-t_bool			vm_load(t_vm *self);
-t_bool			vm_loop(t_vm *self);
-void			vm_print(t_vm *self);
+void			vm_run(t_vm *self);
+void			vm_load(t_vm *self);
+void			vm_start(t_vm *self);
+void			vm_intro(t_vm *self);
+void			vm_loop(t_vm *self);
+void			vm_final(t_vm *self);
+void			vm_dump(t_vm *self);
+void			vm_next(t_vm *self);
+void			vm_check(t_vm *self);
+void			vm_write(t_vm *self, long pc, char *data, size_t size);
 
 #endif

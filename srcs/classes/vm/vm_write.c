@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vm_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 15:27:43 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/28 17:24:49 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/28 19:38:48 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+void	vm_write(t_vm *self, long pc, char *data, size_t size)
 {
-	t_app	app;
-
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	size_t	index;
+	size_t	norme;
+	
+	index = 0;
+	while (index < size)
+	{
+		norme = (size_t)((MEM_SIZE + ((pc + index) % MEM_SIZE)) % MEM_SIZE);
+		self->mem[norme] = data[index];
+		index++;
+	}
 }

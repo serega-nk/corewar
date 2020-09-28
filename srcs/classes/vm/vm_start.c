@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vm_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 16:06:43 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 15:27:43 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/28 14:39:43 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/28 19:41:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "classes.h"
 
-int		main(int argc, char *argv[])
+void			vm_start(t_vm *self)
 {
-	t_app	app;
+	long		pc;
+	t_player	*player;
+	t_process	*process;
 
-	app_init(&app, argc, argv);
-	app_options(&app);
-	app_execute(&app);
-	app_free(&app);
-	return (EXIT_SUCCESS);
+	pc = 0;
+	vector_start(self->players);
+	while (vector_next(self->players, (void **)&player))
+	{
+		vm_write(self, pc, player->data, player->size);
+		process = process_create(self, player, pc);
+		list_push_front(self->processes, process);
+		pc += MEM_SIZE / self->players->count;
+	}
 }

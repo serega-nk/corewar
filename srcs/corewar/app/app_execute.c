@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:12:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:41:28 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 15:49:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	app_execute(t_app *self)
 {
 	self->vm = vm_create(self->files, self->nbr_cycles);
-	if (vm_run(self->vm) == FALSE)
-		self->error = TRUE;
+	vm_run(self->vm);
 }

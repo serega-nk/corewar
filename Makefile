@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/15 21:40:04 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/28 19:48:40 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,11 +146,15 @@ SOURCES_C	= \
 		$(addprefix player/, \
 			player_create.c \
 			player_destroy.c \
+			player_error.c \
+			player_errorf.c \
+			player_load.c \
 		) \
 		$(addprefix process/, \
 			process_create.c \
 			process_clone.c \
 			process_destroy.c \
+			process_execute.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \
@@ -158,12 +162,18 @@ SOURCES_C	= \
 			token_repr.c \
 		) \
 		$(addprefix vm/, \
+			vm_check.c \
 			vm_create.c \
 			vm_destroy.c \
+			vm_dump.c \
+			vm_final.c \
+			vm_intro.c \
 			vm_load.c \
 			vm_loop.c \
-			vm_print.c \
+			vm_next.c \
 			vm_run.c \
+			vm_start.c \
+			vm_write.c \
 		) \
 	) \
 	op.c \
@@ -271,8 +281,8 @@ vv: all
 
 test: $(NAME_W)
 	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	./_res/vm-linux/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
-	diff 1.txt 2.txt
+	./_res/vm-mac/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	diff 1.txt 2.txt || TRUE
 
 
 .PHONY: all clean fclean re norm vv

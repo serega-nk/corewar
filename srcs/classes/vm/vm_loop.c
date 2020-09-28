@@ -3,19 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   vm_loop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:09:37 by wzei              #+#    #+#             */
-/*   Updated: 2020/09/15 21:11:50 by wzei             ###   ########.fr       */
+/*   Updated: 2020/09/28 18:49:20 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-t_bool	vm_loop(t_vm *self)
+void	vm_loop(t_vm *self)
 {
-	vm_print(self);
-	if (self)
-		return (TRUE);
-	return (TRUE);
+	while (TRUE)
+	{
+		if (self->cycles_num == self->nbr_cycles)
+		{
+			vm_dump(self);
+			break ;
+		}
+		vm_next(self);
+		vm_check(self);
+		if (self->processes->count == 0)
+		{
+			vm_final(self);
+			break ;
+		}
+	}
 }
