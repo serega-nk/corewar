@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/28 19:48:40 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/28 22:25:30 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,10 +151,13 @@ SOURCES_C	= \
 			player_load.c \
 		) \
 		$(addprefix process/, \
-			process_create.c \
+			process_arguments.c \
 			process_clone.c \
+			process_create.c \
 			process_destroy.c \
 			process_execute.c \
+			process_move.c \
+			process_opcode.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \

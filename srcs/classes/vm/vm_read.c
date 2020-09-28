@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_destroy.c                                  :+:      :+:    :+:   */
+/*   vm_read.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 19:17:06 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 22:15:03 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/28 22:31:16 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/28 22:31:43 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_destroy(t_process **aself)
+void	vm_read(t_vm *self, long pos, void *data, size_t size)
 {
-	if (aself && *aself)
-	{
-		instruction_destroy(&(*aself)->instruction);
-		ft_memdel((void **)aself);
-	}
+	
 }

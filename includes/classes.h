@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 19:43:15 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 22:31:05 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,10 @@ struct			s_process
 	char			reg[REG_SIZE * REG_NUMBER];
 	long			pc;
 	long			last_live;
+	t_bool			carry;
+	t_op			*op;
+	int				cycles_wait;
+	t_instruction	*instruction;
 };
 
 struct			s_vm
@@ -190,8 +194,8 @@ struct			s_vm
 	long			nbr_cycles;
 	t_vector		*players;
 	t_list			*processes;
-	t_list			*new_processes;
-	char			mem[MEM_SIZE];
+	t_list			*fork_processes;
+	unsigned char	mem[MEM_SIZE];
 	
 	long			cycles_num;
 	long			cycles_to_die;
@@ -317,6 +321,9 @@ t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
 void			process_execute(t_process *self);
+t_bool			process_opcode(t_process *self);
+t_bool			process_arguments(t_process *self);
+void			process_move(t_process *self);
 
 t_vm			*vm_create(t_vector *files, long nbr_cycles);
 void			vm_destroy(t_vm **aself);
@@ -329,6 +336,7 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-void			vm_write(t_vm *self, long pc, char *data, size_t size);
+void			vm_write(t_vm *self, long pos, void *data, size_t size);
+void			vm_read(t_vm *self, long pos, void *data, size_t size);
 
 #endif

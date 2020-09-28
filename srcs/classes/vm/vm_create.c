@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:38:05 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 19:02:01 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 21:49:57 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_vm	*vm_create(t_vector *files, long nbr_cycles)
 	self->nbr_cycles = nbr_cycles;
 	self->players = vector_create();
 	self->processes = list_create();
-	self->new_processes = list_create();
+	self->fork_processes = list_create();
 	return (self);
 }

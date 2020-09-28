@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/09/11 18:42:56 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/28 21:31:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct	s_op
 	size_t		arg_count;
 	t_arg_type	arg_types[3];
 	char		code;
-	int			cycle;
+	int			cycles_wait;
 	char		*desc;
 	char		use_types;
 	char		dir_ind;

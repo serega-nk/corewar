@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_destroy.c                                  :+:      :+:    :+:   */
+/*   process_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 19:17:06 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 22:15:03 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/28 22:09:16 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/28 22:27:00 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_destroy(t_process **aself)
+void	process_move(t_process *self)
 {
-	if (aself && *aself)
-	{
-		instruction_destroy(&(*aself)->instruction);
-		ft_memdel((void **)aself);
-	}
+	self->pc = (self->pc + instruction_calc_size(self->instruction)) % MEM_SIZE;
 }
