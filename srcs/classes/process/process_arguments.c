@@ -49,8 +49,29 @@
 // 	return (TRUE);
 // }
 
+// static void		argument_fix_signed(t_argument *self)
+// {
+// 	size_t		size;
 
-t_bool		process_arguments(t_process *self)
+// 	size = sizeof(self->number);
+// 	if (size > self->size && self->number >> (self->size * 8 - 1) == 0b1)
+// 	{
+// 		memset((char *)&self->number + self->size, -1, size - self->size);
+// 	}
+// }
+
+static void		ft_signed(void *data, size_t size, size_t max_size)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)data;
+	if (max_size > size && size > 0 && ptr[size - 1] & 0x80)
+	{
+		ft_memset(ptr + size, -1, max_size - size);
+	}
+}
+
+t_bool			process_arguments(t_process *self)
 {
 	t_argument	*argument;
 	size_t		index;
@@ -62,16 +83,11 @@ t_bool		process_arguments(t_process *self)
 		vector_push_back(self->arguments, argument);
 		argument->arg_type = self->arg_types[index];
 		argument_calc_size(argument, self->op->dir_ind);
-		vm_read(self->vm, self->pc, &argument->number, argument->size, TRUE);
-		// ft_memrev(&argument->number, argument->size);
-		// if (argument->size == 1)
-		// 	argument->number = (char)argument->number;
-		// if (argument->size == 2)
-		// 	argument->number = (short)argument->number;
-		// if (argument->size == 4)
-		// 	argument->number = (int)argument->number;
+		vm_read(self->vm, self->pc, &argument->number, argument->size);
+		ft_memrev(&argument->number, argument->size);
+		ft_signed(&argument->number, argument->size, sizeof(argument->number));		
 		process_move(self, argument->size);
-		ft_printf("# ARGUMENT %d = %d\n", argument->arg_type, argument->number);
+		ft_printf("#### ARGUMENT %#.2b = %d\n", argument->arg_type, argument->number);
 		index++;
 	}
 	return (TRUE);

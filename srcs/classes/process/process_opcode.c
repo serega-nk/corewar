@@ -18,7 +18,8 @@ t_bool		process_opcode(t_process *self)
 
 	vector_clean(self->arguments, &argument_destroy);
 	code = '\0';
-	vm_read(self->vm, self->pc, &code, sizeof(code), TRUE);
+	vm_read(self->vm, self->pc, &code, sizeof(code));
+	ft_memrev(&code, sizeof(code));
 	ft_printf("#opcode = %d, self->pc = %d\n", code, self->pc);
 	process_move(self, 1);
 	self->op = get_op_from_code(code);

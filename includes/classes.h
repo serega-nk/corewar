@@ -355,9 +355,7 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-void			vm_write(t_vm *self, long pos, void *data, size_t size,
-	t_bool rev);
-void			vm_read(t_vm *self, long pos, void *data, size_t size,
-	t_bool rev);
+void			vm_write(t_vm *self, long pos, void *data, size_t size);
+void			vm_read(t_vm *self, long pos, void *data, size_t size);
 
 #endif

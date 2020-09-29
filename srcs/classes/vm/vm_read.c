@@ -12,7 +12,7 @@
 
 #include "classes.h"
 
-void	vm_read(t_vm *self, long pos, void *data, size_t size, t_bool rev)
+void	vm_read(t_vm *self, long pos, void *data, size_t size)
 {
 	size_t			index;
 	size_t			norme;
@@ -23,7 +23,7 @@ void	vm_read(t_vm *self, long pos, void *data, size_t size, t_bool rev)
 	while (index < size)
 	{
 		norme = (size_t)((MEM_SIZE + ((pos + index) % MEM_SIZE)) % MEM_SIZE);
-		ptr[rev == TRUE ? size - 1 - index : index] = self->mem[norme];
+		ptr[index] = self->mem[norme];
 		index++;
 	}
 }
