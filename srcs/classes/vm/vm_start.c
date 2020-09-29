@@ -22,7 +22,7 @@ void			vm_start(t_vm *self)
 	vector_start(self->players);
 	while (vector_next(self->players, (void **)&player))
 	{
-		vm_write(self, pc, player->data, player->size);
+		vm_write(self, pc, player->data, player->size, FALSE);
 		process = process_create(self, player, pc);
 		list_push_front(self->processes, process);
 		pc += MEM_SIZE / self->players->count;

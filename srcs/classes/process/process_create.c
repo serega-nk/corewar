@@ -39,6 +39,6 @@ t_process		*process_create(t_vm *vm, t_player *player, long pc)
 	self->pc = pc;
 	ft_memcpy(self->reg, &player->id, REG_SIZE);
 	signed_reverse(self->reg, REG_SIZE);
-	self->instruction = instruction_create();
+	self->arguments = vector_create();
 	return (self);
 }

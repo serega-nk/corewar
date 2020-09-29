@@ -24,8 +24,6 @@
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
 
-# define NUM_SIZE				1
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
@@ -62,6 +60,10 @@
 # define STRING_CHAR			'"'
 # define WHITESPACE_CHARS		" \t"
 
+# define MAX_ARG_TYPES			3
+
+# define NUM_SIZE				1
+
 /*
 ** TODO: comment
 */
@@ -93,7 +95,7 @@ typedef struct	s_op
 {
 	char		*name;
 	size_t		arg_count;
-	t_arg_type	arg_types[3];
+	t_arg_type	arg_types[MAX_ARG_TYPES];
 	char		code;
 	int			cycles_wait;
 	char		*desc;

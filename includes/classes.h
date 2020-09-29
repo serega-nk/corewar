@@ -180,12 +180,13 @@ struct			s_process
 	t_vm			*vm;
 	t_player		*player;
 	char			reg[REG_SIZE * REG_NUMBER];
+	t_bool			carry;
 	long			pc;
 	long			last_live;
-	t_bool			carry;
-	t_op			*op;
 	int				cycles_wait;
-	t_instruction	*instruction;
+	t_op			*op;
+	t_arg_type		arg_types[MAX_ARG_TYPES];
+	t_vector		*arguments;
 };
 
 struct			s_vm
@@ -320,10 +321,28 @@ t_bool			player_errorf(t_player *self, char *message);
 t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
-void			process_execute(t_process *self);
+void			process_move(t_process *self, int rel);
 t_bool			process_opcode(t_process *self);
+t_bool			process_arg_types(t_process *self);
 t_bool			process_arguments(t_process *self);
-void			process_move(t_process *self);
+t_bool			process_validate(t_process *self);
+void			process_execute(t_process *self);
+void			process_execute_live(t_process *self);
+void			process_execute_ld(t_process *self);
+void			process_execute_st(t_process *self);
+void			process_execute_add(t_process *self);
+void			process_execute_sub(t_process *self);
+void			process_execute_and(t_process *self);
+void			process_execute_or(t_process *self);
+void			process_execute_xor(t_process *self);
+void			process_execute_zjmp(t_process *self);
+void			process_execute_ldi(t_process *self);
+void			process_execute_sti(t_process *self);
+void			process_execute_fork(t_process *self);
+void			process_execute_lld(t_process *self);
+void			process_execute_lldi(t_process *self);
+void			process_execute_lfork(t_process *self);
+void			process_execute_aff(t_process *self);
 
 t_vm			*vm_create(t_vector *files, long nbr_cycles);
 void			vm_destroy(t_vm **aself);
@@ -336,7 +355,9 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-void			vm_write(t_vm *self, long pos, void *data, size_t size);
-void			vm_read(t_vm *self, long pos, void *data, size_t size);
+void			vm_write(t_vm *self, long pos, void *data, size_t size,
+	t_bool rev);
+void			vm_read(t_vm *self, long pos, void *data, size_t size,
+	t_bool rev);
 
 #endif

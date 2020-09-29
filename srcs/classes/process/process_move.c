@@ -12,7 +12,7 @@
 
 #include "classes.h"
 
-void	process_move(t_process *self)
+void	process_move(t_process *self, int rel)
 {
-	self->pc = (self->pc + instruction_calc_size(self->instruction)) % MEM_SIZE;
+	self->pc = (self->pc + rel) % MEM_SIZE;
 }

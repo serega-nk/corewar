@@ -16,7 +16,8 @@ void	process_destroy(t_process **aself)
 {
 	if (aself && *aself)
 	{
-		instruction_destroy(&(*aself)->instruction);
+		vector_clean((*aself)->arguments, &argument_destroy);
+		vector_destroy(&(*aself)->arguments);
 		ft_memdel((void **)aself);
 	}
 }

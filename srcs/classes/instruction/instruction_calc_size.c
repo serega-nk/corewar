@@ -17,14 +17,17 @@ size_t			instruction_calc_size(t_instruction *self)
 	t_argument	*argument;
 
 	self->size = 1;
-	if (self->op->use_types)
+	if (self->op && self->arguments->count > 0)
 	{
-		self->size += 1;
-	}
-	vector_start(self->arguments);
-	while (vector_next(self->arguments, (void **)&argument))
-	{
-		self->size += argument_calc_size(argument, self->op->dir_ind);
+		if (self->op->use_types)
+		{
+			self->size += 1;
+		}
+		vector_start(self->arguments);
+		while (vector_next(self->arguments, (void **)&argument))
+		{
+			self->size += argument_calc_size(argument, self->op->dir_ind);
+		}
 	}
 	return (self->size);
 }

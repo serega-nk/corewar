@@ -151,6 +151,25 @@ SOURCES_C	= \
 			player_load.c \
 		) \
 		$(addprefix process/, \
+			$(addprefix execute/, \
+				process_execute_add.c \
+				process_execute_aff.c \
+				process_execute_and.c \
+				process_execute_fork.c \
+				process_execute_ld.c \
+				process_execute_ldi.c \
+				process_execute_lfork.c \
+				process_execute_live.c \
+				process_execute_lld.c \
+				process_execute_lldi.c \
+				process_execute_or.c \
+				process_execute_st.c \
+				process_execute_sti.c \
+				process_execute_sub.c \
+				process_execute_xor.c \
+				process_execute_zjmp.c \
+			) \
+			process_arg_types.c \
 			process_arguments.c \
 			process_clone.c \
 			process_create.c \
@@ -158,6 +177,7 @@ SOURCES_C	= \
 			process_execute.c \
 			process_move.c \
 			process_opcode.c \
+			process_validate.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \
@@ -174,6 +194,7 @@ SOURCES_C	= \
 			vm_load.c \
 			vm_loop.c \
 			vm_next.c \
+			vm_read.c \
 			vm_run.c \
 			vm_start.c \
 			vm_write.c \
@@ -279,13 +300,14 @@ norm:
 	@norminette $(INCS) $(SRCS_C) $(SRCS_A) $(SRCS_D) $(SRCS_W)
 
 vv: all
-	#valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) ./_res/champs/42.s ./_res/champs/ex.s
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
 
 test: $(NAME_W)
 	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	./_res/vm-mac/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	./_res/vm-linux/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
 	diff 1.txt 2.txt || TRUE
 
+test2: $(NAME_W)
+	./corewar batman.cor batman.cor amedvedi.cor
 
 .PHONY: all clean fclean re norm vv
