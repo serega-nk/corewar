@@ -102,5 +102,6 @@ size_t		ft_get_size(int fd);
 t_bool		ft_readall(int fd, char *data, size_t size);
 t_bool		ft_writeall(int fd, char *data, size_t size);
 void		ft_print_memory(const void *addr, size_t size);
+void		ft_signed(void *data, size_t size, size_t max_size);
 
 #endif

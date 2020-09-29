@@ -36,23 +36,25 @@ void			process_execute(t_process *self)
 {
 	if (self->cycles_wait == 0)
 	{
-		ft_printf("#1\n");
+		//ft_printf("#%p OP START %ld\n", self, self->pc);
 		if (process_opcode(self) == FALSE)
 			return ;
-		ft_printf("#2\n");
-		self->cycles_wait = 0; // self->op->cycles_wait;
+		//ft_printf("#%p OP END %ld\n", self, self->pc);
+		self->cycles_wait = self->op->cycles_wait;
 	}
 	if (self->cycles_wait > 0)
 		self->cycles_wait--;
 	if (self->cycles_wait == 0)
 	{
+		//ft_printf("#%p ARG START %ld\n", self, self->pc);
 		if (process_arg_types(self) &&
 			process_arguments(self) &&
 			process_validate(self))
 		{
-			ft_printf("#FUNC START\n");
+			ft_printf("#%p FUNC START %s\n", self, self->op->name);
 			(*g_funcs[(size_t)self->op->code])(self);
-			ft_printf("#FUNC END\n");
+			ft_printf("#%p FUNC END %s\n", self, self->op->name);
 		}
+		//ft_printf("#%p ARG END %ld\n", self, self->pc);
 	}
 }

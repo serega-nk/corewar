@@ -20,7 +20,7 @@ t_bool		process_opcode(t_process *self)
 	code = '\0';
 	vm_read(self->vm, self->pc, &code, sizeof(code));
 	ft_memrev(&code, sizeof(code));
-	ft_printf("#opcode = %d, self->pc = %d\n", code, self->pc);
+	//ft_printf("#opcode = %d, self->pc = %d\n", code, self->pc);
 	process_move(self, 1);
 	self->op = get_op_from_code(code);
 	return (self->op != NULL);

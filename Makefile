@@ -177,6 +177,7 @@ SOURCES_C	= \
 			process_execute.c \
 			process_move.c \
 			process_opcode.c \
+			process_reg_get.c \
 			process_validate.c \
 		) \
 		$(addprefix token/, \
@@ -301,6 +302,9 @@ norm:
 
 vv: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
+
+vv2: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_D) 2.cor
 
 test: $(NAME_W)
 	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt

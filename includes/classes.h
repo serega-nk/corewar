@@ -187,6 +187,7 @@ struct			s_process
 	t_op			*op;
 	t_arg_type		arg_types[MAX_ARG_TYPES];
 	t_vector		*arguments;
+	t_argument		**args;
 };
 
 struct			s_vm
@@ -322,6 +323,7 @@ t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
 void			process_move(t_process *self, int rel);
+long			process_reg_get(t_process *self, int num);
 t_bool			process_opcode(t_process *self);
 t_bool			process_arg_types(t_process *self);
 t_bool			process_arguments(t_process *self);

@@ -22,5 +22,6 @@ t_vm	*vm_create(t_vector *files, long nbr_cycles)
 	self->players = vector_create();
 	self->processes = list_create();
 	self->fork_processes = list_create();
+	self->cycles_to_die = CYCLE_TO_DIE;
 	return (self);
 }

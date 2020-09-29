@@ -52,6 +52,7 @@ SOURCES		= \
 		ft_print_memory.c \
 		ft_quicksort.c \
 		ft_readall.c \
+		ft_signed.c \
 		ft_strndup.c \
 		ft_strnlen.c \
 		ft_swap.c \

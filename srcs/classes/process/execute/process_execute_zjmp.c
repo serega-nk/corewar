@@ -3,6 +3,5 @@
 
 void	process_execute_zjmp(t_process *self)
 {
-	if (self)
-		return ;
+	process_move(self, self->args[0]->number % IDX_MOD);
 }
