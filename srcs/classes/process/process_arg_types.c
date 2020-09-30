@@ -14,9 +14,9 @@ t_bool				process_arg_types(t_process *self)
 	if (self->op->use_types)
 	{
 		types = '\0';
-		vm_read(self->vm, self->pc, &types, sizeof(types));
+		vm_read(self->vm, process_addr(self), &types, sizeof(types));
 		ft_memrev(&types, sizeof(types));
-		process_move(self, 1);
+		process_step(self, sizeof(types));
 		index = 0;
 		while (index < MAX_ARG_TYPES)
 		{

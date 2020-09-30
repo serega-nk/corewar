@@ -24,10 +24,11 @@ t_bool			process_arguments(t_process *self)
 		vector_push_back(self->arguments, argument);
 		argument->arg_type = self->arg_types[index];
 		argument_calc_size(argument, self->op->dir_ind);
-		vm_read(self->vm, self->pc, &argument->number, argument->size);
+		vm_read(self->vm, process_addr(self),
+			&argument->number, argument->size);
 		ft_memrev(&argument->number, argument->size);
 		ft_signed(&argument->number, argument->size, sizeof(argument->number));
-		process_move(self, argument->size);
+		process_step(self, argument->size);
 		ft_printf("#### ARGUMENT %#.2b = %d\n", argument->arg_type, argument->number);
 		index++;
 	}

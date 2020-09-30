@@ -182,6 +182,7 @@ struct			s_process
 	char			reg[REG_SIZE * REG_NUMBER];
 	t_bool			carry;
 	long			pc;
+	long			step;
 	long			last_live;
 	int				cycles_wait;
 	t_op			*op;
@@ -322,7 +323,7 @@ t_bool			player_errorf(t_player *self, char *message);
 t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
-void			process_move(t_process *self, int rel);
+void			process_move(t_process *self);
 long			process_reg_get(t_process *self, int num);
 t_bool			process_opcode(t_process *self);
 t_bool			process_arg_types(t_process *self);
@@ -357,7 +358,7 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-void			vm_write(t_vm *self, long pos, void *data, size_t size);
-void			vm_read(t_vm *self, long pos, void *data, size_t size);
+void			vm_write(t_vm *self, void *addr, void *data, size_t size);
+void			vm_read(t_vm *self, void *addr, void *data, size_t size);
 
 #endif

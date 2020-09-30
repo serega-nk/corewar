@@ -12,7 +12,9 @@
 
 #include "classes.h"
 
-void	process_move(t_process *self, int rel)
+void	process_move(t_process *self)
 {
-	self->pc = (self->pc + rel) % MEM_SIZE;
+	//ft_printf("## MOVE %p, %ld\n", self, self->step);
+	self->pc = (self->pc + self->step) % MEM_SIZE;
+	self->step = 0;
 }

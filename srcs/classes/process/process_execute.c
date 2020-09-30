@@ -38,7 +38,10 @@ void			process_execute(t_process *self)
 	{
 		//ft_printf("#%p OP START %ld\n", self, self->pc);
 		if (process_opcode(self) == FALSE)
+		{
+			process_move(self);
 			return ;
+		}			
 		//ft_printf("#%p OP END %ld\n", self, self->pc);
 		self->cycles_wait = self->op->cycles_wait;
 	}
@@ -55,6 +58,7 @@ void			process_execute(t_process *self)
 			(*g_funcs[(size_t)self->op->code])(self);
 			ft_printf("#%p FUNC END %s\n", self, self->op->name);
 		}
+		process_move(self);
 		//ft_printf("#%p ARG END %ld\n", self, self->pc);
 	}
 }
