@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 01:14:08 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:21:42 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,8 +327,7 @@ int				process_get(t_process *self, t_arg_type type, int value);
 int				process_read(t_process *self, long rel);
 int				process_lget(t_process *self, t_arg_type type, int value);
 int				process_lread(t_process *self, long rel);
-void		 	process_write(t_process *self, long rel, int value);
-
+void			process_write(t_process *self, long rel, int value);
 t_bool			process_opcode(t_process *self);
 t_bool			process_arg_types(t_process *self);
 t_bool			process_arguments(t_process *self);
@@ -347,7 +346,8 @@ void			process_execute_ldi(t_process *self, int v[3], t_arg_type t[3]);
 void			process_execute_sti(t_process *self, int v[3], t_arg_type t[3]);
 void			process_execute_fork(t_process *self, int v[3]);
 void			process_execute_lld(t_process *self, int v[3], t_arg_type t[3]);
-void			process_execute_lldi(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_lldi(t_process *self, int v[3],
+	t_arg_type t[3]);
 void			process_execute_lfork(t_process *self, int v[3]);
 void			process_execute_aff(t_process *self, int v[3]);
 
