@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   app_options.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 19:20:15 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 08:41:28 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:07:36 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,17 @@ static t_bool	app_options_parse(t_app *self, char *str)
 
 static void		print_usage(char *name)
 {
-	ft_printf("Usage: %s [-bhilt] <sourcefile.s>\n", name);
+	ft_printf("\n");
+	ft_printf("====================================================\n");
+	ft_printf("Usage: %s [-b -h -i -l -t] <sourcefile.s><...>\n", name);
+	ft_printf("====================================================\n");
 	ft_printf("	-b: Show byte code\n");
 	ft_printf("	-h: Show usage\n");
 	ft_printf("	-i: Show introduction of instruction\n");
 	ft_printf("	-l: Show labels\n");
 	ft_printf("	-t: Show tokens\n");
+	ft_printf("====================================================\n");
+	ft_printf("\n");
 	ft_xexit(EXIT_SUCCESS);
 }
 

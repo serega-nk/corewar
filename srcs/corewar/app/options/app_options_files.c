@@ -3,20 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   app_options_files.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 01:11:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 01:56:50 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+static void		just_case_for_option_files_n(t_app *self, int num)
+{
+	size_t		index;
+	
+	if ((num > 0 && num <= MAX_PLAYERS) == FALSE)
+	{
+		ft_printf_fd(STDERR_FILENO,
+			"Wrong number of the player %ld [1..%ld]\n",
+			num, MAX_PLAYERS);
+		ft_xexit(EXIT_FAILURE);
+	}
+	index = (size_t)num - 1;
+	if (vector_get2(self->files, index) != NULL)
+	{
+		ft_printf_fd(STDERR_FILENO, "ERROR num = %d\n", num);
+		ft_xexit(EXIT_FAILURE);
+	}
+	vector_set(self->files, index, self->argv[2]);
+	self->argc -= 3;
+	self->argv += 3;
+}
+
 static t_bool	app_options_files_n(t_app *self)
 {
 	char		*ptr;
 	int			num;
-	size_t		index;
 
 	if (self->argc > 0 && ft_strequ(self->argv[0], "-n"))
 	{
@@ -26,22 +47,7 @@ static t_bool	app_options_files_n(t_app *self)
 			if (parse_int(&ptr, &num) &&
 				parse_none(&ptr))
 			{
-				if ((num > 0 && num <= MAX_PLAYERS) == FALSE)
-				{
-					ft_printf_fd(STDERR_FILENO,
-						"Wrong number of the player %ld [1..%ld]\n",
-						num, MAX_PLAYERS);
-					ft_xexit(EXIT_FAILURE);
-				}
-				index = (size_t)num - 1;
-				if (vector_get2(self->files, index) != NULL)
-				{
-					ft_printf_fd(STDERR_FILENO, "ERROR num = %d\n", num);
-					ft_xexit(EXIT_FAILURE);
-				}
-				vector_set(self->files, index, self->argv[2]);
-				self->argc -= 3;
-				self->argv += 3;
+				just_case_for_option_files_n(self, num);
 				return (TRUE);
 			}
 		}
