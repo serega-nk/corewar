@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 08:44:36 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 01:11:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ static void		app_options_files_after(t_app *self)
 
 void			app_options_files(t_app *self)
 {
+	if (self->argc == 0)
+	{
+		ft_printf_fd(STDERR_FILENO, "Invalid Option\n");
+		ft_xexit(EXIT_FAILURE);
+	}
 	while (app_options_files_n(self) || app_options_files_file(self))
 		;
 	app_options_files_after(self);
