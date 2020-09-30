@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:06:18 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:00:40 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:03:40 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	app_options_usage(t_app *self)
 	{
 		ft_printf("=================================================="
 		"==============================================\n");
-		ft_printf("Usage: ./corewar [-a -s <num> -show <num> -dump <num>"
-		"-d <num> -n <num>] champion.cor> <...>\n");
+		ft_printf("Usage: ./corewar [-a -dump <num>"
+		" -d <num> -n <num>] champion.cor> <...>\n");
 		ft_printf("=================================================="
 		"==============================================\n");
 		ft_printf("\t-a 	      :\tPrint output from \"aff\""
