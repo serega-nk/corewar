@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:19:03 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:35:20 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,7 @@ static void		app_options_files_after(t_app *self)
 	while (vector_next(self->pending, (void **)&ptr))
 		vector_push_back(self->files, ptr);
 	if (self->files->count > MAX_PLAYERS)
-	{
-		ft_printf_fd(STDERR_FILENO,
-			"Wrong number of players = %ld (MAX_PLAYERS %ld)\n",
-			self->files->count, MAX_PLAYERS);
-		ft_xexit(EXIT_FAILURE);
-	}
+		check_to_error_max_plyrs(self);
 }
 
 void			app_options_files(t_app *self)

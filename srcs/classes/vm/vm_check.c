@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:55:59 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 00:09:12 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:25:03 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void			stop_processes(t_vm *self)
 	{
 		if (is_dead_process(self, process))
 		{
-			// ft_printf("STOP %p, cycles_num = %ld\n", process, self->cycles_num);
+		// ft_printf("STOP %p, cycles_num = %ld\n", process, self->cycles_num);
 			list_iter_remove(iter, &process_destroy);
 		}
 	}
