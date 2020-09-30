@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 01:56:50 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:19:03 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		just_case_for_option_files_n(t_app *self, int num)
 {
 	size_t		index;
-	
+
 	if ((num > 0 && num <= MAX_PLAYERS) == FALSE)
 	{
 		ft_printf_fd(STDERR_FILENO,
