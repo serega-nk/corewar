@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   app_options_dump.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:09:32 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 16:40:08 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:34:14 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+/*
+**	check_to_error_max_plyrs(t_app *self) is the special func
+**	for app_optioms_files wich we use in 
+**	static void		app_options_files_after(t_app *self) func
+*/
+
+void	check_to_error_max_plyrs(t_app *self)
+{
+	ft_printf_fd(STDERR_FILENO,
+		"Wrong number of players = %ld (MAX_PLAYERS %ld)\n",
+		self->files->count, MAX_PLAYERS);
+	ft_xexit(EXIT_FAILURE);
+}
 
 void	app_options_dump(t_app *self)
 {

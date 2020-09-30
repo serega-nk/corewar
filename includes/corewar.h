@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 11:30:09 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 02:38:00 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,15 @@ void	app_free(t_app *self);
 void	app_options_usage(t_app *self);
 void	app_options_dump(t_app *self);
 void	app_options_files(t_app *self);
+
+/*
+**	check_to_error_max_plyrs(t_app *self) is the special func
+**	for app_optioms_files.c wich we use in 
+**	static void		app_options_files_after(t_app *self) func
+**
+**	Way to the place: --> srcs/corewar/app/options/app_options_files.c
+*/
+
+void	check_to_error_max_plyrs(t_app *self);
 
 #endif
