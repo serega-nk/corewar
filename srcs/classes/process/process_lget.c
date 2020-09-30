@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_execute_sub.c                              :+:      :+:    :+:   */
+/*   process_lget.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 09:00:10 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 23:31:31 by jremarqu         ###   ########.fr       */
+/*   Created: 2020/09/30 12:26:50 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 23:35:21 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_execute_sub(t_process *self, int v[3])
+int		process_lget(t_process *self, t_arg_type type, int value)
 {
-	self->reg[v[2]] = self->reg[v[0]] - self->reg[v[1]];
-	self->carry = (self->reg[v[2]] == 0);
+	int		rel;
+
+	if (type & T_DIR)
+		rel = value;
+	else if (type & T_IND)
+		rel = process_lread(self, value);
+	else
+		rel = self->reg[value];
+	return (rel);
 }

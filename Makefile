@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
+#    By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/30 12:46:10 by bconchit         ###   ########.fr        #
+#    Updated: 2020/10/01 00:12:42 by jremarqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -176,11 +176,14 @@ SOURCES_C	= \
 			process_destroy.c \
 			process_execute.c \
 			process_get.c \
+			process_lget.c \
+			process_lread.c \
 			process_move.c \
 			process_opcode.c \
 			process_read.c \
 			process_step.c \
 			process_validate.c \
+			process_write.c \
 		) \
 		$(addprefix token/, \
 			token_create.c \
@@ -310,11 +313,10 @@ vv2: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_D) 2.cor
 
 test: #$(NAME_W)
-	#./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
+	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
 	#../corewar_vis-master/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	#./_res/vm-mac/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
-	#diff 1.txt 2.txt || TRUE
-	../corewar_vis-master/corewar batman.cor batman.cor amedvedi.cor
+	./_res/vm-mac/corewar -a -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	diff 1.txt 2.txt || TRUE
 
 test2: $(NAME_W)
 	./corewar batman.cor batman.cor amedvedi.cor

@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_execute_sub.c                              :+:      :+:    :+:   */
+/*   process_read copy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 09:00:10 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 23:31:31 by jremarqu         ###   ########.fr       */
+/*   Created: 2020/09/30 12:30:22 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 23:34:54 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_execute_sub(t_process *self, int v[3])
+int		process_lread(t_process *self, long rel)
 {
-	self->reg[v[2]] = self->reg[v[0]] - self->reg[v[1]];
-	self->carry = (self->reg[v[2]] == 0);
+	int		value;
+
+	vm_read(self->vm, self->pc + rel, &value, sizeof(value));
+	ft_memrev(&value, sizeof(value));
+	return (value);
 }

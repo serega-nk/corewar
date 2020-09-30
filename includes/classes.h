@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 12:45:17 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 00:07:24 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ struct			s_player
 	int				fd;
 	t_bool			error;
 	char			*error_message;
-	long			lives_num;
+	// long			lives_num;
 };
 
 struct			s_process
@@ -321,11 +321,14 @@ t_bool			player_errorf(t_player *self, char *message);
 
 t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
-t_process		*process_clone(t_process *parent);
+t_process		*process_clone(t_process *parent, long pc);
 void			process_step(t_process *self, long rel);
 void			process_move(t_process *self);
 int				process_get(t_process *self, t_arg_type type, int value);
 int				process_read(t_process *self, long rel);
+int				process_lget(t_process *self, t_arg_type type, int value);
+int				process_lread(t_process *self, long rel);
+void		 	process_write(t_process *self, long rel, int value);
 
 t_bool			process_opcode(t_process *self);
 t_bool			process_arg_types(t_process *self);
@@ -336,17 +339,17 @@ void			process_execute_live(t_process *self, int v[3]);
 void			process_execute_ld(t_process *self, int v[3], t_arg_type t[3]);
 void			process_execute_st(t_process *self, int v[3], t_arg_type t[3]);
 void			process_execute_add(t_process *self, int v[3]);
-void			process_execute_sub(t_process *self);
-void			process_execute_and(t_process *self);
-void			process_execute_or(t_process *self);
-void			process_execute_xor(t_process *self);
-void			process_execute_zjmp(t_process *self);
+void			process_execute_sub(t_process *self, int v[3]);
+void			process_execute_and(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_or(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_xor(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_zjmp(t_process *self, int v[3]);
 void			process_execute_ldi(t_process *self, int v[3], t_arg_type t[3]);
-void			process_execute_sti(t_process *self);
-void			process_execute_fork(t_process *self);
-void			process_execute_lld(t_process *self);
-void			process_execute_lldi(t_process *self);
-void			process_execute_lfork(t_process *self);
+void			process_execute_sti(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_fork(t_process *self, int v[3]);
+void			process_execute_lld(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_lldi(t_process *self, int v[3], t_arg_type t[3]);
+void			process_execute_lfork(t_process *self, int v[3]);
 void			process_execute_aff(t_process *self, int v[3]);
 
 t_vm			*vm_create(t_vector *files, long nbr_cycles);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:55:59 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 11:22:56 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 00:09:12 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ static void			stop_processes(t_vm *self)
 	{
 		if (is_dead_process(self, process))
 		{
-			ft_printf("STOP %p, cycles_num = %ld\n", process, self->cycles_num);
+			// ft_printf("STOP %p, cycles_num = %ld\n", process, self->cycles_num);
 			list_iter_remove(iter, &process_destroy);
 		}
 	}
 	list_iter_destroy(&iter);
 }
 
-static void			reset_lives(t_vm *self)
-{
-	t_player		*player;
+// static void			reset_lives(t_vm *self)
+// {
+// 	// t_player		*player;
 
-	self->lives_num = 0;
-	vector_start(self->players);
-	while (vector_next(self->players, (void **)&player))
-	{
-		player->lives_num = 0;
-	}
-}
+// 	self->lives_num = 0;
+// 	// vector_start(self->players);
+// 	// while (vector_next(self->players, (void **)&player))
+// 	// {
+// 	// 	player->lives_num = 0;
+// 	// }
+// }
 
 void				vm_check(t_vm *self)
 {
@@ -54,12 +54,13 @@ void				vm_check(t_vm *self)
 	{
 		self->checks_num++;
 		stop_processes(self);
-		reset_lives(self);
 		if (self->checks_num >= MAX_CHECKS || self->lives_num >= NBR_LIVE)
 		{
 			self->cycles_to_die -= CYCLE_DELTA;
 			self->checks_num = 0;
 		}
+		self->lives_num = 0;
+		// reset_lives(self);
 		self->cycles_after_check = 0;
 	}
 }
