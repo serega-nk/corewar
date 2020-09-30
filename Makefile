@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/10/01 00:12:42 by jremarqu         ###   ########.fr        #
+#    Updated: 2020/10/01 01:18:54 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -313,9 +313,9 @@ vv2: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_D) 2.cor
 
 test: #$(NAME_W)
-	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
+	./corewar -dump $(NUM) ./bugs/bug01.cor > 1.txt
 	#../corewar_vis-master/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	./_res/vm-mac/corewar -a -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	./_res/vm-mac/corewar -a -d $(NUM) ./bugs/bug01.cor > 2.txt
 	diff 1.txt 2.txt || TRUE
 
 test2: $(NAME_W)
