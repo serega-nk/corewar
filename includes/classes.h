@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 00:07:24 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 01:14:08 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,6 @@ struct			s_player
 	int				fd;
 	t_bool			error;
 	char			*error_message;
-	// long			lives_num;
 };
 
 struct			s_process
