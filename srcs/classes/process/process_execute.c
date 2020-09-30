@@ -6,13 +6,13 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 19:02:49 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 11:25:06 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 12:41:23 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-static void		(*g_funcs[])(t_process *) = {
+static void		(*g_funcs[])() = {
 	NULL,
 	&process_execute_live,
 	&process_execute_ld,
@@ -55,7 +55,7 @@ void			process_execute(t_process *self)
 			process_validate(self))
 		{
 			ft_printf("#%p FUNC START %s\n", self, self->op->name);
-			(*g_funcs[(size_t)self->op->code])(self);
+			(*g_funcs[(size_t)self->op->code])(self, self->args, self->arg_types);
 			ft_printf("#%p FUNC END %s\n", self, self->op->name);
 		}
 		ft_printf("#%p ARG END %ld\n", self, self->pc);

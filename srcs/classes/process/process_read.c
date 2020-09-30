@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_read_int.c                                      :+:      :+:    :+:   */
+/*   process_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 09:29:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 11:23:23 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/30 12:30:22 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 12:32:28 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-int		vm_read_int(t_vm *self, long pos)
+int		process_read(t_process *self, long rel)
 {
 	int		value;
 
-	vm_read(self, pos, &value, sizeof(value));
+	vm_read(self->vm, self->pc + rel % IDX_MOD, &value, sizeof(value));
 	ft_memrev(&value, sizeof(value));
 	return (value);
 }

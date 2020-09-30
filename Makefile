@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/30 10:24:23 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/30 12:46:10 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,8 +175,10 @@ SOURCES_C	= \
 			process_create.c \
 			process_destroy.c \
 			process_execute.c \
+			process_get.c \
 			process_move.c \
 			process_opcode.c \
+			process_read.c \
 			process_step.c \
 			process_validate.c \
 		) \
@@ -195,7 +197,6 @@ SOURCES_C	= \
 			vm_load.c \
 			vm_loop.c \
 			vm_next.c \
-			vm_read_int.c \
 			vm_read.c \
 			vm_run.c \
 			vm_start.c \
