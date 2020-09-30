@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:55:59 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 18:53:49 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:22:56 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_bool		is_dead_process(t_vm *self, t_process *process)
 		self->cycles_num - process->last_live >= self->cycles_to_die);
 }
 
-static void 		stop_processes(t_vm *self)
+static void			stop_processes(t_vm *self)
 {
 	t_list_iter		*iter;
 	t_process		*process;
@@ -35,11 +35,11 @@ static void 		stop_processes(t_vm *self)
 	list_iter_destroy(&iter);
 }
 
-static void 		reset_lives(t_vm *self)
+static void			reset_lives(t_vm *self)
 {
 	t_player		*player;
-	
-	self->lives_num = 0;	
+
+	self->lives_num = 0;
 	vector_start(self->players);
 	while (vector_next(self->players, (void **)&player))
 	{

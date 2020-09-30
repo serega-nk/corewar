@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/15 18:41:53 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:30:09 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ struct	s_app
 	t_vector		*pending;
 	t_vector		*files;
 	t_vm			*vm;
-	int				error;	
+	int				error;
 };
 
 void	app_init(t_app *self, int argc, char *argv[]);

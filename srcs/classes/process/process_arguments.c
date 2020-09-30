@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 21:51:18 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 22:26:54 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:21:31 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ t_bool			process_arguments(t_process *self)
 		vector_push_back(self->arguments, argument);
 		argument->arg_type = self->arg_types[index];
 		argument_calc_size(argument, self->op->dir_ind);
-		vm_read(self->vm, process_addr(self),
+		vm_read(self->vm, self->pc + self->step,
 			&argument->number, argument->size);
 		ft_memrev(&argument->number, argument->size);
 		ft_signed(&argument->number, argument->size, sizeof(argument->number));
 		process_step(self, argument->size);
-		ft_printf("#### ARGUMENT %#.2b = %d\n", argument->arg_type, argument->number);
+		self->args[index] = argument->number;
 		index++;
 	}
-	self->args = (t_argument **)self->arguments->table;
 	return (TRUE);
 }

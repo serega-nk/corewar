@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:30:00 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 17:14:01 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:28:07 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static t_bool	player_load_header(t_player *self, t_header *header)
 	if (header->magic != COREWAR_EXEC_MAGIC)
 		return (player_error(self, "ERROR COREWAR_EXEC_MAGIC"));
 	if (header->prog_size > CHAMP_MAX_SIZE)
+	{
 		return (player_errorf(self, ft_xprintf("ERROR CHAMP SIZE %lu > %lu\n",
 			header->prog_size, CHAMP_MAX_SIZE)));
+	}
 	if (header->prog_name[PROG_NAME_LENGTH] != '\0')
 		return (player_error(self, "ERROR PROG_NAME"));
 	if (header->comment[COMMENT_LENGTH] != '\0')
@@ -37,7 +39,7 @@ static t_bool	player_load_header(t_player *self, t_header *header)
 
 t_bool			player_load(t_player *self, char *path)
 {
-	t_header	hdr;	
+	t_header	hdr;
 
 	self->fd = open(path, O_RDONLY);
 	if (self->fd < 0)

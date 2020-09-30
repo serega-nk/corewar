@@ -1,30 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_execute_st.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/30 09:23:39 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 11:06:45 by bconchit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "classes.h"
 
-void	*process_reg_addr(t_process *self, long number)
-{
-	return ((void *)(self->reg + (number - 1) * REG_SIZE));
-}
-
-void	*process_ind_addr(t_process *self, long number)
-{
-	return ((void *)(self->pc + (number % IDX_MOD)));
-}
-
 void	process_execute_st(t_process *self)
 {
-	void	*src;
-	void	*dst;
+	int		val;
+	long	rel;
 
-	src = process_reg_addr(self, self->args[0]->number);
-	if (self->args[1]->arg_type & T_REG)
+	if (self->arg_types[1] & T_IND)
 	{
-		dst = process_reg_addr(self, self->args[1]->number);
-		ft_memcpy(dst, src, REG_SIZE);
+		val = self->reg[self->args[0]];
+		rel = self->args[1] % IDX_MOD;
+		ft_printf("ST rel = %d, val = %d\n", rel, val);
+		vm_write_int(self->vm, self->pc + rel, val);
 	}
-	else if (self->args[1]->arg_type & T_IND)
+	else
 	{
-		dst = process_ind_addr(self, self->args[1]->number);
-		vm_write(self->vm, dst, src, IND_SIZE);
+		self->reg[self->args[1]] = self->reg[self->args[0]];
 	}
 }

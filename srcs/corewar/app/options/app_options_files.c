@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/17 02:19:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 08:44:36 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void		app_options_files_after(t_app *self)
 			vector_set(self->files, index, ptr);
 		}
 		index++;
-	}	
+	}
 	while (vector_next(self->pending, (void **)&ptr))
 		vector_push_back(self->files, ptr);
 	if (self->files->count > MAX_PLAYERS)

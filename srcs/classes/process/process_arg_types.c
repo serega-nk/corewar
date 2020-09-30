@@ -1,8 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_arg_types.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/30 08:46:25 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 11:26:25 by bconchit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "classes.h"
 
 static t_arg_type	get_arg_type(t_arg_type types, size_t index)
 {
-	return ((types >> (sizeof(types) * 8 - index * 2)) & 0b11);
+	int		val;
+
+	val = (types >> (sizeof(types) * 8 - index * 2)) & 0b11;
+	if (val == REG_CODE)
+		return (T_REG);
+	if (val == IND_CODE)
+		return (T_IND);
+	if (val == DIR_CODE)
+		return (T_DIR);
+	return (0);
 }
 
 t_bool				process_arg_types(t_process *self)
@@ -14,7 +35,7 @@ t_bool				process_arg_types(t_process *self)
 	if (self->op->use_types)
 	{
 		types = '\0';
-		vm_read(self->vm, process_addr(self), &types, sizeof(types));
+		vm_read(self->vm, self->pc + self->step, &types, sizeof(types));
 		ft_memrev(&types, sizeof(types));
 		process_step(self, sizeof(types));
 		index = 0;

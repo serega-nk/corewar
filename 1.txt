@@ -1,0 +1,11 @@
+Usage: ./corewar [[-d N | -dump N] -v N | -s] [-n N] <champion.cor> [-n N] <...>
+	-d N	: Dumps memory after N cycles (long format), then exits
+	-dump N	: Dumps memory after N cycles (short format), then exits
+	-v N	: Verbosity levels, can be added together to enable several
+		  - 0 : Show only essentials
+		  - 1 : Show lives
+		  - 2 : Show cycles
+		  - 4 : Show operations
+		  - 8 : Show deaths
+		  - 16 : Show PC movements (except for jumps)
+	-s	: Visualization mode

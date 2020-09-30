@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_execute_lld.c                              :+:      :+:    :+:   */
+/*   vm_read_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 09:39:37 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 09:39:38 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/30 09:29:48 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 11:23:23 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_execute_lld(t_process *self)
+int		vm_read_int(t_vm *self, long pos)
 {
-	if (self)
-		return ;
+	int		value;
+
+	vm_read(self, pos, &value, sizeof(value));
+	ft_memrev(&value, sizeof(value));
+	return (value);
 }

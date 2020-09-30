@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 22:31:05 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:29:51 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,16 +179,16 @@ struct			s_process
 {
 	t_vm			*vm;
 	t_player		*player;
-	char			reg[REG_SIZE * REG_NUMBER];
+	int				reg[REG_NUMBER + 1];
 	t_bool			carry;
 	long			pc;
 	long			step;
 	long			last_live;
 	int				cycles_wait;
 	t_op			*op;
-	t_arg_type		arg_types[MAX_ARG_TYPES];
 	t_vector		*arguments;
-	t_argument		**args;
+	t_arg_type		arg_types[MAX_ARG_TYPES];
+	int				args[MAX_ARG_TYPES];
 };
 
 struct			s_vm
@@ -199,7 +199,6 @@ struct			s_vm
 	t_list			*processes;
 	t_list			*fork_processes;
 	unsigned char	mem[MEM_SIZE];
-	
 	long			cycles_num;
 	long			cycles_to_die;
 	long			cycles_after_check;
@@ -323,8 +322,8 @@ t_bool			player_errorf(t_player *self, char *message);
 t_process		*process_create(t_vm *vm, t_player *player, long pc);
 void			process_destroy(t_process **aself);
 t_process		*process_clone(t_process *parent);
+void			process_step(t_process *self, long rel);
 void			process_move(t_process *self);
-long			process_reg_get(t_process *self, int num);
 t_bool			process_opcode(t_process *self);
 t_bool			process_arg_types(t_process *self);
 t_bool			process_arguments(t_process *self);
@@ -358,7 +357,10 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-void			vm_write(t_vm *self, void *addr, void *data, size_t size);
-void			vm_read(t_vm *self, void *addr, void *data, size_t size);
+
+void			vm_write(t_vm *self, long pos, void *data, size_t size);
+void			vm_read(t_vm *self, long pos, void *data, size_t size);
+void			vm_write_int(t_vm *self, long pos, int value);
+int				vm_read_int(t_vm *self, long pos);
 
 #endif

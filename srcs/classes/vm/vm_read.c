@@ -6,13 +6,13 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 22:31:16 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 22:31:43 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 10:26:49 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	vm_read(t_vm *self, void *addr, void *data, size_t size)
+void	vm_read(t_vm *self, long pos, void *data, size_t size)
 {
 	size_t			index;
 	size_t			norme;
@@ -22,7 +22,7 @@ void	vm_read(t_vm *self, void *addr, void *data, size_t size)
 	index = 0;
 	while (index < size)
 	{
-		norme = (size_t)((MEM_SIZE + (((long)addr + index) % MEM_SIZE)) % MEM_SIZE);
+		norme = (size_t)((MEM_SIZE + ((pos + index) % MEM_SIZE)) % MEM_SIZE);
 		ptr[index] = self->mem[norme];
 		index++;
 	}

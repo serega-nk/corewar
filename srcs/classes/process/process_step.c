@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_execute_lld.c                              :+:      :+:    :+:   */
+/*   process_step.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 09:39:37 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 09:39:38 by bconchit         ###   ########.fr       */
+/*   Created: 2020/09/30 10:20:42 by bconchit          #+#    #+#             */
+/*   Updated: 2020/09/30 11:24:29 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
 
-void	process_execute_lld(t_process *self)
+void	process_step(t_process *self, long rel)
 {
-	if (self)
-		return ;
+	self->step += rel;
 }

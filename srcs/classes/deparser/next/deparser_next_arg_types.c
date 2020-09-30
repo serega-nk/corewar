@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 17:40:18 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/11 23:36:30 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/09/30 11:28:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 static t_arg_type	get_arg_type(t_arg_type types, size_t index)
 {
-	return ((types >> (sizeof(types) * 8 - index * 2)) & 0b11);
+	int		val;
+
+	val = (types >> (sizeof(types) * 8 - index * 2)) & 0b11;
+	if (val == REG_CODE)
+		return (T_REG);
+	if (val == IND_CODE)
+		return (T_IND);
+	if (val == DIR_CODE)
+		return (T_DIR);
+	return (0);
 }
 
 t_bool				deparser_next_arg_types(t_deparser *self,

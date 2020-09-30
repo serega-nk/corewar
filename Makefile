@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/09/28 22:25:30 by bconchit         ###   ########.fr        #
+#    Updated: 2020/09/30 10:24:23 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -177,7 +177,7 @@ SOURCES_C	= \
 			process_execute.c \
 			process_move.c \
 			process_opcode.c \
-			process_reg_get.c \
+			process_step.c \
 			process_validate.c \
 		) \
 		$(addprefix token/, \
@@ -195,9 +195,11 @@ SOURCES_C	= \
 			vm_load.c \
 			vm_loop.c \
 			vm_next.c \
+			vm_read_int.c \
 			vm_read.c \
 			vm_run.c \
 			vm_start.c \
+			vm_write_int.c \
 			vm_write.c \
 		) \
 	) \
@@ -306,10 +308,12 @@ vv: all
 vv2: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_D) 2.cor
 
-test: $(NAME_W)
-	./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	./_res/vm-linux/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
-	diff 1.txt 2.txt || TRUE
+test: #$(NAME_W)
+	#./corewar -dump $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
+	#../corewar_vis-master/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
+	#./_res/vm-mac/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 2.txt
+	#diff 1.txt 2.txt || TRUE
+	../corewar_vis-master/corewar batman.cor batman.cor amedvedi.cor
 
 test2: $(NAME_W)
 	./corewar batman.cor batman.cor amedvedi.cor
