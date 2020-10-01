@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:09:32 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:34:14 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 03:28:35 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	check_to_error_max_plyrs(t_app *self) is the special func
-**	for app_optioms_files wich we use in 
+**	for app_optioms_files wich we use in
 **	static void		app_options_files_after(t_app *self) func
 */
 

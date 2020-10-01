@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:35:20 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 03:38:39 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void		just_case_for_option_files_n(t_app *self, int num)
 	index = (size_t)num - 1;
 	if (vector_get2(self->files, index) != NULL)
 	{
-		ft_printf_fd(STDERR_FILENO, "ERROR num = %d\n", num);
+		ft_printf_fd(STDERR_FILENO, "ERROR Order of players is "\
+			"duplicated, num = %d\n", num);
 		ft_xexit(EXIT_FAILURE);
 	}
 	vector_set(self->files, index, self->argv[2]);
@@ -82,7 +83,8 @@ static void		app_options_files_after(t_app *self)
 		{
 			if (vector_next(self->pending, (void **)&ptr) == FALSE)
 			{
-				ft_printf_fd(STDERR_FILENO, "ERROR\n");
+				ft_printf_fd(STDERR_FILENO, "ERROR: You cant set order," \
+					" not enough players\n");
 				ft_xexit(EXIT_FAILURE);
 			}
 			vector_set(self->files, index, ptr);
