@@ -3,14 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_sti.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:46:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 05:47:50 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:58:04 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
+
+/*
+** INSTRUCTION
+**
+**   sti
+**
+** OPCODE
+**
+**   0x0b
+**
+** 42 SUBJECT REFERENCE
+**
+**   sti: Opcode 11. Take a registry, and two indexes (potentially
+**   registries) add the two indexes, and use this result as an address
+**   where the value of the first parameter will be copied.
+**
+** EPITECH SUBJECT REFERENCE
+**
+**   sti r2,%4,%5 sti copies REG_SIZE bytes of r2 at address (4 + 5)
+**   Parameters 2 and 3 are indexes. If they are, in fact, registers,
+**   we’ll use their contents as indexes.
+**
+** USAGE EXAMPLE
+**
+**   sti r7,%-250,r6
+**   sti r10, r11, r13
+**
+**   {"sti", 3, {T_REG,
+**               T_REG | T_DIR | T_IND,
+**               T_DIR | T_REG},
+**      11, 25,
+**		"store index", 1, 1}
+*/
 
 void	process_execute_sti(t_process *self, int v[3], t_arg_type t[3])
 {

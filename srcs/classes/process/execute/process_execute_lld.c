@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_lld.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:39:37 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 06:32:12 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:57:01 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
+
+/*
+** INSTRUCTION
+**
+**   lld
+**
+** OPCODE
+**
+**   0x0d
+**
+** 42 SUBJECT REFERENCE
+**
+**   lld: Means long-load, so it’s opcode is obviously 13. It the same as ld,
+**   but without % IDX_MOD. Modify the carry.
+**
+** EPITECH SUBJECT REFERENCE
+**
+**   Same as ld, but without the % IDX_MOD This operation modifies the carry.
+**
+** USAGE EXAMPLE
+**
+**   -
+**
+**   {"lld", 2, {T_DIR | T_IND,
+**               T_REG},
+**    13, 10, "long load", 1, 0}
+*/
 
 static int		process_lread_fix(t_process *self, long rel)
 {

@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_lldi.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:39:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 06:29:32 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:57:15 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
+
+/*
+** INSTRUCTION
+**
+**   lldi
+**
+** OPCODE
+**
+**   0x0e
+**
+** 42 SUBJECT REFERENCE
+**
+**   lldi: Opcode 0x0e. Same as ldi, but does not apply any modulo to the
+**   addresses. It will however, modify the carry.
+**
+** EPITECH SUBJECT REFERENCE
+**
+**   Same as ldi, without the % IDX_MOD This operation modifies the carry.
+**
+** USAGE EXAMPLE
+**
+**   -
+**
+**   {"lldi", 3, {T_REG | T_DIR | T_IND,
+**                T_DIR | T_REG,
+**                T_REG},
+**      14, 50,
+**		"long load index", 1, 1}
+*/
 
 static int	process_lget_fix(t_process *self, t_arg_type type, int value)
 {
