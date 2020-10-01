@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:21:42 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:30:49 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_parser			t_parser;
 typedef struct s_compiler		t_compiler;
 typedef struct s_deparser		t_deparser;
 typedef struct s_decompiler		t_decompiler;
+
+typedef enum e_verbosity		t_verbosity;
 
 typedef struct s_player			t_player;
 typedef struct s_process		t_process;
@@ -162,6 +164,15 @@ struct			s_decompiler
 	char			*error_message;
 };
 
+enum			e_verbosity
+{
+	VERBOSITY_LIVES = 1,
+	VERBOSITY_CYCLES = 2,
+	VERBOSITY_OPERATIONS = 4,
+	VERBOSITY_DEATHS = 8,
+	VERBOSITY_MOVES = 16,
+};
+
 struct			s_player
 {
 	int				id;
@@ -188,6 +199,7 @@ struct			s_process
 	t_vector		*arguments;
 	t_arg_type		arg_types[MAX_ARG_TYPES];
 	int				args[MAX_ARG_TYPES];
+	int				id;
 };
 
 struct			s_vm
@@ -204,6 +216,8 @@ struct			s_vm
 	long			checks_num;
 	long			lives_num;
 	t_player		*winner;
+	int				process_nbr;
+	int				verbosity;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);

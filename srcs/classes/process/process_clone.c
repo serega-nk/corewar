@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_clone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:52:38 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 01:36:50 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:24:35 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_process	*process_clone(t_process *parent, long pc)
 	self->pc = pc;
 	self->step = 0;
 	self->arguments = vector_create();
+	self->id = ++self->vm->process_nbr;
 	return (self);
 }

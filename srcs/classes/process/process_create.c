@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 16:41:55 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/30 11:22:20 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:24:25 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_process		*process_create(t_vm *vm, t_player *player, long pc)
 	self->pc = pc;
 	self->reg[1] = -player->id;
 	self->arguments = vector_create();
+	self->id = ++self->vm->process_nbr;
 	return (self);
 }
