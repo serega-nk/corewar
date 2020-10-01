@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_and.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:39:45 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:53:31 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:09:02 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,7 @@ void		process_execute_and(t_process *self, int v[3], t_arg_type t[3])
 	b = process_get(self, t[1], v[1]);
 	self->reg[v[2]] = a & b;
 	self->carry = (self->reg[v[2]] == 0);
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+		ft_printf("Process %4d | and %d %d r%d\n", self->id, a, b,
+			v[2]);
 }
