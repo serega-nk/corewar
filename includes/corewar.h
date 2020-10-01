@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:47:33 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:55:16 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ struct	s_app
 	char			**argv;
 	long			nbr_cycles;
 	t_verbosity		verbosity;
+	t_bool			option_d;
 	t_vector		*pending;
 	t_vector		*files;
 	t_vm			*vm;

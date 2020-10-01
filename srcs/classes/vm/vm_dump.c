@@ -6,13 +6,11 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:37:08 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 15:56:21 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:57:50 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "classes.h"
-
-#define OCTETS_PER_LINE 64
 
 void				vm_dump(t_vm *self)
 {
@@ -25,7 +23,7 @@ void				vm_dump(t_vm *self)
 	{
 		ft_printf("0x%.4x : ", index);
 		pos = 0;
-		while (pos < OCTETS_PER_LINE)
+		while (pos < self->octets_per_line)
 		{
 			if (index + pos < sizeof(self->mem))
 				ch = (unsigned char)self->mem[index + pos];
@@ -35,6 +33,6 @@ void				vm_dump(t_vm *self)
 			pos++;
 		}
 		ft_printf("\n");
-		index += OCTETS_PER_LINE;
+		index += self->octets_per_line;
 	}
 }
