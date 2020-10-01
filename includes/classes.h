@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:30:49 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:42:59 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ struct			s_vm
 	long			lives_num;
 	t_player		*winner;
 	int				process_nbr;
-	int				verbosity;
+	t_verbosity		verbosity;
 };
 
 t_token			*token_create(t_token_type type, int ln, int col);
@@ -376,10 +376,7 @@ void			vm_final(t_vm *self);
 void			vm_dump(t_vm *self);
 void			vm_next(t_vm *self);
 void			vm_check(t_vm *self);
-
 void			vm_write(t_vm *self, long pos, void *data, size_t size);
 void			vm_read(t_vm *self, long pos, void *data, size_t size);
-void			vm_write_int(t_vm *self, long pos, int value);
-int				vm_read_int(t_vm *self, long pos);
 
 #endif

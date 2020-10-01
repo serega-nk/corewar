@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+         #
+#    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/10/01 01:18:54 by wzei             ###   ########.fr        #
+#    Updated: 2020/10/01 04:43:22 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -203,7 +203,6 @@ SOURCES_C	= \
 			vm_read.c \
 			vm_run.c \
 			vm_start.c \
-			vm_write_int.c \
 			vm_write.c \
 		) \
 	) \
