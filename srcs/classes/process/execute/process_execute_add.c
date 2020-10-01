@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_add.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:46:42 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:52:08 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:02:20 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	process_execute_add(t_process *self, int v[3])
 {
 	self->reg[v[2]] = self->reg[v[0]] + self->reg[v[1]];
 	self->carry = (self->reg[v[2]] == 0);
-	if (TRUE)
-	{
-		
-	}
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+		ft_printf("Process %4d | add r%d r%d r%d\n", self->id, v[0], v[1],
+		v[2]);
 }
