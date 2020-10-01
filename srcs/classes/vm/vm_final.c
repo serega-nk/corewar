@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_final.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:03:21 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 05:33:36 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 06:25:41 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	vm_final(t_vm *self)
 {
-	ft_printf("Player %d (%s) won\n", self->winner->id, self->winner->name);
+	ft_printf("Contestant %d, \"%s\", has won !\n", self->winner->id, self->winner->name);
+	//ft_printf("Player %d (%s) won\n", self->winner->id, self->winner->name);
 }

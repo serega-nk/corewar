@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:38:05 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 05:54:35 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 06:29:04 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_vm	*vm_create(t_vector *files, t_verbosity verbosity, long nbr_cycles,
 	self->files = files;
 	self->verbosity = verbosity;
 	self->nbr_cycles = nbr_cycles;
-	self->octets_per_line = octets_per_line;	
+	self->octets_per_line = octets_per_line;
 	self->players = vector_create();
 	self->processes = list_create();
 	self->fork_processes = list_create();
-	self->cycles_to_die = CYCLE_TO_DIE;	
+	self->cycles_to_die = CYCLE_TO_DIE;
 	return (self);
 }

@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:30:22 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 03:37:53 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 06:28:32 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int		process_lread(t_process *self, long rel)
 	int		value;
 
 	vm_read(self->vm, self->pc + rel, &value, sizeof(value));
-	ft_memrev(&value, sizeof(value));	
+	ft_memrev(&value, sizeof(value));
 	return (value);
 }
