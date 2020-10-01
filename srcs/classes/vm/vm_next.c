@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_next.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:03:21 by bconchit          #+#    #+#             */
-/*   Updated: 2020/09/28 21:54:51 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:19:14 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void				vm_next(t_vm *self)
 {
 	self->cycles_num++;
 	self->cycles_after_check++;
+	if (self->verbosity & VERBOSITY_CYCLES)
+		ft_printf("Now cycle is %d\n", self->cycles_num);
 	execute_processes(self);
 	add_fork_processes(self);
 }

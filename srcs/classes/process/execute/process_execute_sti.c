@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 08:46:33 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:37:17 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:14:40 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@ void	process_execute_sti(t_process *self, int v[3], t_arg_type t[3])
 	rel2 = process_get(self, t[2], v[2]);
 	process_write(self, rel1 + rel2, data);
 	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
-		ft_printf("Process %4d | st r%d %d\n", self->id, v[0], data);
+	{
+		ft_printf("Process %4d | sti r%d %d %d\n", self->id, v[0], rel1, rel2);
+		ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n",
+			rel1, rel2, rel1 + rel2, self->pc + (rel1 + rel2) % IDX_MOD);
+	}
 }
