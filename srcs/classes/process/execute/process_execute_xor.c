@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_xor.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:43:32 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:58:41 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:21:53 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,6 @@ void		process_execute_xor(t_process *self, int v[3], t_arg_type t[3])
 	b = process_get(self, t[1], v[1]);
 	self->reg[v[2]] = a ^ b;
 	self->carry = (self->reg[v[2]] == 0);
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+		ft_printf("Process %4d | xor %d %d r%d\n", self->id, a, b, v[2]);
 }
