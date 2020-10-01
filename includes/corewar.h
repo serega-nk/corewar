@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 06:30:02 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 06:32:27 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	app_options_files(t_app *self);
 
 /*
 **	check_to_error_max_plyrs(t_app *self) is the special func
-**	for app_optioms_files.c wich we use in 
+**	for app_optioms_files.c wich we use in
 **	static void		app_options_files_after(t_app *self) func
 **
 **	Way to the place: --> srcs/corewar/app/options/app_options_files.c

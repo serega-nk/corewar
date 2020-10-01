@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 19:02:49 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 06:29:51 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 06:31:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			process_execute(t_process *self)
 			process_arguments(self) &&
 			process_validate(self))
 		{
-			(*g_funcs[(size_t)self->op->code])(self, 
+			(*g_funcs[(size_t)self->op->code])(self,
 				self->args, self->arg_types);
 		}
 		process_move(self);
