@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:44:40 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 03:38:39 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 03:49:25 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void		app_options_files_after(t_app *self)
 		{
 			if (vector_next(self->pending, (void **)&ptr) == FALSE)
 			{
-				ft_printf_fd(STDERR_FILENO, "ERROR: You cant set order," \
+				ft_printf_fd(STDERR_FILENO, "ERROR: You cant set this order," \
 					" not enough players\n");
 				ft_xexit(EXIT_FAILURE);
 			}
