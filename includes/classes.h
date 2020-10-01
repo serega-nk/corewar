@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 19:01:17 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:14:12 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,9 @@ struct			s_decompiler
 
 enum			e_verbosity
 {
-	VERBOSITY_CYCLES = 0,
-	VERBOSITY_OPERATIONS = 1,
-	VERBOSITY_DEATHS = 2,
+	VERBOSITY_CYCLES = 1,
+	VERBOSITY_OPERATIONS = 2,
+	VERBOSITY_DEATHS = 4,
 };
 
 struct			s_player

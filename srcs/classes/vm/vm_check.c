@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:55:59 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 05:55:15 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:11:26 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void			stop_processes(t_vm *self)
 	{
 		if (is_dead_process(self, process))
 		{
-		// ft_printf("STOP %p, cycles_num = %ld\n", process, self->cycles_num);
+			if (self->verbosity & VERBOSITY_DEATHS)
+			{
+				ft_printf("Process %d hasn't lived for %d cycles (Cycles_to_die %d)\n",
+				process->id, self->cycles_num - process->last_live, self->cycles_to_die);
+			}
 			list_iter_remove(iter, &process_destroy);
 		}
 	}
