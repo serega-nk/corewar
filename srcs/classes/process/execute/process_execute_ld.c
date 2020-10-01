@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_ld.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:23:57 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:55:47 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:11:44 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void		process_execute_ld(t_process *self, int v[3], t_arg_type t[3])
 {
 	self->reg[v[1]] = process_get(self, t[0], v[0]);
 	self->carry = (self->reg[v[1]] == 0);
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+		ft_printf("Process %4d | ld r%d\n", self->id, v[0]);
 }
