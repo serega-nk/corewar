@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:38:00 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:47:33 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ struct	s_app
 	int				argc;
 	char			**argv;
 	long			nbr_cycles;
+	t_verbosity		verbosity;
 	t_vector		*pending;
 	t_vector		*files;
 	t_vm			*vm;
-	int				error;
+	int				error;	
 };
 
 void	app_init(t_app *self, int argc, char *argv[]);

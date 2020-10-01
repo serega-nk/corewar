@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:42:59 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 04:46:40 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,7 +365,8 @@ void			process_execute_lldi(t_process *self, int v[3],
 void			process_execute_lfork(t_process *self, int v[3]);
 void			process_execute_aff(t_process *self, int v[3]);
 
-t_vm			*vm_create(t_vector *files, long nbr_cycles);
+t_vm			*vm_create(t_vector *files, long nbr_cycles,
+	t_verbosity verbosity);
 void			vm_destroy(t_vm **aself);
 void			vm_run(t_vm *self);
 void			vm_load(t_vm *self);
