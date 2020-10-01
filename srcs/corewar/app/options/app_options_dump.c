@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:09:32 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:55:41 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:07:54 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_to_error_max_plyrs(t_app *self)
 	ft_xexit(EXIT_FAILURE);
 }
 
-void	app_options_dump(t_app *self)
+t_bool	app_options_dump(t_app *self)
 {
 	char		*ptr;
 
@@ -40,9 +40,10 @@ void	app_options_dump(t_app *self)
 		{
 			self->argc -= 2;
 			self->argv += 2;
-			return ;
+			return (TRUE);
 		}
 		ft_printf_fd(STDERR_FILENO, "Invalid Option\n");
 		ft_xexit(EXIT_FAILURE);
 	}
+	return (FALSE);
 }

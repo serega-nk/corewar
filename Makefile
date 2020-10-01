@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/10/01 04:43:22 by bconchit         ###   ########.fr        #
+#    Updated: 2020/10/01 05:06:06 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -237,6 +237,7 @@ SOURCES_W	= \
 				app_options_dump.c \
 				app_options_files.c \
 				app_options_usage.c \
+				app_options_verbosity.c \
 			) \
 			app_execute.c \
 			app_free.c \

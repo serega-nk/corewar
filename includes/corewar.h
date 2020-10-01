@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 12:07:34 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:55:16 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:05:47 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	app_execute(t_app *self);
 void	app_free(t_app *self);
 
 void	app_options_usage(t_app *self);
-void	app_options_dump(t_app *self);
+t_bool	app_options_verbosity(t_app *self);
+t_bool	app_options_dump(t_app *self);
 void	app_options_files(t_app *self);
 
 /*
