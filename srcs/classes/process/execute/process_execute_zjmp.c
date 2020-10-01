@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_zjmp.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:43:21 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:58:54 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:25:07 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ void	process_execute_zjmp(t_process *self, int v[3])
 	if (self->carry)
 	{
 		self->step = v[0] % IDX_MOD;
+		if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+			ft_printf("P %4d | zjmp %d %s\n", self->id, v[0],
+			self->carry ? "OK" : "FAILED");
 	}
 }
