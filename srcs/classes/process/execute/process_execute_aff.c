@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_aff.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:39:54 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:53:21 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:07:03 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@
 void	process_execute_aff(t_process *self, int v[3])
 {
 	ft_printf("Aff: %c\n", self->reg[v[0]]);
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+		ft_printf("Process %4d | add r%d\n", self->id, v[0]);
 }
