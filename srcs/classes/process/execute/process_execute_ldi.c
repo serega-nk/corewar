@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_ldi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 11:22:10 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 18:15:59 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:18:37 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		process_execute_ldi(t_process *self, int v[3], t_arg_type t[3])
 	{
 		ft_printf("P %4d | ldi %d %d r%d\n", self->id, rel0, rel1, v[2]);
 		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",
-		rel0, rel1, rel0 + rel1, self->pc + (rel0  + rel1) % IDX_MOD);
+			rel0, rel1, rel0 + rel1, self->pc + (rel0 + rel1) % IDX_MOD);
 	}
-	
 }
