@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_execute_ldi.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.21-school.ru>           +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 11:22:10 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 17:56:08 by wzei             ###   ########.fr       */
+/*   Updated: 2020/10/01 18:15:59 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,11 @@ void		process_execute_ldi(t_process *self, int v[3], t_arg_type t[3])
 	rel0 = process_get(self, t[0], v[0]);
 	rel1 = process_get(self, t[1], v[1]);
 	self->reg[v[2]] = process_read(self, rel0 + rel1);
+	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+	{
+		ft_printf("P %4d | ldi %d %d r%d\n", self->id, rel0, rel1, v[2]);
+		ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n",
+		rel0, rel1, rel0 + rel1, self->pc + (rel0  + rel1) % IDX_MOD);
+	}
+	
 }
