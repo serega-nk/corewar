@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/10/01 05:06:06 by bconchit         ###   ########.fr        #
+#    Updated: 2020/10/01 05:26:03 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -250,7 +250,7 @@ SOURCES_W	= \
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
-CC			= gcc -g
+CC			= gcc
 WFLAGS		= -Wall -Wextra -Werror
 IFLAGS		= -I$(INC_DIR)/ -I$(LIBFT_DIR)/includes/
 LFLAGS		= -L$(LIBFT_DIR)/ -lft
@@ -309,8 +309,8 @@ norm:
 vv: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
 
-vv2: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_D) 2.cor
+vv2: $(NAME_W)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_W) -d 10000 -v 31 -n 2 batman.cor batman.cor amedvedi.cor
 
 test: #$(NAME_W)
 	./corewar -dump $(NUM) ./bugs/bug01.cor > 1.txt

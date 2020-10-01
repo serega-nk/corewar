@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 17:55:59 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 02:25:03 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:55:15 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ static void			stop_processes(t_vm *self)
 	list_iter_destroy(&iter);
 }
 
-// static void			reset_lives(t_vm *self)
-// {
-// 	// t_player		*player;
-
-// 	self->lives_num = 0;
-// 	// vector_start(self->players);
-// 	// while (vector_next(self->players, (void **)&player))
-// 	// {
-// 	// 	player->lives_num = 0;
-// 	// }
-// }
-
 void				vm_check(t_vm *self)
 {
 	if (self->cycles_to_die == self->cycles_after_check ||
@@ -60,7 +48,6 @@ void				vm_check(t_vm *self)
 			self->checks_num = 0;
 		}
 		self->lives_num = 0;
-		// reset_lives(self);
 		self->cycles_after_check = 0;
 	}
 }

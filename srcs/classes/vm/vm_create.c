@@ -6,7 +6,7 @@
 /*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:38:05 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:58:58 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:54:35 by bconchit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vm	*vm_create(t_vector *files, t_verbosity verbosity, long nbr_cycles,
 	t_vm	*self;
 
 	self = (t_vm *)ft_xmemalloc(sizeof(t_vm));
-	self->files = files;	
+	self->files = files;
 	self->verbosity = verbosity;
 	self->nbr_cycles = nbr_cycles;
 	self->octets_per_line = octets_per_line;	
