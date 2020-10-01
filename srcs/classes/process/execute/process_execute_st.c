@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 09:23:39 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:43:03 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 05:51:03 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	process_execute_st(t_process *self, int v[3], t_arg_type t[3])
 		process_write(self, v[1], self->reg[v[0]]);
 	else
 		self->reg[v[1]] = self->reg[v[0]];
-	if (self->vm->verbosity & VERBOSITY_OPERATIONS)
-		ft_printf("Process %4d | st r%d %d\n", self->id, v[0], v[1]);
+	// if (self->vm->verbosity & VERBOSITY_OPERATIONS)
+	// 	ft_printf("Process %4d | st r%d %d\n", self->id, v[0], v[1]);
 }
