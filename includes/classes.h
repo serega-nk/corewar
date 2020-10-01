@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   classes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 01:41:48 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 04:58:52 by bconchit         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:01:17 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,11 +166,9 @@ struct			s_decompiler
 
 enum			e_verbosity
 {
-	VERBOSITY_LIVES = 1,
-	VERBOSITY_CYCLES = 2,
-	VERBOSITY_OPERATIONS = 4,
-	VERBOSITY_DEATHS = 8,
-	VERBOSITY_MOVES = 16,
+	VERBOSITY_CYCLES = 0,
+	VERBOSITY_OPERATIONS = 1,
+	VERBOSITY_DEATHS = 2,
 };
 
 struct			s_player

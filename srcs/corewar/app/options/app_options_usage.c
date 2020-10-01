@@ -6,7 +6,7 @@
 /*   By: jremarqu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 13:06:18 by bconchit          #+#    #+#             */
-/*   Updated: 2020/10/01 18:51:30 by jremarqu         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:02:51 by jremarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	app_options_usage(t_app *self)
 		" -d <num> -n <num>] champion.cor> <...>\n\n");
 		ft_printf("\t-v\t <num> :\tPrint output from \"aff\""
 							"(Default is off)\n");
-		ft_printf("\t\t\t  - 1 :\t\n");
+		ft_printf("\t\t\t\t\t- 0 : Show cycles\t\n");
+		ft_printf("\t\t\t\t\t- 1 : Show operations\t\n");
+		ft_printf("\t\t\t\t\t- 2 : Show deaths\t\n");
 		ft_printf("\t-dump\t <num> :\tDump memory (32 octets per line)"\
 							" after <num> cycles and exit\n");
 		ft_printf("\t-d\t <num> :\tDump memory (64 octets per line)"\
