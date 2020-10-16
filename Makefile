@@ -6,7 +6,7 @@
 #    By: bconchit <bconchit@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/25 20:00:06 by bconchit          #+#    #+#              #
-#    Updated: 2020/10/01 05:26:03 by bconchit         ###   ########.fr        #
+#    Updated: 2020/10/01 19:56:19 by bconchit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -308,17 +308,5 @@ norm:
 
 vv: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_A) `find . -type f -name "*.s"`
-
-vv2: $(NAME_W)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_W) -d 10000 -v 31 -n 2 batman.cor batman.cor amedvedi.cor
-
-test: #$(NAME_W)
-	./corewar -dump $(NUM) ./bugs/bug01.cor > 1.txt
-	#../corewar_vis-master/corewar -d $(NUM) batman.cor batman.cor amedvedi.cor > 1.txt
-	./_res/vm-mac/corewar -a -d $(NUM) ./bugs/bug01.cor > 2.txt
-	diff 1.txt 2.txt || TRUE
-
-test2: $(NAME_W)
-	./corewar batman.cor batman.cor amedvedi.cor
 
 .PHONY: all clean fclean re norm vv
